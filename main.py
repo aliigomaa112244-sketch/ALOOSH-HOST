@@ -6,21 +6,18 @@ import uvicorn
 
 app = FastAPI()
 
-# إعداد القوالب للبحث في المجلد الحالي
+# تأكد أن ملف index.html في نفس مكان ملف main.py
 templates = Jinja2Templates(directory=".")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    try:
-        # محاولة عرض الصفحة الأساسية
-        return templates.TemplateResponse("index.html", {"request": request})
-    except Exception as e:
-        return HTMLResponse(content=f"Error: {str(e)}", status_code=500)
+    # التعديل هنا: نمرر السلف كـ "context" بشكل صحيح لتجنب خطأ unhashable type
+    context = {"request": request}
+    return templates.TemplateResponse("index.html", context)
 
-# روابط الـ API التي يطلبها ملف index.html لمنع الأخطاء
 @app.post("/api/login")
 async def login():
-    return {"success": True, "message": "تم تسجيل الدخول بنجاح", "redirect": "/dashboard"}
+    return {"success": True, "message": "تم تسجيل الدخول بنجاح"}
 
 @app.post("/api/register")
 async def register():
