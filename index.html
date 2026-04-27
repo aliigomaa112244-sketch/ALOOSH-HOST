@@ -2,11 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>ZIAD HOST | تسجيل الدخول - منصة استضافة آمنة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة استضافة مجانية</title>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ========== RESET & BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -14,749 +16,2094 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background: #000000;
-            color: #eef2ff;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
             min-height: 100vh;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            color: #1e293b;
+            direction: rtl;
+            font-size: 14px; /* تصغير الخط الأساسي */
+        }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #7209b7;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #f94144;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========== UTILITY CLASSES ========== */
+        .hidden { display: none !important; }
+        .btn {
+            padding: 12px 24px; /* تصغير طفيف */
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px; /* تصغير خط الأزرار */
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gray-200);
+            color: var(--gray-700);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #f87171);
+            color: white;
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 65, 68, 0.3);
         }
 
-        /* خلفية ذهبية متحركة */
-        .bg-security {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse at 20% 30%, rgba(255, 215, 0, 0.08), transparent 70%),
-                        repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.02) 0px, rgba(255, 215, 0, 0.02) 2px, transparent 2px, transparent 10px);
-            z-index: -2;
-        }
-
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image: linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-        }
-
-        /* جزيئات ذهبية متحركة */
-        .particles {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 215, 0, 0.6);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-10vh) translateX(40px);
-                opacity: 0;
-            }
-        }
-
-        /* شاشة التحميل */
-        .loading-screen {
-            position: fixed;
-            inset: 0;
-            background: #000000;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(255, 215, 0, 0.2);
-            border-top-color: #FFD700;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* حاوية تسجيل الدخول */
+        /* ========== LOGIN WRAPPER ========== */
         .login-wrapper {
             width: 100%;
-            max-width: 460px;
-            padding: 20px;
-            animation: fadeInUp 0.6s ease-out;
+            max-width: 450px; /* تصغير العرض قليلاً */
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* بطاقة تسجيل الدخول */
-        .login-card {
-            background: rgba(5, 5, 5, 0.95);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 215, 0, 0.35);
-            border-radius: 32px;
-            padding: 42px 38px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.1) inset;
-            transition: all 0.3s ease;
-        }
-
-        .login-card:hover {
-            border-color: rgba(255, 215, 0, 0.7);
-            box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 215, 0, 0.2) inset;
-        }
-
-        /* الشعار */
-        .brand {
+        .login-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px; /* تصغير الحشوة */
             text-align: center;
-            margin-bottom: 36px;
+            color: white;
         }
-
-        .brand-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, #000000, #0a0a0a);
-            border: 1.5px solid rgba(255, 215, 0, 0.6);
-            border-radius: 24px;
+        .login-header h1 {
+            font-size: 28px; /* تصغير */
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .login-header p {
+            font-size: 14px; /* تصغير */
+            opacity: 0.9;
+        }
+        .login-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            color: #FFD700;
-            margin: 0 auto 18px;
-            box-shadow: 0 0 28px rgba(255, 215, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.1);
-        }
-
-        .brand-name {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .brand-sub {
-            font-size: 0.8rem;
-            color: #6b7aaa;
-            margin-top: 8px;
-        }
-
-        /* التبويبات */
-        .tabs {
-            display: flex;
+            padding: 12px 12px 0; /* تصغير */
             gap: 8px;
-            margin-bottom: 32px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 60px;
-            padding: 4px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            background: white;
         }
-
-        .tab-btn {
+        .login-tab {
             flex: 1;
-            padding: 12px;
-            border-radius: 50px;
+            padding: 12px; /* تصغير */
             border: none;
-            background: none;
-            color: #9ca3cf;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 0.9rem;
+            background: var(--gray-100);
+            color: var(--gray-600);
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            transition: var(--transition);
+            font-size: 14px; /* تصغير */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-
-        .tab-btn i {
-            font-size: 0.9rem;
+        .login-tab.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.02);
+        }
+        .login-content {
+            background: white;
+            padding: 24px; /* تصغير */
         }
 
-        .tab-btn.active {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000000;
-            box-shadow: 0 4px 14px rgba(255, 215, 0, 0.4);
-        }
-
-        /* التنبيهات */
-        .alert {
-            border-radius: 14px;
-            padding: 12px 16px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            animation: alertIn 0.3s ease;
-        }
-
-        @keyframes alertIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .alert.error {
-            background: rgba(255, 61, 90, 0.12);
-            border: 1px solid rgba(255, 61, 90, 0.4);
-            color: #ff7a94;
-        }
-
-        .alert.success {
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-        }
-
-        .alert.show {
-            display: flex;
-        }
-
-        /* حقول الإدخال */
+        /* ========== FORM ELEMENTS ========== */
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px; /* تصغير */
         }
-
         .form-label {
             display: block;
-            font-size: 0.75rem;
-            color: #9ca3cf;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 6px; /* تصغير */
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 13px; /* تصغير */
         }
-
-        .input-wrapper {
-            position: relative;
-        }
-
         .form-input {
             width: 100%;
-            padding: 14px 18px 14px 48px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 16px;
-            color: #eef2ff;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.2s;
+            padding: 12px 16px; /* تصغير */
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 14px; /* تصغير */
+            transition: var(--transition);
+            background: var(--gray-50);
         }
-
         .form-input:focus {
-            border-color: #FFD700;
-            background: rgba(255, 215, 0, 0.05);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
         }
-
-        .form-input::placeholder {
-            color: #4b556b;
-        }
-
-        .input-icon {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #4b556b;
-            font-size: 1rem;
-            transition: color 0.2s;
-        }
-
-        .form-input:focus + .input-icon {
-            color: #FFD700;
-        }
-
-        /* زر الإرسال */
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border: none;
-            border-radius: 16px;
-            color: #000000;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 8px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(255, 215, 0, 0.55);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* سبينر صغير */
-        .btn-spinner {
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(0, 0, 0, 0.3);
-            border-top-color: #000000;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
+        .form-error {
+            color: var(--danger);
+            font-size: 12px; /* تصغير */
+            margin-top: 4px; /* تصغير */
             display: none;
         }
+        .form-error.show { display: block; }
+        .form-info {
+            color: var(--gray-500);
+            font-size: 11px; /* تصغير */
+            margin-top: 4px; /* تصغير */
+        }
 
-        /* الفاصل */
-        .divider {
+        /* ========== MAIN APP WRAPPER ========== */
+        .app-wrapper {
+            width: 100%;
+            max-width: 1300px; /* تصغير قليلاً */
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: white;
+            padding: 12px 24px; /* تصغير */
+            border-bottom: 1px solid var(--gray-200);
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin: 24px 0;
-            color: #4b556b;
-            font-size: 0.7rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px; /* تصغير */
         }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 215, 0, 0.15);
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* تصغير */
         }
-
-        /* زر تيليجرام */
-        .telegram-btn {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0, 136, 204, 0.1);
-            border: 1px solid rgba(0, 136, 204, 0.3);
-            border-radius: 16px;
-            color: #29b5e8;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.25s;
+        .logo-icon {
+            width: 40px; /* تصغير */
+            height: 40px; /* تصغير */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            color: white;
+            font-size: 20px; /* تصغير */
+        }
+        .logo-text h1 {
+            font-size: 20px; /* تصغير */
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-text p {
+            font-size: 11px; /* تصغير */
+            color: var(--gray-500);
+        }
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* تصغير */
+        }
+        .user-badge {
+            background: var(--gray-100);
+            padding: 6px 16px; /* تصغير */
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px; /* تصغير */
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 6px; /* تصغير */
+        }
+        .user-badge i { color: var(--primary); }
+
+        /* ========== DEVELOPER CARD ========== */
+        .dev-card {
+            background: white;
+            margin: 20px 24px; /* تصغير */
+            padding: 16px 24px; /* تصغير */
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px; /* تصغير */
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+        }
+        .dev-badge {
+            background: linear-gradient(135deg, var(--gray-800), var(--gray-700));
+            color: white;
+            padding: 6px 16px; /* تصغير */
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px; /* تصغير */
+        }
+        .dev-links {
+            display: flex;
+            gap: 10px; /* تصغير */
+        }
+        .dev-link {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 6px 16px; /* تصغير */
+            border-radius: 40px;
             text-decoration: none;
+            font-weight: 500;
+            font-size: 13px; /* تصغير */
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px; /* تصغير */
+        }
+        .dev-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        .telegram-btn:hover {
-            background: rgba(0, 136, 204, 0.2);
-            border-color: rgba(0, 136, 204, 0.5);
-            transform: translateY(-1px);
-        }
-
-        /* معلومات الخطة المجانية */
-        .plan-info {
-            background: rgba(255, 215, 0, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 24px;
+        /* ========== WELCOME BANNER ========== */
+        .welcome-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 24px 20px; /* تصغير */
+            padding: 30px; /* تصغير */
+            border-radius: var(--radius-lg);
+            color: white;
             text-align: center;
+            box-shadow: var(--shadow-lg);
         }
-
-        .plan-info h4 {
-            color: #FFD700;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
+        .welcome-banner h2 {
+            font-size: 28px; /* تصغير */
+            font-weight: 700;
+            margin-bottom: 12px; /* تصغير */
         }
-
-        .plan-info p {
-            font-size: 0.7rem;
-            color: #9ca3cf;
+        .welcome-banner p {
+            font-size: 15px; /* تصغير */
+            opacity: 0.95;
+            max-width: 550px; /* تصغير */
+            margin: 0 auto 20px; /* تصغير */
             line-height: 1.6;
         }
-
-        /* تذييل */
-        .footer-note {
-            text-align: center;
-            margin-top: 28px;
-            font-size: 0.7rem;
-            color: #4b556b;
+        .welcome-banner .btn {
+            background: white;
+            color: var(--primary);
+            padding: 12px 36px; /* تصغير */
+            font-size: 15px; /* تصغير */
         }
 
-        .footer-note a {
-            color: #FFD700;
-            text-decoration: none;
+        /* ========== PLANS SECTION ========== */
+        .plans-section { padding: 0 24px 24px; } /* تصغير */
+        .section-title {
+            text-align: center;
+            margin-bottom: 24px; /* تصغير */
+        }
+        .section-title h2 {
+            font-size: 26px; /* تصغير */
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 6px; /* تصغير */
+        }
+        .section-title p {
+            color: var(--gray-500);
+            font-size: 14px; /* تصغير */
+        }
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* تصغير العرض الأدنى */
+            gap: 20px; /* تصغير */
+        }
+        .plan-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px; /* تصغير */
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        .plan-card.popular::before {
+            content: 'الأكثر طلباً';
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: linear-gradient(135deg, var(--secondary), var(--danger));
+            color: white;
+            padding: 6px 40px;
+            transform: rotate(-45deg);
+            font-size: 11px; /* تصغير */
             font-weight: 600;
         }
+        .plan-name {
+            font-size: 20px; /* تصغير */
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 6px; /* تصغير */
+        }
+        .plan-price {
+            font-size: 28px; /* تصغير */
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px; /* تصغير */
+        }
+        .plan-feature {
+            padding: 8px 0; /* تصغير */
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-600);
+            font-size: 13px; /* تصغير */
+            display: flex;
+            align-items: center;
+            gap: 10px; /* تصغير */
+        }
+        .plan-feature i {
+            color: var(--success);
+            width: 18px; /* تصغير */
+        }
+        .plan-btn {
+            width: 100%;
+            padding: 12px; /* تصغير */
+            margin-top: 20px; /* تصغير */
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px; /* تصغير */
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
+        }
 
-        /* استجابة للشاشات الصغيرة */
-        @media (max-width: 520px) {
-            .login-card {
-                padding: 32px 24px;
-            }
-            
-            .brand-icon {
-                width: 65px;
-                height: 65px;
-                font-size: 1.8rem;
-            }
-            
-            .brand-name {
-                font-size: 1.3rem;
-            }
-            
-            .tab-btn {
-                padding: 8px;
-                font-size: 0.8rem;
-            }
-            
-            .form-input {
-                padding: 12px 16px 12px 42px;
-                font-size: 0.85rem;
-            }
+        /* ========== FILES GRID ========== */
+        .files-section { padding: 0 24px 24px; } /* تصغير */
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* تصغير العرض الأدنى */
+            gap: 16px; /* تصغير */
+            margin-top: 20px; /* تصغير */
+        }
+        .file-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 16px; /* تصغير */
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .file-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .file-icon {
+            width: 40px; /* تصغير */
+            height: 40px; /* تصغير */
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px; /* تصغير */
+            margin-bottom: 12px; /* تصغير */
+        }
+        .file-name {
+            font-size: 16px; /* تصغير */
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 6px; /* تصغير */
+            word-break: break-word;
+        }
+        .file-meta {
+            display: flex;
+            gap: 12px; /* تصغير */
+            color: var(--gray-500);
+            font-size: 11px; /* تصغير */
+            margin-bottom: 12px; /* تصغير */
+        }
+        .file-actions {
+            display: flex;
+            gap: 6px; /* تصغير */
+        }
+        .file-action {
+            flex: 1;
+            padding: 6px; /* تصغير */
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 11px; /* تصغير */
+        }
+        .file-action.view {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+        .file-action.view:hover:not(:disabled) {
+            background: var(--primary);
+            color: white;
+        }
+        .file-action.delete {
+            background: var(--gray-100);
+            color: var(--danger);
+        }
+        .file-action.delete:hover {
+            background: var(--danger);
+            color: white;
+        }
+        .file-action:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ========== UPLOAD AREA ========== */
+        .upload-area {
+            margin: 0 24px 24px; /* تصغير */
+            border: 3px dashed var(--gray-300);
+            border-radius: var(--radius-lg);
+            padding: 36px; /* تصغير */
+            text-align: center;
+            background: white;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+        .upload-area.dragover {
+            border-color: var(--success);
+            background: rgba(76, 201, 240, 0.05);
+        }
+        .upload-icon {
+            font-size: 48px; /* تصغير */
+            color: var(--gray-400);
+            margin-bottom: 12px; /* تصغير */
+        }
+        .upload-area h3 {
+            font-size: 20px; /* تصغير */
+            color: var(--gray-700);
+            margin-bottom: 6px; /* تصغير */
+        }
+        .upload-area p {
+            color: var(--gray-500);
+            font-size: 13px; /* تصغير */
+            margin-bottom: 20px; /* تصغير */
+        }
+        .file-input-label {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 10px 28px; /* تصغير */
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px; /* تصغير */
+            cursor: pointer;
+            display: inline-block;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+        .file-input-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
+        }
+        .file-input { display: none; }
+        .file-name {
+            margin-top: 16px; /* تصغير */
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 13px; /* تصغير */
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress {
+            margin-top: 16px; /* تصغير */
+            height: 6px; /* تصغير */
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* ========== ACTION BUTTONS ========== */
+        .actions {
+            display: flex;
+            gap: 12px; /* تصغير */
+            margin: 0 24px 24px; /* تصغير */
+        }
+        .actions .btn {
+            flex: 1;
+            padding: 14px; /* تصغير */
+        }
+
+        /* ========== STATS GRID ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* تصغير */
+            gap: 16px; /* تصغير */
+            margin: 0 24px 24px; /* تصغير */
+        }
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 20px; /* تصغير */
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 12px; /* تصغير */
+        }
+        .stat-icon {
+            width: 48px; /* تصغير */
+            height: 48px; /* تصغير */
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px; /* تصغير */
+        }
+        .stat-info h4 {
+            font-size: 22px; /* تصغير */
+            font-weight: 700;
+            color: var(--gray-800);
+            line-height: 1.2;
+        }
+        .stat-info p {
+            color: var(--gray-500);
+            font-size: 12px; /* تصغير */
+        }
+
+        /* ========== RESULT CARD ========== */
+        .result-card {
+            background: white;
+            margin: 0 24px 24px; /* تصغير */
+            border-radius: var(--radius-lg);
+            padding: 24px; /* تصغير */
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+        .result-url {
+            background: var(--gray-50);
+            padding: 12px 20px; /* تصغير */
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 14px; /* تصغير */
+            color: var(--primary);
+            word-break: break-all;
+            border: 2px solid var(--gray-200);
+            margin: 16px 0; /* تصغير */
+        }
+        .result-actions {
+            display: flex;
+            gap: 10px; /* تصغير */
+            flex-wrap: wrap;
+        }
+        .result-btn {
+            flex: 1;
+            padding: 10px; /* تصغير */
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 13px; /* تصغير */
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px; /* تصغير */
+            min-width: 100px; /* تصغير */
+        }
+        .result-btn.copy {
+            background: var(--gray-800);
+            color: white;
+        }
+        .result-btn.open {
+            background: var(--primary);
+            color: white;
+        }
+        .result-btn.delete {
+            background: var(--danger);
+            color: white;
+        }
+        .result-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== ADMIN PANEL ========== */
+        .admin-panel {
+            background: white;
+            margin: 0 24px 24px; /* تصغير */
+            border-radius: var(--radius-lg);
+            padding: 24px; /* تصغير */
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+        .admin-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* تصغير */
+            gap: 12px; /* تصغير */
+            margin-top: 20px; /* تصغير */
+        }
+        .admin-btn {
+            padding: 12px; /* تصغير */
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 13px; /* تصغير */
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px; /* تصغير */
+            background: var(--gray-100);
+            color: var(--gray-700);
+            text-align: center;
+        }
+        .admin-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .admin-btn.danger:hover { background: var(--danger); }
+        .admin-btn.warning:hover { background: var(--warning); }
+        .admin-input-group {
+            margin-top: 20px; /* تصغير */
+            padding: 20px; /* تصغير */
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: white;
+            padding: 20px 24px; /* تصغير */
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px; /* تصغير */
+            margin-top: 24px; /* تصغير */
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px; /* تصغير */
+        }
+        .footer-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 13px; /* تصغير */
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .copyright {
+            color: var(--gray-500);
+            font-size: 12px; /* تصغير */
+        }
+
+        /* ========== TOAST NOTIFICATION ========== */
+        .toast {
+            position: fixed;
+            top: 20px; /* تصغير */
+            left: 20px; /* تصغير */
+            background: white;
+            padding: 12px 20px; /* تصغير */
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 10px; /* تصغير */
+            z-index: 9999;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            border-right: 4px solid var(--success);
+            min-width: 280px; /* تصغير */
+        }
+        .toast.show { transform: translateX(0); }
+        .toast.error { border-right-color: var(--danger); }
+        .toast-icon { font-size: 20px; } /* تصغير */
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px; /* تصغير */
+            max-width: 450px; /* تصغير */
+            width: 90%;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px; /* تصغير */
+            left: 16px; /* تصغير */
+            background: var(--gray-100);
+            border: none;
+            width: 34px; /* تصغير */
+            height: 34px; /* تصغير */
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* ========== DELETED PAGE ========== */
+        .deleted-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px; /* تصغير */
+        }
+        .deleted-icon {
+            font-size: 64px; /* تصغير */
+            color: var(--danger);
+            margin-bottom: 20px; /* تصغير */
+        }
+        .deleted-title {
+            font-size: 36px; /* تصغير */
+            font-weight: 700;
+            margin-bottom: 12px; /* تصغير */
+            color: var(--gray-800);
+        }
+        .deleted-message {
+            font-size: 16px; /* تصغير */
+            color: var(--gray-600);
+            max-width: 550px; /* تصغير */
+            line-height: 1.7; /* تصغير */
+            margin-bottom: 28px; /* تصغير */
+        }
+        .deleted-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 36px; /* تصغير */
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px; /* تصغير */
+            transition: var(--transition);
+        }
+        .deleted-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .navbar { flex-direction: column; text-align: center; }
+            .user-area { width: 100%; justify-content: center; flex-wrap: wrap; }
+            .dev-card { flex-direction: column; text-align: center; }
+            .footer { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .result-actions { flex-direction: column; }
+            .actions { flex-direction: column; }
         }
     </style>
 </head>
 <body>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon" id="toastIcon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-text" id="toastText">تمت العملية بنجاح</div>
+    </div>
 
-<div class="bg-security"></div>
-<div class="bg-grid"></div>
-<div class="particles" id="particles"></div>
-
-<div class="loading-screen" id="loadingScreen">
-    <div class="loading-spinner"></div>
-</div>
-
-<div class="login-wrapper">
-    <div class="login-card">
-        <div class="brand">
-            <div class="brand-icon">
-                <i class="fas fa-crown"></i>
-            </div>
-            <div class="brand-name">ZIAD HOST</div>
-            <div class="brand-sub">منصة استضافة آمنة ومتطورة</div>
-        </div>
-
-        <!-- التبويبات -->
-        <div class="tabs">
-            <button class="tab-btn active" id="loginTabBtn" onclick="switchTab('login')">
-                <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
-            </button>
-            <button class="tab-btn" id="registerTabBtn" onclick="switchTab('register')">
-                <i class="fas fa-user-plus"></i> حساب جديد
-            </button>
-        </div>
-
-        <!-- التنبيه -->
-        <div class="alert" id="alertBox">
-            <i class="fas fa-exclamation-circle" id="alertIcon"></i>
-            <span id="alertMessage"></span>
-        </div>
-
-        <!-- نموذج تسجيل الدخول -->
-        <div id="loginForm">
+    <!-- Admin Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <button class="modal-close" id="adminClose"><i class="fas fa-times"></i></button>
+            <h2 style="margin-bottom: 20px; color: var(--gray-800); font-size: 22px;">تسجيل الدخول كأدمن</h2> <!-- تصغير -->
             <div class="form-group">
-                <label class="form-label">البريد الإلكتروني</label>
-                <div class="input-wrapper">
-                    <input type="email" class="form-input" id="loginEmail" placeholder="example@domain.com" autocomplete="email">
-                    <i class="fas fa-envelope input-icon"></i>
-                </div>
+                <label class="form-label">كلمة مرور الأدمن</label>
+                <input type="password" id="adminPassword" class="form-input" placeholder="أدخل كلمة المرور">
+                <div class="form-error" id="adminPasswordError">كلمة المرور غير صحيحة</div>
             </div>
-            <div class="form-group">
-                <label class="form-label">كلمة المرور</label>
-                <div class="input-wrapper">
-                    <input type="password" class="form-input" id="loginPassword" placeholder="أدخل كلمة المرور" autocomplete="current-password">
-                    <i class="fas fa-lock input-icon"></i>
-                </div>
-            </div>
-            <button class="submit-btn" id="loginButton" onclick="doLogin()">
-                <span id="loginText"><i class="fas fa-sign-in-alt"></i> دخول</span>
-                <div class="btn-spinner" id="loginSpinner"></div>
+            <button class="btn btn-primary" id="adminLoginBtn">
+                <i class="fas fa-shield-alt"></i> تسجيل الدخول
             </button>
-        </div>
-
-        <!-- نموذج التسجيل -->
-        <div id="registerForm" style="display: none;">
-            <div class="plan-info">
-                <h4><i class="fas fa-gift"></i> مميزات الخطة المجانية</h4>
-                <p>✨ 500 GB مساحة تخزين | ✨ سيرفرين كحد أقصى | ✨ 256 MB رام | ✨ دعم Python كامل | ✨ SSL مجاني | ✨ دعم فني 24/7</p>
-            </div>
-            <div class="form-group">
-                <label class="form-label">البريد الإلكتروني</label>
-                <div class="input-wrapper">
-                    <input type="email" class="form-input" id="regEmail" placeholder="example@domain.com" autocomplete="off">
-                    <i class="fas fa-envelope input-icon"></i>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">كلمة المرور</label>
-                <div class="input-wrapper">
-                    <input type="password" class="form-input" id="regPassword" placeholder="اختر كلمة مرور (4 أحرف على الأقل)" autocomplete="new-password">
-                    <i class="fas fa-lock input-icon"></i>
-                </div>
-            </div>
-            <button class="submit-btn" id="registerButton" onclick="doRegister()">
-                <span id="registerText"><i class="fas fa-user-plus"></i> إنشاء حساب</span>
-                <div class="btn-spinner" id="registerSpinner"></div>
-            </button>
-
-            <div class="divider">
-                <span>أو تواصل معنا</span>
-            </div>
-            
-            <a href="https://t.me/U_43_Ziad" target="_blank" class="telegram-btn">
-                <i class="fab fa-telegram-plane" style="font-size: 1.1rem;"></i>
-                تواصل مع الدعم عبر تليجرام
-            </a>
-        </div>
-
-        <div class="footer-note">
-            <i class="fas fa-shield-alt"></i> نظام آمن بالكامل |
-            <a href="https://t.me/U_43_Ziad" target="_blank">@ZIAD</a> |
-            ZIAD HOST v4
         </div>
     </div>
-</div>
 
-<script>
-    // إخفاء شاشة التحميل
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const loader = document.getElementById('loadingScreen');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
-        }, 500);
-    });
+    <!-- Login Page -->
+    <div class="login-wrapper" id="loginContainer">
+        <div class="login-header">
+            <h1>منصة المتطورة</h1>
+            <p>استضافة احترافية لملفات HTML</p>
+        </div>
+        <div class="login-tabs">
+            <button class="login-tab active" data-tab="login"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</button>
+            <button class="login-tab" data-tab="register"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+        </div>
+        <div class="login-content">
+            <!-- Login Form -->
+            <div id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">اسم المستخدم</label>
+                    <input type="text" id="loginUsername" class="form-input" placeholder="أدخل اسم المستخدم">
+                    <div class="form-error" id="loginUsernameError">اسم المستخدم غير صحيح</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="أدخل كلمة المرور">
+                    <div class="form-error" id="loginPasswordError">كلمة المرور غير صحيحة</div>
+                </div>
+                <button class="btn btn-primary" id="loginSubmit"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</button>
+                <button class="btn btn-outline" id="adminAccessBtn" style="margin-top: 16px; width: 100%;">
+                    <i class="fas fa-shield-alt"></i> تسجيل الدخول كأدمن
+                </button>
+            </div>
 
-    // إنشاء الجزيئات المتحركة
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (5 + Math.random() * 15) + 's';
-        particle.style.animationDelay = (Math.random() * 10) + 's';
-        particle.style.width = particle.style.height = (1 + Math.random() * 3) + 'px';
-        particle.style.opacity = 0.3 + Math.random() * 0.7;
-        particlesContainer.appendChild(particle);
-    }
+            <!-- Register Form -->
+            <div id="registerForm" class="hidden">
+                <div class="form-group">
+                    <label class="form-label">اسم المستخدم</label>
+                    <input type="text" id="registerUsername" class="form-input" placeholder="أحرف إنجليزية وأرقام فقط">
+                    <div class="form-error" id="registerUsernameError">اسم المستخدم لا يمكن أن يكون باللغة العربية</div>
+                    <div class="form-info">يمكن استخدام أي حروف إنجليزية أو رموز أو أرقام</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="أدخل كلمة المرور">
+                    <div class="form-error" id="registerPasswordError">كلمة المرور لا يمكن أن تكون باللغة العربية</div>
+                    <div class="form-info">يمكن استخدام أي كلمة مرور (بدون عربي)</div>
+                </div>
+                <button class="btn btn-primary" id="registerSubmit"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+            </div>
+        </div>
+    </div>
 
-    // تبديل التبويبات
-    function switchTab(tab) {
-        clearAlert();
-        
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const loginTab = document.getElementById('loginTabBtn');
-        const registerTab = document.getElementById('registerTabBtn');
-        
-        if (tab === 'login') {
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-        } else {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-            loginTab.classList.remove('active');
-            registerTab.classList.add('active');
-        }
-    }
+    <!-- Main App -->
+    <div class="app-wrapper hidden" id="mainContainer">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fas fa-rocket"></i></div>
+                <div class="logo-text">
+                    <h1>ALOOSH</h1>
+                    <p>منصة استضافة ذكية</p>
+                </div>
+            </div>
+            <div class="user-area">
+                <div class="user-badge" id="userNameDisplay"><i class="fas fa-user"></i> <span>زائر</span></div>
+                <button class="btn btn-outline" id="adminPanelBtn"><i class="fas fa-shield-alt"></i> لوحة الأدمن</button>
+                <button class="btn btn-outline" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</button>
+            </div>
+        </nav>
 
-    // عرض التنبيه
-    function showAlert(message, type = 'error') {
-        const alertBox = document.getElementById('alertBox');
-        const alertIcon = document.getElementById('alertIcon');
-        const alertMessage = document.getElementById('alertMessage');
-        
-        alertIcon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-        alertMessage.textContent = message;
-        alertBox.className = `alert ${type} show`;
-        
-        // إخفاء تلقائي بعد 5 ثوان
-        setTimeout(() => {
-            alertBox.classList.remove('show');
-        }, 5000);
-    }
+        <!-- Developer Card -->
+        <div class="dev-card">
+            <span class="dev-badge"><i class="fas fa-code"></i> المطور</span>
+            <div class="dev-links">
+                <a href="https://t.me/المطور" target="_blank" class="dev-link"><i class="fab fa-telegram"></i> @AL0OSH505</a>
+                <a href="https://t.me/قناه المطور" target="_blank" class="dev-link"><i class="fab fa-telegram-plane"></i> @files_otp</a>
+            </div>
+        </div>
 
-    function clearAlert() {
-        const alertBox = document.getElementById('alertBox');
-        alertBox.classList.remove('show');
-    }
+        <!-- Admin Panel -->
+        <div class="admin-panel hidden" id="adminPanel">
+            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-shield-alt" style="color: var(--primary);"></i> لوحة تحكم الأدمن</h3> <!-- تصغير -->
+            <div id="adminMessage" class="form-error" style="margin-bottom: 16px; display: none;"></div>
+            <div class="admin-actions">
+                <button class="admin-btn" id="addPlan1Btn"><i class="fas fa-gem"></i> إضافة خطة 1 (10 جيجا - 30 يوم)</button>
+                <button class="admin-btn" id="addPlan2Btn"><i class="fas fa-gem"></i> إضافة خطة 2 (15 جيجا - 50 يوم)</button>
+                <button class="admin-btn" id="addPlan3Btn"><i class="fas fa-gem"></i> إضافة خطة 3 (10 جيجا - 50 يوم)</button>
+                <button class="admin-btn" id="addPlanUnlimitedBtn"><i class="fas fa-infinity"></i> إضافة خطة غير محدودة</button>
+                <button class="admin-btn danger" id="removePlanBtn"><i class="fas fa-trash-alt"></i> إزالة خطة مستخدم</button>
+                <button class="admin-btn danger" id="disableAllSitesBtn"><i class="fas fa-power-off"></i> إيقاف جميع المواقع</button>
+                <button class="admin-btn warning" id="disableMainSiteBtn"><i class="fas fa-globe"></i> إيقاف الموقع الأساسي</button>
+                <button class="admin-btn" id="changeAdminPasswordBtn"><i class="fas fa-key"></i> تغيير كلمة مرور الأدمن</button>
+                <button class="admin-btn danger" id="deleteSpecificSiteBtn"><i class="fas fa-trash"></i> حذف موقع معين</button>
+            </div>
 
-    // تفعيل/تعطيل زر التحميل
-    function setButtonLoading(buttonId, spinnerId, textId, isLoading) {
-        const button = document.getElementById(buttonId);
-        const spinner = document.getElementById(spinnerId);
-        const textSpan = document.getElementById(textId);
-        
-        button.disabled = isLoading;
-        spinner.style.display = isLoading ? 'block' : 'none';
-        textSpan.style.display = isLoading ? 'none' : 'inline-flex';
-        if (textSpan) textSpan.style.gap = '10px';
-    }
+            <!-- Add Plan Section -->
+            <div class="admin-input-group hidden" id="addPlanSection">
+                <label class="form-label" id="planSectionLabel">أدخل اسم المستخدم</label>
+                <input type="text" id="planUsernameInput" class="form-input" placeholder="اسم المستخدم">
+                <button class="btn btn-primary" id="confirmAddPlanBtn" style="margin-top: 16px;">تأكيد إضافة الخطة</button>
+            </div>
 
-    // تسجيل الدخول
-    async function doLogin() {
-        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-        const password = document.getElementById('loginPassword').value.trim();
-        
-        if (!email || !password) {
-            showAlert('الرجاء إدخال البريد الإلكتروني وكلمة المرور');
-            return;
-        }
-        
-        clearAlert();
-        setButtonLoading('loginButton', 'loginSpinner', 'loginText', true);
-        
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
+            <!-- Remove Plan Section -->
+            <div class="admin-input-group hidden" id="removePlanSection">
+                <label class="form-label">أدخل اسم المستخدم</label>
+                <input type="text" id="removePlanUsername" class="form-input" placeholder="اسم المستخدم">
+                <button class="btn btn-danger" id="confirmRemovePlanBtn" style="margin-top: 16px;">إزالة جميع الخطط</button>
+            </div>
+
+            <!-- Change Password Section -->
+            <div class="admin-input-group hidden" id="adminPasswordChangeSection">
+                <label class="form-label">كلمة المرور الجديدة</label>
+                <input type="password" id="newAdminPassword" class="form-input" placeholder="كلمة المرور الجديدة">
+                <button class="btn btn-primary" id="saveAdminPasswordBtn" style="margin-top: 16px;">حفظ</button>
+            </div>
+
+            <!-- Delete Site Section -->
+            <div class="admin-input-group hidden" id="deleteSiteSection">
+                <label class="form-label">رابط الموقع</label>
+                <input type="text" id="siteUrlToDelete" class="form-input" placeholder="https://...?site=...">
+                <button class="btn btn-danger" id="confirmDeleteSiteBtn" style="margin-top: 16px;">حذف الموقع</button>
+            </div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <div class="welcome-banner hidden" id="welcomeSection">
+            <div class="welcome-icon"><i class="fas fa-crown"></i></div>
+            <h2 id="welcomeTitle">🎉 تم شراء الخطة بنجاح!</h2>
+            <p id="welcomeMessage"></p>
+            <button class="btn" id="controlPlanBtn"><i class="fas fa-gamepad"></i> التحكم في الخطة</button>
+        </div>
+
+        <!-- Plans Section -->
+        <div class="plans-section" id="plansSection">
+            <div class="section-title">
+                <h2>اختر خطتك المثالية</h2>
+                <p>خطط استضافة مصممة خصيصاً لتلبية احتياجاتك</p>
+            </div>
+            <div class="plans-grid" id="plansGrid"></div>
+        </div>
+
+        <!-- Files Section -->
+        <div class="files-section hidden" id="filesSection">
+            <div class="section-title">
+                <h2><i class="fas fa-folder-open" style="color: var(--primary);"></i> ملفاتي</h2>
+            </div>
+            <div class="files-grid" id="filesList"></div>
+        </div>
+
+        <!-- Upload Area -->
+        <div class="upload-area hidden" id="uploadArea">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h3>رفع ملف HTML</h3>
+            <p>اسحب وأفلت الملف هنا أو انقر للاختيار - حسب مساحة خطتك</p>
+            <label class="file-input-label">
+                <i class="fas fa-folder-open"></i> اختر ملف
+                <input type="file" id="fileInput" class="file-input" accept=".html,.htm">
+            </label>
+            <div id="fileName" class="file-name"></div>
+            <div class="progress hidden" id="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions hidden" id="actionButtons">
+            <button class="btn btn-primary" id="uploadBtn"><i class="fas fa-cloud-upload-alt"></i> رفع الموقع</button>
+            <button class="btn btn-danger" id="deleteFilesBtn"><i class="fas fa-trash-alt"></i> حذف جميع ملفاتي</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid hidden" id="stats">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                <div class="stat-info">
+                    <h4 id="totalSites">0</h4>
+                    <p>مواقع مرفوعة</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                <div class="stat-info">
+                    <h4 id="totalViews">0</h4>
+                    <p>مشاهدات</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-info">
+                    <h4 id="activeSites">0</h4>
+                    <p>مواقع نشطة</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-hdd"></i></div>
+                <div class="stat-info">
+                    <h4 id="remainingSpace">0</h4>
+                    <p>مساحة متبقية</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Card -->
+        <div class="result-card hidden" id="resultSection">
+            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-link" style="color: var(--primary);"></i> رابط موقعك</h3> <!-- تصغير -->
+            <div class="result-url" id="urlDisplay"></div>
+            <div class="result-actions">
+                <button class="result-btn copy" id="copyBtn"><i class="fas fa-copy"></i> نسخ الرابط</button>
+                <button class="result-btn open" id="openBtn"><i class="fas fa-external-link-alt"></i> فتح الموقع</button>
+                <button class="result-btn delete" id="deleteBtn"><i class="fas fa-trash-alt"></i> حذف الموقع</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://t.me/AL0OSH505" target="_blank"><i class="fab fa-telegram"></i> المطور</a>
+                <a href="https://t.me/files_otp" target="_blank"><i class="fab fa-telegram-plane"></i> القناة</a>
+            </div>
+            <div class="copyright">
+                © 2026 علي - جميع الحقوق محفوظة | منصة ICO المتطورة
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // ==================== Data ====================
+            const DB_USERS = 'ico_users_v9';
+            const DB_SITES = 'ico_sites_v9';
+            const DB_DELETED_SITES = 'ico_deleted_sites_v9';
+            const DB_ADMIN = 'ico_admin_config_v9';
+            const DB_IP_USERS = 'ico_ip_users_v9';
+            const DB_SESSION = 'ico_session_v9';
+
+            let usersDatabase = JSON.parse(localStorage.getItem(DB_USERS)) || {};
+            let sitesDatabase = JSON.parse(localStorage.getItem(DB_SITES)) || {};
+            let deletedSitesDatabase = JSON.parse(localStorage.getItem(DB_DELETED_SITES)) || {};
+            let adminConfig = JSON.parse(localStorage.getItem(DB_ADMIN)) || {
+                password: 'hossamhossam#11212',
+                mainSiteDisabled: false
+            };
+            let ipUserMapping = JSON.parse(localStorage.getItem(DB_IP_USERS)) || {};
+            let currentSession = JSON.parse(localStorage.getItem(DB_SESSION)) || { username: null, ip: null };
+
+            let currentUser = currentSession.username || null;
+            let isAdmin = false;
+            let currentSiteId = null;
+            let selectedPlanForAdmin = null;
+            let showWelcomeAfterPlan = false;
+
+            const plans = {
+                free: { 
+                    name: 'مجانية', price: 'مجاناً', diskSpace: 5 * 1024 * 1024 * 1024, duration: 7, files: 1, priceStars: 0,
+                    displaySpace: '5 جيجابايت', displayDuration: '7 أيام'
+                },
+                paid1: { 
+                    name: 'مدفوعة 1', price: '13 ⭐', diskSpace: 10 * 1024 * 1024 * 1024, duration: 30, files: 1, priceStars: 13,
+                    displaySpace: '10 جيجابايت', displayDuration: '30 يوم'
+                },
+                paid2: { 
+                    name: 'مدفوعة 2', price: '15 ⭐', diskSpace: 15 * 1024 * 1024 * 1024, duration: 50, files: 1, priceStars: 15,
+                    displaySpace: '15 جيجابايت', displayDuration: '50 يوم'
+                },
+                unlimited: { 
+                    name: 'غير محدودة', price: '100 ⭐', diskSpace: Infinity, duration: Infinity, files: 10, priceStars: 100,
+                    displaySpace: 'غير محدود', displayDuration: 'مدى الحياة'
+                }
+            };
+
+            // ==================== Elements ====================
+            const E = {
+                toast: document.getElementById('toast'),
+                toastIcon: document.getElementById('toastIcon'),
+                toastText: document.getElementById('toastText'),
+                loginContainer: document.getElementById('loginContainer'),
+                mainContainer: document.getElementById('mainContainer'),
+                adminModal: document.getElementById('adminModal'),
+                adminClose: document.getElementById('adminClose'),
+                adminPassword: document.getElementById('adminPassword'),
+                adminPasswordError: document.getElementById('adminPasswordError'),
+                adminLoginBtn: document.getElementById('adminLoginBtn'),
+                adminAccessBtn: document.getElementById('adminAccessBtn'),
+                tabBtns: document.querySelectorAll('.login-tab'),
+                loginForm: document.getElementById('loginForm'),
+                registerForm: document.getElementById('registerForm'),
+                loginUsername: document.getElementById('loginUsername'),
+                loginPassword: document.getElementById('loginPassword'),
+                loginUsernameError: document.getElementById('loginUsernameError'),
+                loginPasswordError: document.getElementById('loginPasswordError'),
+                loginSubmit: document.getElementById('loginSubmit'),
+                registerUsername: document.getElementById('registerUsername'),
+                registerPassword: document.getElementById('registerPassword'),
+                registerUsernameError: document.getElementById('registerUsernameError'),
+                registerPasswordError: document.getElementById('registerPasswordError'),
+                registerSubmit: document.getElementById('registerSubmit'),
+                logoutBtn: document.getElementById('logoutBtn'),
+                userNameDisplay: document.getElementById('userNameDisplay').querySelector('span'),
+                adminPanelBtn: document.getElementById('adminPanelBtn'),
+                adminPanel: document.getElementById('adminPanel'),
+                adminMessage: document.getElementById('adminMessage'),
+                addPlan1Btn: document.getElementById('addPlan1Btn'),
+                addPlan2Btn: document.getElementById('addPlan2Btn'),
+                addPlan3Btn: document.getElementById('addPlan3Btn'),
+                addPlanUnlimitedBtn: document.getElementById('addPlanUnlimitedBtn'),
+                removePlanBtn: document.getElementById('removePlanBtn'),
+                disableAllSitesBtn: document.getElementById('disableAllSitesBtn'),
+                disableMainSiteBtn: document.getElementById('disableMainSiteBtn'),
+                changeAdminPasswordBtn: document.getElementById('changeAdminPasswordBtn'),
+                deleteSpecificSiteBtn: document.getElementById('deleteSpecificSiteBtn'),
+                addPlanSection: document.getElementById('addPlanSection'),
+                planSectionLabel: document.getElementById('planSectionLabel'),
+                planUsernameInput: document.getElementById('planUsernameInput'),
+                confirmAddPlanBtn: document.getElementById('confirmAddPlanBtn'),
+                removePlanSection: document.getElementById('removePlanSection'),
+                removePlanUsername: document.getElementById('removePlanUsername'),
+                confirmRemovePlanBtn: document.getElementById('confirmRemovePlanBtn'),
+                adminPasswordChangeSection: document.getElementById('adminPasswordChangeSection'),
+                newAdminPassword: document.getElementById('newAdminPassword'),
+                saveAdminPasswordBtn: document.getElementById('saveAdminPasswordBtn'),
+                deleteSiteSection: document.getElementById('deleteSiteSection'),
+                siteUrlToDelete: document.getElementById('siteUrlToDelete'),
+                confirmDeleteSiteBtn: document.getElementById('confirmDeleteSiteBtn'),
+                welcomeSection: document.getElementById('welcomeSection'),
+                welcomeTitle: document.getElementById('welcomeTitle'),
+                welcomeMessage: document.getElementById('welcomeMessage'),
+                controlPlanBtn: document.getElementById('controlPlanBtn'),
+                plansSection: document.getElementById('plansSection'),
+                plansGrid: document.getElementById('plansGrid'),
+                filesSection: document.getElementById('filesSection'),
+                filesList: document.getElementById('filesList'),
+                uploadArea: document.getElementById('uploadArea'),
+                fileInput: document.getElementById('fileInput'),
+                fileName: document.getElementById('fileName'),
+                progress: document.getElementById('progress'),
+                progressBar: document.getElementById('progressBar'),
+                actionButtons: document.getElementById('actionButtons'),
+                uploadBtn: document.getElementById('uploadBtn'),
+                deleteFilesBtn: document.getElementById('deleteFilesBtn'),
+                stats: document.getElementById('stats'),
+                totalSites: document.getElementById('totalSites'),
+                totalViews: document.getElementById('totalViews'),
+                activeSites: document.getElementById('activeSites'),
+                remainingSpace: document.getElementById('remainingSpace'),
+                resultSection: document.getElementById('resultSection'),
+                urlDisplay: document.getElementById('urlDisplay'),
+                copyBtn: document.getElementById('copyBtn'),
+                openBtn: document.getElementById('openBtn'),
+                deleteBtn: document.getElementById('deleteBtn')
+            };
+
+            // ==================== Helper Functions ====================
+            function showToast(message, type = 'success') {
+                E.toastText.textContent = message;
+                E.toastIcon.innerHTML = type === 'success' ? '<i class="fas fa-check-circle"></i>' : 
+                                        type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : 
+                                        '<i class="fas fa-info-circle"></i>';
+                E.toast.className = 'toast show';
+                if (type === 'error') E.toast.classList.add('error');
+                else E.toast.classList.remove('error');
+                setTimeout(() => E.toast.classList.remove('show'), 4000);
+            }
+
+            function showAdminMessage(message, isError = false) {
+                E.adminMessage.textContent = message;
+                E.adminMessage.style.display = 'block';
+                E.adminMessage.style.color = isError ? 'var(--danger)' : 'var(--success)';
+                setTimeout(() => E.adminMessage.style.display = 'none', 5000);
+            }
+
+            function getClientIP() {
+                let ip = localStorage.getItem('user_ip');
+                if (!ip) {
+                    ip = '192.168.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
+                    localStorage.setItem('user_ip', ip);
+                }
+                return ip;
+            }
+
+            function validateUsername(username) {
+                return !/[\u0600-\u06FF]/.test(username);
+            }
+
+            function validatePassword(password) {
+                return !/[\u0600-\u06FF]/.test(password);
+            }
+
+            function saveSession(username) {
+                currentSession = { username, ip: getClientIP() };
+                localStorage.setItem(DB_SESSION, JSON.stringify(currentSession));
+            }
+
+            function clearSession() {
+                localStorage.removeItem(DB_SESSION);
+            }
+
+            function formatBytes(bytes) {
+                if (bytes === Infinity) return 'غير محدود';
+                if (!bytes) return '0 بايت';
+                const sizes = ['بايت', 'كيلوبايت', 'ميجابايت', 'جيجابايت'];
+                const i = Math.floor(Math.log(bytes) / Math.log(1024));
+                return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
+            }
+
+            function isSiteActive(siteId) {
+                const site = sitesDatabase[siteId];
+                if (!site) return false;
+                const user = usersDatabase[site.owner];
+                if (!user || !user.plan) return false;
+                if (user.plan.key === 'unlimited') return true;
+                if (!user.plan.startDate) return false;
+                const now = new Date();
+                const start = new Date(user.plan.startDate);
+                const end = new Date(start.getTime() + user.plan.duration * 24 * 60 * 60 * 1000);
+                return now <= end;
+            }
+
+            function updateStats() {
+                if (!currentUser || isAdmin) return;
+                const user = usersDatabase[currentUser];
+                if (!user || !user.plan) return;
+
+                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
+                let views = 0, active = 0;
+                userSites.forEach(site => {
+                    views += site.views || 0;
+                    if (isSiteActive(site.id)) active++;
+                });
+
+                E.totalSites.textContent = userSites.length;
+                E.totalViews.textContent = views;
+                E.activeSites.textContent = active;
+
+                const used = user.plan.usedSpace || 0;
+                const remaining = user.plan.diskSpace === Infinity ? 'غير محدود' : formatBytes(user.plan.diskSpace - used);
+                E.remainingSpace.textContent = remaining;
+            }
+
+            // ==================== Render Plans ====================
+            function renderPlans() {
+                let html = '';
+                for (let [key, plan] of Object.entries(plans)) {
+                    html += `
+                        <div class="plan-card ${key === 'paid1' ? 'popular' : ''}">
+                            <div class="plan-name">${plan.name}</div>
+                            <div class="plan-price">${plan.price}</div>
+                            <div class="plan-feature"><i class="fas fa-hdd"></i> المساحة: ${plan.displaySpace}</div>
+                            <div class="plan-feature"><i class="fas fa-clock"></i> المدة: ${plan.displayDuration}</div>
+                            <div class="plan-feature"><i class="fas fa-file"></i> عدد الملفات: ${plan.files} ملف</div>
+                            <button class="plan-btn" data-plan="${key}" data-stars="${plan.priceStars}">
+                                ${plan.priceStars > 0 ? '<i class="fab fa-telegram"></i> اضغط هنا للتواصل مع المطور' : '<i class="fas fa-check"></i> اختيار الخطة المجانية'}
+                            </button>
+                        </div>
+                    `;
+                }
+                E.plansGrid.innerHTML = html;
+
+                document.querySelectorAll('.plan-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const planKey = btn.dataset.plan;
+                        const stars = parseInt(btn.dataset.stars);
+                        if (stars > 0) {
+                            window.open('https://t.me/ALOOSH505', '_blank');
+                            showToast('تم فتح المحادثة مع المطور، أرسل له اسم المستخدم الخاص بك: ' + currentUser, 'info');
+                        } else {
+                            activatePlanForUser(currentUser, 'free');
+                        }
+                    });
+                });
+            }
+
+            function activatePlanForUser(username, planKey) {
+                const plan = plans[planKey];
+                const user = usersDatabase[username];
+                if (!user) return;
+
+                user.plan = {
+                    key: planKey, name: plan.name, startDate: null, duration: plan.duration,
+                    diskSpace: plan.diskSpace, usedSpace: 0, filesCount: 0, maxFiles: plan.files
+                };
+                usersDatabase[username] = user;
+                localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+
+                if (username === currentUser) {
+                    showWelcomeAfterPlan = true;
+                    showWelcomeScreen(plan);
+                } else {
+                    showAdminMessage(`✅ تمت إضافة الخطة ${plan.name} للمستخدم ${username}`);
+                }
+            }
+
+            function showWelcomeScreen(plan) {
+                E.welcomeSection.classList.remove('hidden');
+                E.plansSection.classList.add('hidden');
+                E.uploadArea.classList.add('hidden');
+                E.filesSection.classList.add('hidden');
+                E.actionButtons.classList.add('hidden');
+                E.stats.classList.add('hidden');
+                E.welcomeMessage.innerHTML = `
+                    <i class="fas fa-star" style="color: #FFD700;"></i> خطة: ${plan.name}<br>
+                    <i class="fas fa-hdd" style="color: var(--success);"></i> المساحة: ${plan.displaySpace}<br>
+                    <i class="fas fa-clock" style="color: var(--accent);"></i> المدة: ${plan.displayDuration}<br>
+                    <i class="fas fa-file" style="color: var(--primary);"></i> عدد الملفات: ${plan.files} ملف<br><br>
+                    <span style="font-size: 14px; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 40px;">⚠️ ملاحظة: مدة الخطة تبدأ من تاريخ أول رفع ملف</span>
+                `;
+            }
+
+            function loadUserFiles() {
+                const user = usersDatabase[currentUser];
+                if (!user || !user.plan) return;
+
+                const userSites = Object.values(sitesDatabase)
+                    .filter(site => site.owner === currentUser)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                if (userSites.length > 0) {
+                    E.filesList.innerHTML = userSites.map(site => {
+                        const active = isSiteActive(site.id);
+                        return `
+                        <div class="file-card" data-id="${site.id}">
+                            <div class="file-icon"><i class="fas fa-file-code"></i></div>
+                            <div class="file-name">${site.name}</div>
+                            <div class="file-meta">
+                                <span><i class="far fa-calendar"></i> ${new Date(site.date).toLocaleDateString('ar-EG')}</span>
+                                <span><i class="far fa-eye"></i> ${site.views || 0}</span>
+                                <span><i class="fas fa-weight-hanging"></i> ${formatBytes(site.size)}</span>
+                            </div>
+                            ${!active ? '<div style="color: var(--danger); font-size: 12px; margin-bottom: 8px;"><i class="fas fa-exclamation-circle"></i> منتهي الصلاحية</div>' : ''}
+                            <div class="file-actions">
+                                <button class="file-action view" data-id="${site.id}" ${!active ? 'disabled' : ''}><i class="fas fa-eye"></i> عرض</button>
+                                <button class="file-action delete" data-id="${site.id}"><i class="fas fa-trash"></i> حذف</button>
+                            </div>
+                        </div>
+                    `}).join('');
+                } else {
+                    E.filesList.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 60px; background: var(--gray-50); border-radius: var(--radius-lg);">
+                            <i class="fas fa-folder-open" style="font-size: 48px; color: var(--gray-400); margin-bottom: 16px;"></i>
+                            <h3 style="color: var(--gray-600);">لا توجد ملفات</h3>
+                            <p style="color: var(--gray-500);">ابدأ برفع أول ملف HTML خاص بك</p>
+                        </div>
+                    `;
+                }
+            }
+
+            function checkUserPlanAndShowContent() {
+                const user = usersDatabase[currentUser];
+                if (!user || !user.plan) {
+                    E.welcomeSection.classList.add('hidden');
+                    E.plansSection.classList.remove('hidden');
+                    E.uploadArea.classList.add('hidden');
+                    E.filesSection.classList.add('hidden');
+                    E.actionButtons.classList.add('hidden');
+                    E.stats.classList.add('hidden');
+                } else {
+                    if (showWelcomeAfterPlan) {
+                        showWelcomeScreen(user.plan);
+                        return;
+                    }
+                    if (!user.plan.startDate) {
+                        E.welcomeSection.classList.remove('hidden');
+                        E.welcomeTitle.innerHTML = '🎉 مرحباً بك في خطتك الجديدة!';
+                        E.welcomeMessage.innerHTML = `
+                            <i class="fas fa-star" style="color: #FFD700;"></i> خطة: ${user.plan.name}<br>
+                            <i class="fas fa-hdd" style="color: var(--success);"></i> المساحة: ${user.plan.diskSpace === Infinity ? 'غير محدودة' : formatBytes(user.plan.diskSpace)}<br>
+                            <i class="fas fa-clock" style="color: var(--accent);"></i> المدة: ${user.plan.duration === Infinity ? 'مدى الحياة' : user.plan.duration + ' يوم'}<br>
+                            <i class="fas fa-file" style="color: var(--primary);"></i> عدد الملفات: ${user.plan.maxFiles} ملف<br><br>
+                            <span style="font-size: 14px; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 40px;">⚠️ مدة الخطة تبدأ من تاريخ أول رفع ملف</span>
+                        `;
+                        E.controlPlanBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ الآن';
+                        E.plansSection.classList.add('hidden');
+                        E.uploadArea.classList.add('hidden');
+                        E.filesSection.classList.add('hidden');
+                        E.actionButtons.classList.add('hidden');
+                        E.stats.classList.add('hidden');
+                        return;
+                    }
+                    if (user.plan.key !== 'unlimited') {
+                        const now = new Date();
+                        const start = new Date(user.plan.startDate);
+                        const end = new Date(start.getTime() + user.plan.duration * 24 * 60 * 60 * 1000);
+                        if (now > end) {
+                            showToast('⚠️ لقد انتهت مدة خطتك، قم باختيار خطة جديدة', 'error');
+                            user.plan = null;
+                            usersDatabase[currentUser] = user;
+                            localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+                            E.welcomeSection.classList.add('hidden');
+                            E.plansSection.classList.remove('hidden');
+                            E.uploadArea.classList.add('hidden');
+                            E.filesSection.classList.add('hidden');
+                            E.actionButtons.classList.add('hidden');
+                            E.stats.classList.add('hidden');
+                            return;
+                        }
+                    }
+                    E.welcomeSection.classList.add('hidden');
+                    E.plansSection.classList.add('hidden');
+                    E.uploadArea.classList.remove('hidden');
+                    E.filesSection.classList.remove('hidden');
+                    E.actionButtons.classList.remove('hidden');
+                    E.stats.classList.remove('hidden');
+                    loadUserFiles();
+                    updateStats();
+                }
+            }
+
+            // ==================== Event Listeners ====================
+            E.controlPlanBtn.addEventListener('click', () => {
+                E.welcomeSection.classList.add('hidden');
+                const user = usersDatabase[currentUser];
+                if (user && user.plan) {
+                    showWelcomeAfterPlan = false;
+                    E.uploadArea.classList.remove('hidden');
+                    E.filesSection.classList.remove('hidden');
+                    E.actionButtons.classList.remove('hidden');
+                    E.stats.classList.remove('hidden');
+                    loadUserFiles();
+                    updateStats();
+                    showToast('🎮 مرحباً بك في لوحة التحكم! ابدأ برفع ملفك الأول', 'success');
+                }
             });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                showAlert('✅ تم تسجيل الدخول بنجاح! جاري التحويل...', 'success');
-                setTimeout(() => {
-                    window.location.href = data.redirect || '/';
-                }, 800);
-            } else {
-                showAlert(data.message || 'بيانات الدخول غير صحيحة');
-                setButtonLoading('loginButton', 'loginSpinner', 'loginText', false);
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            showAlert('خطأ في الاتصال بالخادم. تأكد من اتصالك بالإنترنت');
-            setButtonLoading('loginButton', 'loginSpinner', 'loginText', false);
-        }
-    }
 
-    // التسجيل
-    async function doRegister() {
-        const email = document.getElementById('regEmail').value.trim().toLowerCase();
-        const password = document.getElementById('regPassword').value.trim();
-        
-        if (!email || !password) {
-            showAlert('الرجاء إدخال جميع البيانات');
-            return;
-        }
-        
-        if (!email.includes('@') || !email.includes('.')) {
-            showAlert('البريد الإلكتروني غير صالح');
-            return;
-        }
-        
-        if (password.length < 4) {
-            showAlert('كلمة المرور يجب أن تكون 4 أحرف على الأقل');
-            return;
-        }
-        
-        clearAlert();
-        setButtonLoading('registerButton', 'registerSpinner', 'registerText', true);
-        
-        try {
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
+            // Drag & Drop
+            E.uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                E.uploadArea.classList.add('dragover');
             });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                showAlert(data.message || '✅ تم إنشاء حسابك بنجاح! يمكنك تسجيل الدخول الآن.', 'success');
-                
-                // مسح الحقول
-                document.getElementById('regEmail').value = '';
-                document.getElementById('regPassword').value = '';
-                
-                // التحويل إلى تبويب تسجيل الدخول بعد 1.5 ثانية
-                setTimeout(() => {
-                    switchTab('login');
-                    document.getElementById('loginEmail').value = email;
-                    document.getElementById('loginPassword').focus();
-                }, 1500);
-            } else {
-                showAlert(data.message || 'فشل إنشاء الحساب');
-            }
-        } catch (error) {
-            console.error('Register error:', error);
-            showAlert('خطأ في الاتصال بالخادم. تأكد من اتصالك بالإنترنت');
-        } finally {
-            setButtonLoading('registerButton', 'registerSpinner', 'registerText', false);
-        }
-    }
+            E.uploadArea.addEventListener('dragleave', () => E.uploadArea.classList.remove('dragover'));
+            E.uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                E.uploadArea.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                if (file) {
+                    if (!file.name.endsWith('.html') && !file.name.endsWith('.htm')) 
+                        return showToast('الملف يجب أن يكون بصيغة HTML', 'error');
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    E.fileInput.files = dataTransfer.files;
+                    const event = new Event('change', { bubbles: true });
+                    E.fileInput.dispatchEvent(event);
+                }
+            });
 
-    // الضغط على Enter
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            const isLoginVisible = document.getElementById('loginForm').style.display !== 'none';
-            if (isLoginVisible) {
-                doLogin();
-            } else {
-                doRegister();
-            }
-        }
-    });
+            E.fileInput.addEventListener('change', function() {
+                if (this.files[0]) {
+                    const file = this.files[0];
+                    const size = file.size > 1024*1024 ? (file.size/(1024*1024)).toFixed(2)+' MB' : (file.size/1024).toFixed(2)+' KB';
+                    E.fileName.innerHTML = `<i class="fas fa-file-code"></i> ${file.name} (${size})`;
+                }
+            });
 
-    // التحقق من الجلسة الحالية
-    fetch('/api/current_user')
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = data.is_admin ? '/admin' : '/dashboard';
-            }
-        })
-        .catch(() => {});
-</script>
+            E.uploadBtn.addEventListener('click', async () => {
+                const user = usersDatabase[currentUser];
+                if (!user || !user.plan) return showToast('يجب أن يكون لديك خطة نشطة أولاً', 'error');
+                const file = E.fileInput.files[0];
+                if (!file) return showToast('اختر ملفاً أولاً', 'error');
+                if (!file.name.endsWith('.html') && !file.name.endsWith('.htm')) 
+                    return showToast('الملف يجب أن يكون بصيغة HTML', 'error');
+
+                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
+                if (user.plan.maxFiles !== Infinity && userSites.length >= user.plan.maxFiles)
+                    return showToast(`⚠️ لقد وصلت للحد الأقصى (${user.plan.maxFiles} ملفات)`, 'error');
+                if (file.size > (user.plan.diskSpace - (user.plan.usedSpace || 0)))
+                    return showToast('⚠️ عذراً، لقد امتلأت مساحة هذا القرص', 'error');
+
+                if (!user.plan.startDate) {
+                    user.plan.startDate = new Date().toISOString();
+                    usersDatabase[currentUser] = user;
+                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+                }
+
+                E.progress.classList.remove('hidden');
+                E.progressBar.style.width = '30%';
+
+                try {
+                    const content = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = e => resolve(e.target.result);
+                        reader.onerror = reject;
+                        reader.readAsText(file);
+                    });
+                    E.progressBar.style.width = '70%';
+
+                    const id = 'site_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    sitesDatabase[id] = {
+                        id, name: file.name, content, owner: currentUser,
+                        date: new Date().toISOString(), views: 0, size: file.size
+                    };
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+
+                    user.plan.usedSpace = (user.plan.usedSpace || 0) + file.size;
+                    usersDatabase[currentUser] = user;
+                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+
+                    E.progressBar.style.width = '100%';
+                    setTimeout(() => {
+                        const url = `${window.location.origin}${window.location.pathname}?site=${id}`;
+                        E.urlDisplay.textContent = url;
+                        E.resultSection.classList.remove('hidden');
+                        E.progress.classList.add('hidden');
+                        E.progressBar.style.width = '0%';
+                        E.fileInput.value = '';
+                        E.fileName.innerHTML = '';
+                        loadUserFiles();
+                        updateStats();
+                        showToast('✅ تم رفع الموقع بنجاح', 'success');
+                        currentSiteId = id;
+                        E.resultSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 600);
+                } catch (error) {
+                    showToast('خطأ في قراءة الملف', 'error');
+                    E.progress.classList.add('hidden');
+                }
+            });
+
+            E.copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(E.urlDisplay.textContent)
+                    .then(() => showToast('تم نسخ الرابط إلى الحافظة', 'success'))
+                    .catch(() => {
+                        const el = document.createElement('textarea');
+                        el.value = E.urlDisplay.textContent;
+                        document.body.appendChild(el);
+                        el.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(el);
+                        showToast('تم نسخ الرابط إلى الحافظة', 'success');
+                    });
+            });
+
+            E.openBtn.addEventListener('click', () => {
+                if (currentSiteId && sitesDatabase[currentSiteId]) {
+                    const site = sitesDatabase[currentSiteId];
+                    if (!isSiteActive(currentSiteId)) return showToast('⚠️ هذا الموقع منتهي الصلاحية', 'error');
+                    site.views++;
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    const win = window.open('', '_blank');
+                    win.document.write(site.content);
+                    win.document.close();
+                    loadUserFiles();
+                    updateStats();
+                }
+            });
+
+            E.deleteBtn.addEventListener('click', () => {
+                if (currentSiteId && confirm('هل تريد حذف هذا الموقع؟')) {
+                    const site = sitesDatabase[currentSiteId];
+                    deletedSitesDatabase[currentSiteId] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
+                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
+                    delete sitesDatabase[currentSiteId];
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    E.resultSection.classList.add('hidden');
+                    currentSiteId = null;
+                    loadUserFiles();
+                    updateStats();
+                    showToast('تم حذف الموقع بنجاح', 'info');
+                }
+            });
+
+            E.filesList.addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                const id = btn.dataset.id;
+                if (!id) return;
+                const site = sitesDatabase[id];
+                if (!site) return;
+
+                if (btn.classList.contains('view')) {
+                    if (!isSiteActive(id)) return showToast('⚠️ هذا الموقع منتهي الصلاحية', 'error');
+                    const win = window.open('', '_blank');
+                    win.document.write(site.content);
+                    win.document.close();
+                    site.views++;
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    loadUserFiles();
+                    updateStats();
+                } else if (btn.classList.contains('delete')) {
+                    if (confirm('هل تريد حذف هذا الموقع؟')) {
+                        deletedSitesDatabase[id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
+                        localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
+                        delete sitesDatabase[id];
+                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                        if (currentSiteId === id) {
+                            E.resultSection.classList.add('hidden');
+                            currentSiteId = null;
+                        }
+                        loadUserFiles();
+                        updateStats();
+                        showToast('تم حذف الموقع بنجاح', 'info');
+                    }
+                }
+            });
+
+            E.deleteFilesBtn.addEventListener('click', () => {
+                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
+                if (userSites.length === 0) return showToast('لا توجد ملفات لحذفها', 'error');
+                if (confirm(`هل تريد حذف جميع ملفاتك (${userSites.length} ملف)؟`)) {
+                    userSites.forEach(site => {
+                        deletedSitesDatabase[site.id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
+                        delete sitesDatabase[site.id];
+                    });
+                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    if (currentSiteId) {
+                        E.resultSection.classList.add('hidden');
+                        currentSiteId = null;
+                    }
+                    loadUserFiles();
+                    updateStats();
+                    showToast(`تم حذف ${userSites.length} ملف بنجاح`, 'info');
+                }
+            });
+
+            // Login
+            E.loginSubmit.addEventListener('click', () => {
+                const username = E.loginUsername.value.trim();
+                const password = E.loginPassword.value;
+                let hasError = false;
+
+                if (!username) {
+                    E.loginUsernameError.classList.add('show');
+                    hasError = true;
+                } else E.loginUsernameError.classList.remove('show');
+
+                if (!password) {
+                    E.loginPasswordError.classList.add('show');
+                    hasError = true;
+                } else E.loginPasswordError.classList.remove('show');
+
+                if (hasError) return;
+
+                if (!usersDatabase[username]) {
+                    showToast('اسم المستخدم غير موجود', 'error');
+                    return;
+                }
+                if (usersDatabase[username].password !== password) {
+                    showToast('كلمة المرور غير صحيحة', 'error');
+                    return;
+                }
+
+                currentUser = username;
+                isAdmin = false;
+                saveSession(username);
+                const ip = getClientIP();
+                ipUserMapping[ip] = username;
+                localStorage.setItem(DB_IP_USERS, JSON.stringify(ipUserMapping));
+                E.loginContainer.classList.add('hidden');
+                E.mainContainer.classList.remove('hidden');
+                E.userNameDisplay.textContent = username;
+                E.adminPanel.classList.add('hidden');
+                renderPlans();
+                checkUserPlanAndShowContent();
+                showToast(`مرحباً ${username}!`, 'success');
+            });
+
+            // Register
+            E.registerSubmit.addEventListener('click', () => {
+                const username = E.registerUsername.value.trim();
+                const password = E.registerPassword.value;
+                let hasError = false;
+
+                if (!username) {
+                    E.registerUsernameError.classList.add('show');
+                    hasError = true;
+                } else if (!validateUsername(username)) {
+                    E.registerUsernameError.classList.add('show');
+                    hasError = true;
+                } else E.registerUsernameError.classList.remove('show');
+
+                if (!password) {
+                    E.registerPasswordError.classList.add('show');
+                    hasError = true;
+                } else if (!validatePassword(password)) {
+                    E.registerPasswordError.classList.add('show');
+                    hasError = true;
+                } else E.registerPasswordError.classList.remove('show');
+
+                if (hasError) return;
+
+                if (usersDatabase[username]) {
+                    showToast('اسم المستخدم موجود بالفعل', 'error');
+                    return;
+                }
+
+                usersDatabase[username] = { username, password, created: new Date().toISOString(), plan: null };
+                localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+
+                currentUser = username;
+                isAdmin = false;
+                saveSession(username);
+                const ip = getClientIP();
+                ipUserMapping[ip] = username;
+                localStorage.setItem(DB_IP_USERS, JSON.stringify(ipUserMapping));
+                E.loginContainer.classList.add('hidden');
+                E.mainContainer.classList.remove('hidden');
+                E.userNameDisplay.textContent = username;
+                E.adminPanel.classList.add('hidden');
+                renderPlans();
+                checkUserPlanAndShowContent();
+                showToast('🎉 مبروك! تم إنشاء حساب ' + username, 'success');
+            });
+
+            // Logout
+            E.logoutBtn.addEventListener('click', () => {
+                if (confirm('هل تريد تسجيل الخروج؟')) {
+                    clearSession();
+                    currentUser = null;
+                    isAdmin = false;
+                    E.mainContainer.classList.add('hidden');
+                    E.loginContainer.classList.remove('hidden');
+                    showToast('تم تسجيل الخروج بنجاح', 'info');
+                }
+            });
+
+            // Admin Modal
+            E.adminAccessBtn.addEventListener('click', () => E.adminModal.classList.add('active'));
+            E.adminClose.addEventListener('click', () => {
+                E.adminModal.classList.remove('active');
+                E.adminPassword.value = '';
+                E.adminPasswordError.classList.remove('show');
+            });
+            E.adminLoginBtn.addEventListener('click', () => {
+                const password = E.adminPassword.value;
+                if (password === adminConfig.password) {
+                    currentUser = 'admin';
+                    isAdmin = true;
+                    saveSession('admin');
+                    E.adminModal.classList.remove('active');
+                    E.loginContainer.classList.add('hidden');
+                    E.mainContainer.classList.remove('hidden');
+                    E.userNameDisplay.textContent = 'أدمن';
+                    E.adminPanel.classList.remove('hidden');
+                    showToast('مرحباً بك أيها الأدمن', 'success');
+                } else {
+                    E.adminPasswordError.classList.add('show');
+                }
+            });
+
+            // Admin Panel Toggle
+            E.adminPanelBtn.addEventListener('click', () => {
+                if (isAdmin) E.adminPanel.classList.toggle('hidden');
+                else showToast('ليس لديك صلاحيات الأدمن', 'error');
+            });
+
+            // Admin Actions
+            const showAdminSection = (section, label = '') => {
+                E.addPlanSection.classList.add('hidden');
+                E.removePlanSection.classList.add('hidden');
+                E.adminPasswordChangeSection.classList.add('hidden');
+                E.deleteSiteSection.classList.add('hidden');
+                if (section) {
+                    section.classList.remove('hidden');
+                    if (label && E.planSectionLabel) E.planSectionLabel.textContent = label;
+                }
+            };
+
+            E.addPlan1Btn.addEventListener('click', () => {
+                selectedPlanForAdmin = 'paid1';
+                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 1 (10 جيجا - 30 يوم)');
+            });
+            E.addPlan2Btn.addEventListener('click', () => {
+                selectedPlanForAdmin = 'paid2';
+                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 2 (15 جيجا - 50 يوم)');
+            });
+            E.addPlan3Btn.addEventListener('click', () => {
+                selectedPlanForAdmin = 'paid1';
+                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 3 (10 جيجا - 50 يوم)');
+            });
+            E.addPlanUnlimitedBtn.addEventListener('click', () => {
+                selectedPlanForAdmin = 'unlimited';
+                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة غير محدودة (10 ملفات)');
+            });
+
+            E.confirmAddPlanBtn.addEventListener('click', () => {
+                const username = E.planUsernameInput.value.trim();
+                if (!username) return showAdminMessage('يرجى إدخال اسم المستخدم', true);
+                if (!usersDatabase[username]) return showAdminMessage('المستخدم غير موجود', true);
+                if (selectedPlanForAdmin) {
+                    activatePlanForUser(username, selectedPlanForAdmin);
+                    showAdminSection(null);
+                    E.planUsernameInput.value = '';
+                }
+            });
+
+            E.removePlanBtn.addEventListener('click', () => showAdminSection(E.removePlanSection));
+            E.confirmRemovePlanBtn.addEventListener('click', () => {
+                const username = E.removePlanUsername.value.trim();
+                if (!username) return showAdminMessage('يرجى إدخال اسم المستخدم', true);
+                if (!usersDatabase[username]) return showAdminMessage('المستخدم غير موجود', true);
+                if (confirm(`هل أنت متأكد من إزالة جميع خطط المستخدم ${username}؟`)) {
+                    usersDatabase[username].plan = null;
+                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
+                    Object.keys(sitesDatabase).forEach(id => {
+                        if (sitesDatabase[id].owner === username) delete sitesDatabase[id];
+                    });
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    showAdminMessage(`✅ تم إزالة جميع خطط المستخدم ${username}`);
+                    showAdminSection(null);
+                    E.removePlanUsername.value = '';
+                    if (currentUser === username) checkUserPlanAndShowContent();
+                }
+            });
+
+            E.disableAllSitesBtn.addEventListener('click', () => {
+                if (!isAdmin) return;
+                if (confirm('هل تريد حذف جميع المواقع المرفوعة؟')) {
+                    Object.values(sitesDatabase).forEach(site => {
+                        deletedSitesDatabase[site.id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: 'admin' };
+                    });
+                    sitesDatabase = {};
+                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
+                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                    if (currentUser !== 'admin') { loadUserFiles(); updateStats(); }
+                    showAdminMessage('تم حذف جميع المواقع بنجاح');
+                }
+            });
+
+            E.disableMainSiteBtn.addEventListener('click', () => {
+                if (!isAdmin) return;
+                adminConfig.mainSiteDisabled = !adminConfig.mainSiteDisabled;
+                localStorage.setItem(DB_ADMIN, JSON.stringify(adminConfig));
+                showAdminMessage(adminConfig.mainSiteDisabled ? 'تم إيقاف الموقع الأساسي' : 'تم تفعيل الموقع الأساسي');
+            });
+
+            E.changeAdminPasswordBtn.addEventListener('click', () => showAdminSection(E.adminPasswordChangeSection));
+            E.saveAdminPasswordBtn.addEventListener('click', () => {
+                const newPass = E.newAdminPassword.value.trim();
+                if (!newPass) return showAdminMessage('يرجى إدخال كلمة المرور الجديدة', true);
+                adminConfig.password = newPass;
+                localStorage.setItem(DB_ADMIN, JSON.stringify(adminConfig));
+                showAdminSection(null);
+                E.newAdminPassword.value = '';
+                showAdminMessage('تم تغيير كلمة مرور الأدمن بنجاح');
+            });
+
+            E.deleteSpecificSiteBtn.addEventListener('click', () => showAdminSection(E.deleteSiteSection));
+            E.confirmDeleteSiteBtn.addEventListener('click', () => {
+                const url = E.siteUrlToDelete.value.trim();
+                if (!url) return showAdminMessage('يرجى إدخال رابط الموقع', true);
+                try {
+                    const siteId = new URL(url).searchParams.get('site');
+                    if (!siteId || !sitesDatabase[siteId]) return showAdminMessage('الموقع غير موجود', true);
+                    if (confirm('هل تريد حذف هذا الموقع؟')) {
+                        const site = sitesDatabase[siteId];
+                        deletedSitesDatabase[siteId] = { ...site, deletedAt: new Date().toISOString(), deletedBy: 'admin' };
+                        delete sitesDatabase[siteId];
+                        localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
+                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                        if (currentUser !== 'admin') { loadUserFiles(); updateStats(); }
+                        showAdminSection(null);
+                        E.siteUrlToDelete.value = '';
+                        showAdminMessage('تم حذف الموقع بنجاح');
+                    }
+                } catch { showAdminMessage('رابط الموقع غير صحيح', true); }
+            });
+
+            // Tabs
+            E.tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    E.tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    if (btn.dataset.tab === 'login') {
+                        E.loginForm.classList.remove('hidden');
+                        E.registerForm.classList.add('hidden');
+                    } else {
+                        E.loginForm.classList.add('hidden');
+                        E.registerForm.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // URL Handling
+            window.addEventListener('DOMContentLoaded', () => {
+                const params = new URLSearchParams(window.location.search);
+                const siteId = params.get('site');
+
+                if (siteId) {
+                    if (adminConfig.mainSiteDisabled) {
+                        document.body.innerHTML = `
+                            <div class="deleted-page">
+                                <div class="deleted-icon"><i class="fas fa-pause-circle"></i></div>
+                                <h1 class="deleted-title">تم إيقاف الموقع مؤقتاً</h1>
+                                <p class="deleted-message">عذراً، الموقع متوقف مؤقتاً من قبل الأدمن.</p>
+                                <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    if (sitesDatabase[siteId]) {
+                        const site = sitesDatabase[siteId];
+                        const owner = usersDatabase[site.owner];
+                        if (owner && owner.plan) {
+                            if (!owner.plan.startDate) {
+                                document.body.innerHTML = `
+                                    <div class="deleted-page">
+                                        <div class="deleted-icon"><i class="fas fa-hourglass-start"></i></div>
+                                        <h1 class="deleted-title">⏳ الخطة لم تبدأ بعد</h1>
+                                        <p class="deleted-message">الخطة لم تبدأ بعد، يرجى الانتظار حتى يقوم صاحب الموقع برفع أول ملف.</p>
+                                        <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
+                                    </div>
+                                `;
+                                return;
+                            }
+                            if (owner.plan.key !== 'unlimited') {
+                                const now = new Date();
+                                const start = new Date(owner.plan.startDate);
+                                const end = new Date(start.getTime() + owner.plan.duration * 24 * 60 * 60 * 1000);
+                                if (now > end) {
+                                    document.body.innerHTML = `
+                                        <div class="deleted-page">
+                                            <div class="deleted-icon"><i class="fas fa-hourglass-end"></i></div>
+                                            <h1 class="deleted-title">⏳ لقد انتهت مدة استضافة هذا الموقع</h1>
+                                            <p class="deleted-message">انتهت مدة الخطة لهذا الموقع، يرجى تجديد الخطة من المنصة الرئيسية.</p>
+                                            <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة إلى المنصة</a>
+                                        </div>
+                                    `;
+                                    return;
+                                }
+                            }
+                        }
+                        site.views++;
+                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
+                        document.open();
+                        document.write(site.content);
+                        document.close();
+                        return;
+                    }
+
+                    if (deletedSitesDatabase[siteId]) {
+                        document.body.innerHTML = `
+                            <div class="deleted-page">
+                                <div class="deleted-icon"><i class="fas fa-trash-alt"></i></div>
+                                <h1 class="deleted-title">تم حذف هذا الملف</h1>
+                                <p class="deleted-message">الملف الذي تحاول الوصول إليه قد تم حذفه.</p>
+                                <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    document.body.innerHTML = `
+                        <div class="deleted-page">
+                            <div class="deleted-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <h1 class="deleted-title">الملف غير موجود</h1>
+                            <p class="deleted-message">الملف الذي تحاول الوصول إليه غير موجود.</p>
+                            <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                if (currentSession.username) {
+                    currentUser = currentSession.username;
+                    if (currentUser === 'admin') {
+                        isAdmin = true;
+                        E.loginContainer.classList.add('hidden');
+                        E.mainContainer.classList.remove('hidden');
+                        E.userNameDisplay.textContent = 'أدمن';
+                        E.adminPanel.classList.remove('hidden');
+                    } else {
+                        isAdmin = false;
+                        E.loginContainer.classList.add('hidden');
+                        E.mainContainer.classList.remove('hidden');
+                        E.userNameDisplay.textContent = currentUser;
+                        E.adminPanel.classList.add('hidden');
+                        renderPlans();
+                        checkUserPlanAndShowContent();
+                    }
+                    showToast(`مرحباً بعودتك ${currentUser}!`, 'success');
+                } else {
+                    E.loginContainer.classList.remove('hidden');
+                    E.mainContainer.classList.add('hidden');
+                }
+            });
+
+            setInterval(() => {
+                if (currentUser && !isAdmin) {
+                    checkUserPlanAndShowContent();
+                    updateStats();
+                }
+            }, 60000);
+        })();
+    </script>
 </body>
 </html>
