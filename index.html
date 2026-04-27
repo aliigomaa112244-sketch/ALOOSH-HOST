@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ========== RESET & BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -25,10 +24,9 @@
             padding: 24px;
             color: #1e293b;
             direction: rtl;
-            font-size: 14px; /* تصغير الخط الأساسي */
+            font-size: 14px;
         }
 
-        /* ========== VARIABLES ========== */
         :root {
             --primary: #4361ee;
             --primary-light: #4895ef;
@@ -59,14 +57,13 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ========== UTILITY CLASSES ========== */
         .hidden { display: none !important; }
         .btn {
-            padding: 12px 24px; /* تصغير طفيف */
+            padding: 12px 24px;
             border: none;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 14px; /* تصغير خط الأزرار */
+            font-size: 14px;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
@@ -102,10 +99,9 @@
             box-shadow: 0 8px 24px rgba(249, 65, 68, 0.3);
         }
 
-        /* ========== LOGIN WRAPPER ========== */
         .login-wrapper {
             width: 100%;
-            max-width: 450px; /* تصغير العرض قليلاً */
+            max-width: 450px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-radius: var(--radius-xl);
@@ -115,28 +111,28 @@
         }
         .login-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px; /* تصغير الحشوة */
+            padding: 30px;
             text-align: center;
             color: white;
         }
         .login-header h1 {
-            font-size: 28px; /* تصغير */
+            font-size: 28px;
             font-weight: 700;
             margin-bottom: 6px;
         }
         .login-header p {
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             opacity: 0.9;
         }
         .login-tabs {
             display: flex;
-            padding: 12px 12px 0; /* تصغير */
+            padding: 12px 12px 0;
             gap: 8px;
             background: white;
         }
         .login-tab {
             flex: 1;
-            padding: 12px; /* تصغير */
+            padding: 12px;
             border: none;
             background: var(--gray-100);
             color: var(--gray-600);
@@ -144,7 +140,7 @@
             cursor: pointer;
             border-radius: var(--radius-md) var(--radius-md) 0 0;
             transition: var(--transition);
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,26 +153,24 @@
         }
         .login-content {
             background: white;
-            padding: 24px; /* تصغير */
+            padding: 24px;
         }
-
-        /* ========== FORM ELEMENTS ========== */
         .form-group {
-            margin-bottom: 20px; /* تصغير */
+            margin-bottom: 20px;
         }
         .form-label {
             display: block;
-            margin-bottom: 6px; /* تصغير */
+            margin-bottom: 6px;
             color: var(--gray-700);
             font-weight: 500;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
         }
         .form-input {
             width: 100%;
-            padding: 12px 16px; /* تصغير */
+            padding: 12px 16px;
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-md);
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             transition: var(--transition);
             background: var(--gray-50);
         }
@@ -188,21 +182,20 @@
         }
         .form-error {
             color: var(--danger);
-            font-size: 12px; /* تصغير */
-            margin-top: 4px; /* تصغير */
+            font-size: 12px;
+            margin-top: 4px;
             display: none;
         }
         .form-error.show { display: block; }
         .form-info {
             color: var(--gray-500);
-            font-size: 11px; /* تصغير */
-            margin-top: 4px; /* تصغير */
+            font-size: 11px;
+            margin-top: 4px;
         }
 
-        /* ========== MAIN APP WRAPPER ========== */
         .app-wrapper {
             width: 100%;
-            max-width: 1300px; /* تصغير قليلاً */
+            max-width: 1300px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
@@ -212,100 +205,98 @@
             overflow: hidden;
         }
 
-        /* ========== NAVBAR ========== */
         .navbar {
             background: white;
-            padding: 12px 24px; /* تصغير */
+            padding: 12px 24px;
             border-bottom: 1px solid var(--gray-200);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px; /* تصغير */
+            gap: 16px;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px; /* تصغير */
+            gap: 10px;
         }
         .logo-icon {
-            width: 40px; /* تصغير */
-            height: 40px; /* تصغير */
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px; /* تصغير */
+            font-size: 20px;
         }
         .logo-text h1 {
-            font-size: 20px; /* تصغير */
+            font-size: 20px;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .logo-text p {
-            font-size: 11px; /* تصغير */
+            font-size: 11px;
             color: var(--gray-500);
         }
         .user-area {
             display: flex;
             align-items: center;
-            gap: 12px; /* تصغير */
+            gap: 12px;
         }
         .user-badge {
             background: var(--gray-100);
-            padding: 6px 16px; /* تصغير */
+            padding: 6px 16px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             color: var(--gray-700);
             display: flex;
             align-items: center;
-            gap: 6px; /* تصغير */
+            gap: 6px;
         }
         .user-badge i { color: var(--primary); }
 
-        /* ========== DEVELOPER CARD ========== */
         .dev-card {
             background: white;
-            margin: 20px 24px; /* تصغير */
-            padding: 16px 24px; /* تصغير */
+            margin: 20px 24px;
+            padding: 16px 24px;
             border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px; /* تصغير */
+            gap: 16px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-200);
         }
         .dev-badge {
             background: linear-gradient(135deg, var(--gray-800), var(--gray-700));
             color: white;
-            padding: 6px 16px; /* تصغير */
+            padding: 6px 16px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
         }
         .dev-links {
             display: flex;
-            gap: 10px; /* تصغير */
+            gap: 10px;
         }
         .dev-link {
             background: var(--gray-100);
             color: var(--gray-700);
-            padding: 6px 16px; /* تصغير */
+            padding: 6px 16px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 6px; /* تصغير */
+            gap: 6px;
         }
         .dev-link:hover {
             background: var(--primary);
@@ -313,60 +304,58 @@
             transform: translateY(-2px);
         }
 
-        /* ========== WELCOME BANNER ========== */
         .welcome-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 24px 20px; /* تصغير */
-            padding: 30px; /* تصغير */
+            margin: 0 24px 20px;
+            padding: 30px;
             border-radius: var(--radius-lg);
             color: white;
             text-align: center;
             box-shadow: var(--shadow-lg);
         }
         .welcome-banner h2 {
-            font-size: 28px; /* تصغير */
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 12px; /* تصغير */
+            margin-bottom: 12px;
         }
         .welcome-banner p {
-            font-size: 15px; /* تصغير */
+            font-size: 15px;
             opacity: 0.95;
-            max-width: 550px; /* تصغير */
-            margin: 0 auto 20px; /* تصغير */
+            max-width: 550px;
+            margin: 0 auto 20px;
             line-height: 1.6;
         }
         .welcome-banner .btn {
             background: white;
             color: var(--primary);
-            padding: 12px 36px; /* تصغير */
-            font-size: 15px; /* تصغير */
+            padding: 12px 36px;
+            font-size: 15px;
         }
 
-        /* ========== PLANS SECTION ========== */
-        .plans-section { padding: 0 24px 24px; } /* تصغير */
+        .plans-section { padding: 0 24px 24px; }
         .section-title {
             text-align: center;
-            margin-bottom: 24px; /* تصغير */
+            margin-bottom: 24px;
         }
         .section-title h2 {
-            font-size: 26px; /* تصغير */
+            font-size: 26px;
             font-weight: 700;
             color: var(--gray-800);
-            margin-bottom: 6px; /* تصغير */
+            margin-bottom: 6px;
         }
         .section-title p {
             color: var(--gray-500);
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
         }
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* تصغير العرض الأدنى */
-            gap: 20px; /* تصغير */
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
         .plan-card {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 24px; /* تصغير */
+            padding: 24px;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--gray-200);
             transition: var(--transition);
@@ -387,44 +376,44 @@
             color: white;
             padding: 6px 40px;
             transform: rotate(-45deg);
-            font-size: 11px; /* تصغير */
+            font-size: 11px;
             font-weight: 600;
         }
         .plan-name {
-            font-size: 20px; /* تصغير */
+            font-size: 20px;
             font-weight: 700;
             color: var(--gray-800);
-            margin-bottom: 6px; /* تصغير */
+            margin-bottom: 6px;
         }
         .plan-price {
-            font-size: 28px; /* تصغير */
+            font-size: 28px;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 20px; /* تصغير */
+            margin-bottom: 20px;
         }
         .plan-feature {
-            padding: 8px 0; /* تصغير */
+            padding: 8px 0;
             border-bottom: 1px solid var(--gray-200);
             color: var(--gray-600);
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             display: flex;
             align-items: center;
-            gap: 10px; /* تصغير */
+            gap: 10px;
         }
         .plan-feature i {
             color: var(--success);
-            width: 18px; /* تصغير */
+            width: 18px;
         }
         .plan-btn {
             width: 100%;
-            padding: 12px; /* تصغير */
-            margin-top: 20px; /* تصغير */
+            padding: 12px;
+            margin-top: 20px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             border: none;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
@@ -437,18 +426,17 @@
             box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
         }
 
-        /* ========== FILES GRID ========== */
-        .files-section { padding: 0 24px 24px; } /* تصغير */
+        .files-section { padding: 0 24px 24px; }
         .files-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* تصغير العرض الأدنى */
-            gap: 16px; /* تصغير */
-            margin-top: 20px; /* تصغير */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
         .file-card {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 16px; /* تصغير */
+            padding: 16px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-200);
             transition: var(--transition);
@@ -459,38 +447,38 @@
             border-color: var(--primary);
         }
         .file-icon {
-            width: 40px; /* تصغير */
-            height: 40px; /* تصغير */
+            width: 40px;
+            height: 40px;
             background: var(--gray-100);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 20px; /* تصغير */
-            margin-bottom: 12px; /* تصغير */
+            font-size: 20px;
+            margin-bottom: 12px;
         }
         .file-name {
-            font-size: 16px; /* تصغير */
+            font-size: 16px;
             font-weight: 600;
             color: var(--gray-800);
-            margin-bottom: 6px; /* تصغير */
+            margin-bottom: 6px;
             word-break: break-word;
         }
         .file-meta {
             display: flex;
-            gap: 12px; /* تصغير */
+            gap: 12px;
             color: var(--gray-500);
-            font-size: 11px; /* تصغير */
-            margin-bottom: 12px; /* تصغير */
+            font-size: 11px;
+            margin-bottom: 12px;
         }
         .file-actions {
             display: flex;
-            gap: 6px; /* تصغير */
+            gap: 6px;
         }
         .file-action {
             flex: 1;
-            padding: 6px; /* تصغير */
+            padding: 6px;
             border: none;
             border-radius: var(--radius-sm);
             font-weight: 500;
@@ -500,7 +488,7 @@
             align-items: center;
             justify-content: center;
             gap: 4px;
-            font-size: 11px; /* تصغير */
+            font-size: 11px;
         }
         .file-action.view {
             background: var(--gray-100);
@@ -523,12 +511,11 @@
             cursor: not-allowed;
         }
 
-        /* ========== UPLOAD AREA ========== */
         .upload-area {
-            margin: 0 24px 24px; /* تصغير */
+            margin: 0 24px 24px;
             border: 3px dashed var(--gray-300);
             border-radius: var(--radius-lg);
-            padding: 36px; /* تصغير */
+            padding: 36px;
             text-align: center;
             background: white;
             transition: var(--transition);
@@ -543,27 +530,27 @@
             background: rgba(76, 201, 240, 0.05);
         }
         .upload-icon {
-            font-size: 48px; /* تصغير */
+            font-size: 48px;
             color: var(--gray-400);
-            margin-bottom: 12px; /* تصغير */
+            margin-bottom: 12px;
         }
         .upload-area h3 {
-            font-size: 20px; /* تصغير */
+            font-size: 20px;
             color: var(--gray-700);
-            margin-bottom: 6px; /* تصغير */
+            margin-bottom: 6px;
         }
         .upload-area p {
             color: var(--gray-500);
-            font-size: 13px; /* تصغير */
-            margin-bottom: 20px; /* تصغير */
+            font-size: 13px;
+            margin-bottom: 20px;
         }
         .file-input-label {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 10px 28px; /* تصغير */
+            padding: 10px 28px;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             cursor: pointer;
             display: inline-block;
             transition: var(--transition);
@@ -575,16 +562,15 @@
         }
         .file-input { display: none; }
         .file-name {
-            margin-top: 16px; /* تصغير */
+            margin-top: 16px;
             color: var(--primary);
             font-weight: 500;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
         }
 
-        /* ========== PROGRESS BAR ========== */
         .progress {
-            margin-top: 16px; /* تصغير */
-            height: 6px; /* تصغير */
+            margin-top: 16px;
+            height: 6px;
             background: var(--gray-200);
             border-radius: 4px;
             overflow: hidden;
@@ -596,95 +582,92 @@
             transition: width 0.3s ease;
         }
 
-        /* ========== ACTION BUTTONS ========== */
         .actions {
             display: flex;
-            gap: 12px; /* تصغير */
-            margin: 0 24px 24px; /* تصغير */
+            gap: 12px;
+            margin: 0 24px 24px;
         }
         .actions .btn {
             flex: 1;
-            padding: 14px; /* تصغير */
+            padding: 14px;
         }
 
-        /* ========== STATS GRID ========== */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* تصغير */
-            gap: 16px; /* تصغير */
-            margin: 0 24px 24px; /* تصغير */
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 16px;
+            margin: 0 24px 24px;
         }
         .stat-card {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 20px; /* تصغير */
+            padding: 20px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-200);
             display: flex;
             align-items: center;
-            gap: 12px; /* تصغير */
+            gap: 12px;
         }
         .stat-icon {
-            width: 48px; /* تصغير */
-            height: 48px; /* تصغير */
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px; /* تصغير */
+            font-size: 20px;
         }
         .stat-info h4 {
-            font-size: 22px; /* تصغير */
+            font-size: 22px;
             font-weight: 700;
             color: var(--gray-800);
             line-height: 1.2;
         }
         .stat-info p {
             color: var(--gray-500);
-            font-size: 12px; /* تصغير */
+            font-size: 12px;
         }
 
-        /* ========== RESULT CARD ========== */
         .result-card {
             background: white;
-            margin: 0 24px 24px; /* تصغير */
+            margin: 0 24px 24px;
             border-radius: var(--radius-lg);
-            padding: 24px; /* تصغير */
+            padding: 24px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--gray-200);
         }
         .result-url {
             background: var(--gray-50);
-            padding: 12px 20px; /* تصغير */
+            padding: 12px 20px;
             border-radius: var(--radius-md);
             font-family: monospace;
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             color: var(--primary);
             word-break: break-all;
             border: 2px solid var(--gray-200);
-            margin: 16px 0; /* تصغير */
+            margin: 16px 0;
         }
         .result-actions {
             display: flex;
-            gap: 10px; /* تصغير */
+            gap: 10px;
             flex-wrap: wrap;
         }
         .result-btn {
             flex: 1;
-            padding: 10px; /* تصغير */
+            padding: 10px;
             border: none;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px; /* تصغير */
-            min-width: 100px; /* تصغير */
+            gap: 6px;
+            min-width: 100px;
         }
         .result-btn.copy {
             background: var(--gray-800);
@@ -704,33 +687,32 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* ========== ADMIN PANEL ========== */
         .admin-panel {
             background: white;
-            margin: 0 24px 24px; /* تصغير */
+            margin: 0 24px 24px;
             border-radius: var(--radius-lg);
-            padding: 24px; /* تصغير */
+            padding: 24px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--gray-200);
         }
         .admin-actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* تصغير */
-            gap: 12px; /* تصغير */
-            margin-top: 20px; /* تصغير */
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
         }
         .admin-btn {
-            padding: 12px; /* تصغير */
+            padding: 12px;
             border: none;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px; /* تصغير */
+            gap: 6px;
             background: var(--gray-100);
             color: var(--gray-700);
             text-align: center;
@@ -743,32 +725,31 @@
         .admin-btn.danger:hover { background: var(--danger); }
         .admin-btn.warning:hover { background: var(--warning); }
         .admin-input-group {
-            margin-top: 20px; /* تصغير */
-            padding: 20px; /* تصغير */
+            margin-top: 20px;
+            padding: 20px;
             background: var(--gray-50);
             border-radius: var(--radius-md);
         }
 
-        /* ========== FOOTER ========== */
         .footer {
             background: white;
-            padding: 20px 24px; /* تصغير */
+            padding: 20px 24px;
             border-top: 1px solid var(--gray-200);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px; /* تصغير */
-            margin-top: 24px; /* تصغير */
+            gap: 12px;
+            margin-top: 24px;
         }
         .footer-links {
             display: flex;
-            gap: 20px; /* تصغير */
+            gap: 20px;
         }
         .footer-links a {
             color: var(--gray-600);
             text-decoration: none;
-            font-size: 13px; /* تصغير */
+            font-size: 13px;
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -777,32 +758,30 @@
         .footer-links a:hover { color: var(--primary); }
         .copyright {
             color: var(--gray-500);
-            font-size: 12px; /* تصغير */
+            font-size: 12px;
         }
 
-        /* ========== TOAST NOTIFICATION ========== */
         .toast {
             position: fixed;
-            top: 20px; /* تصغير */
-            left: 20px; /* تصغير */
+            top: 20px;
+            left: 20px;
             background: white;
-            padding: 12px 20px; /* تصغير */
+            padding: 12px 20px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-xl);
             display: flex;
             align-items: center;
-            gap: 10px; /* تصغير */
+            gap: 10px;
             z-index: 9999;
             transform: translateX(150%);
             transition: transform 0.3s ease;
             border-right: 4px solid var(--success);
-            min-width: 280px; /* تصغير */
+            min-width: 280px;
         }
         .toast.show { transform: translateX(0); }
         .toast.error { border-right-color: var(--danger); }
-        .toast-icon { font-size: 20px; } /* تصغير */
+        .toast-icon { font-size: 20px; }
 
-        /* ========== MODAL ========== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -820,20 +799,20 @@
         .modal-content {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 32px; /* تصغير */
-            max-width: 450px; /* تصغير */
+            padding: 32px;
+            max-width: 450px;
             width: 90%;
             box-shadow: var(--shadow-xl);
             position: relative;
         }
         .modal-close {
             position: absolute;
-            top: 16px; /* تصغير */
-            left: 16px; /* تصغير */
+            top: 16px;
+            left: 16px;
             background: var(--gray-100);
             border: none;
-            width: 34px; /* تصغير */
-            height: 34px; /* تصغير */
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -846,7 +825,6 @@
             color: white;
         }
 
-        /* ========== DELETED PAGE ========== */
         .deleted-page {
             min-height: 100vh;
             display: flex;
@@ -854,34 +832,34 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 30px; /* تصغير */
+            padding: 30px;
         }
         .deleted-icon {
-            font-size: 64px; /* تصغير */
+            font-size: 64px;
             color: var(--danger);
-            margin-bottom: 20px; /* تصغير */
+            margin-bottom: 20px;
         }
         .deleted-title {
-            font-size: 36px; /* تصغير */
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 12px; /* تصغير */
+            margin-bottom: 12px;
             color: var(--gray-800);
         }
         .deleted-message {
-            font-size: 16px; /* تصغير */
+            font-size: 16px;
             color: var(--gray-600);
-            max-width: 550px; /* تصغير */
-            line-height: 1.7; /* تصغير */
-            margin-bottom: 28px; /* تصغير */
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 28px;
         }
         .deleted-btn {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 12px 36px; /* تصغير */
+            padding: 12px 36px;
             border-radius: var(--radius-md);
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px; /* تصغير */
+            font-size: 14px;
             transition: var(--transition);
         }
         .deleted-btn:hover {
@@ -889,7 +867,6 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             body { padding: 12px; }
             .navbar { flex-direction: column; text-align: center; }
@@ -904,17 +881,15 @@
     </style>
 </head>
 <body>
-    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <div class="toast-icon" id="toastIcon"><i class="fas fa-check-circle"></i></div>
         <div class="toast-text" id="toastText">تمت العملية بنجاح</div>
     </div>
 
-    <!-- Admin Modal -->
     <div class="modal-overlay" id="adminModal">
         <div class="modal-content">
             <button class="modal-close" id="adminClose"><i class="fas fa-times"></i></button>
-            <h2 style="margin-bottom: 20px; color: var(--gray-800); font-size: 22px;">تسجيل الدخول كأدمن</h2> <!-- تصغير -->
+            <h2 style="margin-bottom: 20px; color: var(--gray-800); font-size: 22px;">تسجيل الدخول كأدمن</h2>
             <div class="form-group">
                 <label class="form-label">كلمة مرور الأدمن</label>
                 <input type="password" id="adminPassword" class="form-input" placeholder="أدخل كلمة المرور">
@@ -926,7 +901,6 @@
         </div>
     </div>
 
-    <!-- Login Page -->
     <div class="login-wrapper" id="loginContainer">
         <div class="login-header">
             <h1>منصة المتطورة</h1>
@@ -937,7 +911,6 @@
             <button class="login-tab" data-tab="register"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
         </div>
         <div class="login-content">
-            <!-- Login Form -->
             <div id="loginForm">
                 <div class="form-group">
                     <label class="form-label">اسم المستخدم</label>
@@ -955,7 +928,6 @@
                 </button>
             </div>
 
-            <!-- Register Form -->
             <div id="registerForm" class="hidden">
                 <div class="form-group">
                     <label class="form-label">اسم المستخدم</label>
@@ -974,9 +946,7 @@
         </div>
     </div>
 
-    <!-- Main App -->
     <div class="app-wrapper hidden" id="mainContainer">
-        <!-- Navbar -->
         <nav class="navbar">
             <div class="logo-area">
                 <div class="logo-icon"><i class="fas fa-rocket"></i></div>
@@ -992,7 +962,6 @@
             </div>
         </nav>
 
-        <!-- Developer Card -->
         <div class="dev-card">
             <span class="dev-badge"><i class="fas fa-code"></i> المطور</span>
             <div class="dev-links">
@@ -1001,9 +970,8 @@
             </div>
         </div>
 
-        <!-- Admin Panel -->
         <div class="admin-panel hidden" id="adminPanel">
-            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-shield-alt" style="color: var(--primary);"></i> لوحة تحكم الأدمن</h3> <!-- تصغير -->
+            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-shield-alt" style="color: var(--primary);"></i> لوحة تحكم الأدمن</h3>
             <div id="adminMessage" class="form-error" style="margin-bottom: 16px; display: none;"></div>
             <div class="admin-actions">
                 <button class="admin-btn" id="addPlan1Btn"><i class="fas fa-gem"></i> إضافة خطة 1 (10 جيجا - 30 يوم)</button>
@@ -1017,28 +985,25 @@
                 <button class="admin-btn danger" id="deleteSpecificSiteBtn"><i class="fas fa-trash"></i> حذف موقع معين</button>
             </div>
 
-            <!-- Add Plan Section -->
             <div class="admin-input-group hidden" id="addPlanSection">
                 <label class="form-label" id="planSectionLabel">أدخل اسم المستخدم</label>
                 <input type="text" id="planUsernameInput" class="form-input" placeholder="اسم المستخدم">
+                <div id="userNotFoundError" class="form-error" style="margin-top: 10px;"></div>
                 <button class="btn btn-primary" id="confirmAddPlanBtn" style="margin-top: 16px;">تأكيد إضافة الخطة</button>
             </div>
 
-            <!-- Remove Plan Section -->
             <div class="admin-input-group hidden" id="removePlanSection">
                 <label class="form-label">أدخل اسم المستخدم</label>
                 <input type="text" id="removePlanUsername" class="form-input" placeholder="اسم المستخدم">
                 <button class="btn btn-danger" id="confirmRemovePlanBtn" style="margin-top: 16px;">إزالة جميع الخطط</button>
             </div>
 
-            <!-- Change Password Section -->
             <div class="admin-input-group hidden" id="adminPasswordChangeSection">
                 <label class="form-label">كلمة المرور الجديدة</label>
                 <input type="password" id="newAdminPassword" class="form-input" placeholder="كلمة المرور الجديدة">
                 <button class="btn btn-primary" id="saveAdminPasswordBtn" style="margin-top: 16px;">حفظ</button>
             </div>
 
-            <!-- Delete Site Section -->
             <div class="admin-input-group hidden" id="deleteSiteSection">
                 <label class="form-label">رابط الموقع</label>
                 <input type="text" id="siteUrlToDelete" class="form-input" placeholder="https://...?site=...">
@@ -1046,7 +1011,6 @@
             </div>
         </div>
 
-        <!-- Welcome Banner -->
         <div class="welcome-banner hidden" id="welcomeSection">
             <div class="welcome-icon"><i class="fas fa-crown"></i></div>
             <h2 id="welcomeTitle">🎉 تم شراء الخطة بنجاح!</h2>
@@ -1054,7 +1018,6 @@
             <button class="btn" id="controlPlanBtn"><i class="fas fa-gamepad"></i> التحكم في الخطة</button>
         </div>
 
-        <!-- Plans Section -->
         <div class="plans-section" id="plansSection">
             <div class="section-title">
                 <h2>اختر خطتك المثالية</h2>
@@ -1063,7 +1026,6 @@
             <div class="plans-grid" id="plansGrid"></div>
         </div>
 
-        <!-- Files Section -->
         <div class="files-section hidden" id="filesSection">
             <div class="section-title">
                 <h2><i class="fas fa-folder-open" style="color: var(--primary);"></i> ملفاتي</h2>
@@ -1071,7 +1033,6 @@
             <div class="files-grid" id="filesList"></div>
         </div>
 
-        <!-- Upload Area -->
         <div class="upload-area hidden" id="uploadArea">
             <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
             <h3>رفع ملف HTML</h3>
@@ -1086,13 +1047,11 @@
             </div>
         </div>
 
-        <!-- Action Buttons -->
         <div class="actions hidden" id="actionButtons">
             <button class="btn btn-primary" id="uploadBtn"><i class="fas fa-cloud-upload-alt"></i> رفع الموقع</button>
             <button class="btn btn-danger" id="deleteFilesBtn"><i class="fas fa-trash-alt"></i> حذف جميع ملفاتي</button>
         </div>
 
-        <!-- Stats -->
         <div class="stats-grid hidden" id="stats">
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-globe"></i></div>
@@ -1124,9 +1083,8 @@
             </div>
         </div>
 
-        <!-- Result Card -->
         <div class="result-card hidden" id="resultSection">
-            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-link" style="color: var(--primary);"></i> رابط موقعك</h3> <!-- تصغير -->
+            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-link" style="color: var(--primary);"></i> رابط موقعك</h3>
             <div class="result-url" id="urlDisplay"></div>
             <div class="result-actions">
                 <button class="result-btn copy" id="copyBtn"><i class="fas fa-copy"></i> نسخ الرابط</button>
@@ -1135,7 +1093,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="footer-links">
                 <a href="https://t.me/AL0OSH505" target="_blank"><i class="fab fa-telegram"></i> المطور</a>
@@ -1149,7 +1106,6 @@
 
     <script>
         (function() {
-            // ==================== Data ====================
             const DB_USERS = 'ico_users_v9';
             const DB_SITES = 'ico_sites_v9';
             const DB_DELETED_SITES = 'ico_deleted_sites_v9';
@@ -1192,7 +1148,6 @@
                 }
             };
 
-            // ==================== Elements ====================
             const E = {
                 toast: document.getElementById('toast'),
                 toastIcon: document.getElementById('toastIcon'),
@@ -1270,10 +1225,10 @@
                 urlDisplay: document.getElementById('urlDisplay'),
                 copyBtn: document.getElementById('copyBtn'),
                 openBtn: document.getElementById('openBtn'),
-                deleteBtn: document.getElementById('deleteBtn')
+                deleteBtn: document.getElementById('deleteBtn'),
+                userNotFoundError: document.getElementById('userNotFoundError')
             };
 
-            // ==================== Helper Functions ====================
             function showToast(message, type = 'success') {
                 E.toastText.textContent = message;
                 E.toastIcon.innerHTML = type === 'success' ? '<i class="fas fa-check-circle"></i>' : 
@@ -1360,7 +1315,6 @@
                 E.remainingSpace.textContent = remaining;
             }
 
-            // ==================== Render Plans ====================
             function renderPlans() {
                 let html = '';
                 for (let [key, plan] of Object.entries(plans)) {
@@ -1396,11 +1350,20 @@
             function activatePlanForUser(username, planKey) {
                 const plan = plans[planKey];
                 const user = usersDatabase[username];
-                if (!user) return;
+                if (!user) {
+                    console.error(`المستخدم ${username} غير موجود في قاعدة البيانات`);
+                    return false;
+                }
 
                 user.plan = {
-                    key: planKey, name: plan.name, startDate: null, duration: plan.duration,
-                    diskSpace: plan.diskSpace, usedSpace: 0, filesCount: 0, maxFiles: plan.files
+                    key: planKey, 
+                    name: plan.name, 
+                    startDate: null, 
+                    duration: plan.duration,
+                    diskSpace: plan.diskSpace, 
+                    usedSpace: 0, 
+                    filesCount: 0, 
+                    maxFiles: plan.files
                 };
                 usersDatabase[username] = user;
                 localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
@@ -1411,6 +1374,7 @@
                 } else {
                     showAdminMessage(`✅ تمت إضافة الخطة ${plan.name} للمستخدم ${username}`);
                 }
+                return true;
             }
 
             function showWelcomeScreen(plan) {
@@ -1443,7 +1407,7 @@
                         return `
                         <div class="file-card" data-id="${site.id}">
                             <div class="file-icon"><i class="fas fa-file-code"></i></div>
-                            <div class="file-name">${site.name}</div>
+                            <div class="file-name">${escapeHtml(site.name)}</div>
                             <div class="file-meta">
                                 <span><i class="far fa-calendar"></i> ${new Date(site.date).toLocaleDateString('ar-EG')}</span>
                                 <span><i class="far fa-eye"></i> ${site.views || 0}</span>
@@ -1465,6 +1429,16 @@
                         </div>
                     `;
                 }
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return str.replace(/[&<>]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    return m;
+                });
             }
 
             function checkUserPlanAndShowContent() {
@@ -1528,7 +1502,6 @@
                 }
             }
 
-            // ==================== Event Listeners ====================
             E.controlPlanBtn.addEventListener('click', () => {
                 E.welcomeSection.classList.add('hidden');
                 const user = usersDatabase[currentUser];
@@ -1544,7 +1517,6 @@
                 }
             });
 
-            // Drag & Drop
             E.uploadArea.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 E.uploadArea.classList.add('dragover');
@@ -1569,7 +1541,7 @@
                 if (this.files[0]) {
                     const file = this.files[0];
                     const size = file.size > 1024*1024 ? (file.size/(1024*1024)).toFixed(2)+' MB' : (file.size/1024).toFixed(2)+' KB';
-                    E.fileName.innerHTML = `<i class="fas fa-file-code"></i> ${file.name} (${size})`;
+                    E.fileName.innerHTML = `<i class="fas fa-file-code"></i> ${escapeHtml(file.name)} (${size})`;
                 }
             });
 
@@ -1734,7 +1706,6 @@
                 }
             });
 
-            // Login
             E.loginSubmit.addEventListener('click', () => {
                 const username = E.loginUsername.value.trim();
                 const password = E.loginPassword.value;
@@ -1776,7 +1747,6 @@
                 showToast(`مرحباً ${username}!`, 'success');
             });
 
-            // Register
             E.registerSubmit.addEventListener('click', () => {
                 const username = E.registerUsername.value.trim();
                 const password = E.registerPassword.value;
@@ -1823,7 +1793,6 @@
                 showToast('🎉 مبروك! تم إنشاء حساب ' + username, 'success');
             });
 
-            // Logout
             E.logoutBtn.addEventListener('click', () => {
                 if (confirm('هل تريد تسجيل الخروج؟')) {
                     clearSession();
@@ -1835,7 +1804,6 @@
                 }
             });
 
-            // Admin Modal
             E.adminAccessBtn.addEventListener('click', () => E.adminModal.classList.add('active'));
             E.adminClose.addEventListener('click', () => {
                 E.adminModal.classList.remove('active');
@@ -1859,18 +1827,18 @@
                 }
             });
 
-            // Admin Panel Toggle
             E.adminPanelBtn.addEventListener('click', () => {
                 if (isAdmin) E.adminPanel.classList.toggle('hidden');
                 else showToast('ليس لديك صلاحيات الأدمن', 'error');
             });
 
-            // Admin Actions
             const showAdminSection = (section, label = '') => {
                 E.addPlanSection.classList.add('hidden');
                 E.removePlanSection.classList.add('hidden');
                 E.adminPasswordChangeSection.classList.add('hidden');
                 E.deleteSiteSection.classList.add('hidden');
+                if (E.userNotFoundError) E.userNotFoundError.style.display = 'none';
+                if (E.planUsernameInput) E.planUsernameInput.value = '';
                 if (section) {
                     section.classList.remove('hidden');
                     if (label && E.planSectionLabel) E.planSectionLabel.textContent = label;
@@ -1896,12 +1864,43 @@
 
             E.confirmAddPlanBtn.addEventListener('click', () => {
                 const username = E.planUsernameInput.value.trim();
-                if (!username) return showAdminMessage('يرجى إدخال اسم المستخدم', true);
-                if (!usersDatabase[username]) return showAdminMessage('المستخدم غير موجود', true);
+                if (E.userNotFoundError) E.userNotFoundError.style.display = 'none';
+                
+                if (!username) {
+                    if (E.userNotFoundError) {
+                        E.userNotFoundError.textContent = 'يرجى إدخال اسم المستخدم';
+                        E.userNotFoundError.style.display = 'block';
+                    }
+                    return;
+                }
+                
+                let userExists = false;
+                let exactUsername = null;
+                
+                for (let existingUser in usersDatabase) {
+                    if (existingUser === username) {
+                        userExists = true;
+                        exactUsername = existingUser;
+                        break;
+                    }
+                }
+                
+                if (!userExists) {
+                    if (E.userNotFoundError) {
+                        E.userNotFoundError.textContent = `❌ المستخدم "${username}" غير موجود في قاعدة البيانات`;
+                        E.userNotFoundError.style.display = 'block';
+                    }
+                    showAdminMessage(`المستخدم ${username} غير موجود`, true);
+                    return;
+                }
+                
                 if (selectedPlanForAdmin) {
-                    activatePlanForUser(username, selectedPlanForAdmin);
-                    showAdminSection(null);
-                    E.planUsernameInput.value = '';
+                    const success = activatePlanForUser(exactUsername, selectedPlanForAdmin);
+                    if (success) {
+                        showAdminSection(null);
+                        E.planUsernameInput.value = '';
+                        showToast(`✅ تم إضافة الخطة ${plans[selectedPlanForAdmin].name} للمستخدم ${exactUsername} بنجاح`, 'success');
+                    }
                 }
             });
 
@@ -1909,7 +1908,17 @@
             E.confirmRemovePlanBtn.addEventListener('click', () => {
                 const username = E.removePlanUsername.value.trim();
                 if (!username) return showAdminMessage('يرجى إدخال اسم المستخدم', true);
-                if (!usersDatabase[username]) return showAdminMessage('المستخدم غير موجود', true);
+                
+                let userExists = false;
+                for (let existingUser in usersDatabase) {
+                    if (existingUser === username) {
+                        userExists = true;
+                        break;
+                    }
+                }
+                
+                if (!userExists) return showAdminMessage('المستخدم غير موجود', true);
+                
                 if (confirm(`هل أنت متأكد من إزالة جميع خطط المستخدم ${username}؟`)) {
                     usersDatabase[username].plan = null;
                     localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
@@ -1977,7 +1986,6 @@
                 } catch { showAdminMessage('رابط الموقع غير صحيح', true); }
             });
 
-            // Tabs
             E.tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     E.tabBtns.forEach(b => b.classList.remove('active'));
@@ -1992,7 +2000,6 @@
                 });
             });
 
-            // URL Handling
             window.addEventListener('DOMContentLoaded', () => {
                 const params = new URLSearchParams(window.location.search);
                 const siteId = params.get('site');
