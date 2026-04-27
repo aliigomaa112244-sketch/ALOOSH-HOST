@@ -202,8 +202,8 @@ def request_approval(user_id, user_info):
     pending_requests[user_id] = user_info
     
     markup = types.InlineKeyboardMarkup()
-    approve_button = types.InlineKeyboardButton("قبول المستخدم", callback_data=f'approve_{user_id}')
-    reject_button = types.InlineKeyboardButton("رفض المستخدم", callback_data=f'reject_{user_id}')
+    approve_button = types.InlineKeyboardButton("قبول المستخدم", callback_data=f'approve_{user_id}', style="primary")
+    reject_button = types.InlineKeyboardButton("رفض المستخدم", callback_data=f'reject_{user_id}', style="primary")
     markup.add(approve_button, reject_button)
     
     bot.send_message(
@@ -219,7 +219,7 @@ def request_approval(user_id, user_info):
 
 def send_waiting_message(chat_id):
     markup = types.InlineKeyboardMarkup()
-    support_button = types.InlineKeyboardButton("📞 التواصل مع الدعم", callback_data='online_support')
+    support_button = types.InlineKeyboardButton("📞 التواصل مع الدعم", callback_data='online_support', style="primary")
     markup.add(support_button)
     
     bot.send_message(
@@ -345,16 +345,16 @@ def show_main_menu(message):
     markup = types.InlineKeyboardMarkup(row_width=2)
     
     # الأزرار الرئيسية كما في الصورة
-    protection_button = types.InlineKeyboardButton("التحكم في الحماية 🛡️", callback_data='protection_control')
-    upload_button = types.InlineKeyboardButton("رفع ملف 📥", callback_data='upload')
-    my_files_button = types.InlineKeyboardButton("📂 ملفاتي", callback_data='my_files')
-    points_button = types.InlineKeyboardButton("", callback_data='points_menu')
-    support_girl_button = types.InlineKeyboardButton("فتاة المحاور 👩‍💼", callback_data='support_girl')
-    speed_button = types.InlineKeyboardButton("🚀 سرعة البوت", callback_data='speed')
-    about_button = types.InlineKeyboardButton("ℹ️ حول البوت", callback_data='about_bot')
-    tech_support_button = types.InlineKeyboardButton("🛠️ الدعم الفني", callback_data='tech_support')
-    install_lib_button = types.InlineKeyboardButton("📚 تثبيت مكتبة", callback_data='download_lib')
-    contact_support_button = types.InlineKeyboardButton("📞 التواصل مع الدعم", callback_data='online_support')
+    protection_button = types.InlineKeyboardButton("التحكم في الحماية 🛡️", callback_data='protection_control', style="success")
+    upload_button = types.InlineKeyboardButton("رفع ملف 📥", callback_data='upload', style="success")
+    my_files_button = types.InlineKeyboardButton("📂 ملفاتي", callback_data='my_files', style="success")
+    points_button = types.InlineKeyboardButton("", callback_data='points_menu', style="primary")
+    support_girl_button = types.InlineKeyboardButton("فتاة المحاور 👩‍💼", callback_data='support_girl', style="success")
+    speed_button = types.InlineKeyboardButton("🚀 سرعة البوت", callback_data='speed', style="success")
+    about_button = types.InlineKeyboardButton("ℹ️ حول البوت", callback_data='about_bot', style="success")
+    tech_support_button = types.InlineKeyboardButton("🛠️ الدعم الفني", callback_data='tech_support', style="primary")
+    install_lib_button = types.InlineKeyboardButton("📚 تثبيت مكتبة", callback_data='download_lib', style="primary")
+    contact_support_button = types.InlineKeyboardButton("📞 التواصل مع الدعم", callback_data='online_support', style="primary")
     
     # ترتيب الأزرار كما في الصورة
     markup.add(protection_button, upload_button)
@@ -365,9 +365,9 @@ def show_main_menu(message):
     
     # إضافة أزرار الأدمن إذا كان مستخدم مسؤول
     if is_admin(message.from_user.id):
-        users_button = types.InlineKeyboardButton("👥 إدارة المستخدمين", callback_data='manage_users')
-        bot_control_button = types.InlineKeyboardButton("⚡ تشغيل/إيقاف البوت", callback_data='bot_control')
-        all_files_button = types.InlineKeyboardButton("🗂️ ملفات الأدمن", callback_data='admin_all_files')
+        users_button = types.InlineKeyboardButton("👥 إدارة المستخدمين", callback_data='manage_users', style="primary")
+        bot_control_button = types.InlineKeyboardButton("⚡ تشغيل/إيقاف البوت", callback_data='bot_control', style="primary")
+        all_files_button = types.InlineKeyboardButton("🗂️ ملفات الأدمن", callback_data='admin_all_files', style="primary")
         markup.add(users_button, bot_control_button)
         markup.add(all_files_button)
 
@@ -400,9 +400,9 @@ def my_files_callback(call):
         if not os.path.exists(file_path):
             continue
         markup = types.InlineKeyboardMarkup()
-        stop_btn = types.InlineKeyboardButton(f"⏸️ إيقاف", callback_data=f'stop_file_{user_id}_{filename}')
-        start_btn = types.InlineKeyboardButton(f"▶️ تشغيل", callback_data=f'start_file_{user_id}_{filename}')
-        delete_btn = types.InlineKeyboardButton(f"🗑️ حذف", callback_data=f'delete_file_{user_id}_{filename}')
+        stop_btn = types.InlineKeyboardButton(f"⏸️ إيقاف", callback_data=f'stop_file_{user_id}_{filename}', style="primary")
+        start_btn = types.InlineKeyboardButton(f"▶️ تشغيل", callback_data=f'start_file_{user_id}_{filename}', style="success")
+        delete_btn = types.InlineKeyboardButton(f"🗑️ حذف", callback_data=f'delete_file_{user_id}_{filename}', style="success")
         markup.add(stop_btn, start_btn)
         markup.add(delete_btn)
         status = "يعمل" if (call.message.chat.id in bot_scripts and bot_scripts.get(call.message.chat.id, {}).get('process') and bot_scripts[call.message.chat.id]['process'].poll() is None) else "متوقف"
@@ -455,7 +455,7 @@ def admin_all_files(call):
             if not os.path.exists(file_path):
                 continue
             markup = types.InlineKeyboardMarkup()
-            delete_btn = types.InlineKeyboardButton(f"🗑️ حذف", callback_data=f'admin_del_file_{uid}_{filename}')
+            delete_btn = types.InlineKeyboardButton(f"🗑️ حذف", callback_data=f'admin_del_file_{uid}_{filename}', style="primary")
             markup.add(delete_btn)
             # ✅ استخدمت 📁 عادي بدل tg-emoji
             # في دالة admin_all_files
@@ -470,10 +470,10 @@ def points_menu(call):
         return
     points = get_user_points(call.from_user.id)
     markup = types.InlineKeyboardMarkup()
-    free_btn = types.InlineKeyboardButton("✨ نقاط مجانية (يومياً)", callback_data='claim_daily')
-    buy_btn = types.InlineKeyboardButton("🛒 شراء نقاط", callback_data='buy_points')
-    redeem_btn = types.InlineKeyboardButton("🎟️ إدخال كود هدية", callback_data='redeem_code_menu')
-    back_btn = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main')
+    free_btn = types.InlineKeyboardButton("✨ نقاط مجانية (يومياً)", callback_data='claim_daily', style="success")
+    buy_btn = types.InlineKeyboardButton("🛒 شراء نقاط", callback_data='buy_points', style="success")
+    redeem_btn = types.InlineKeyboardButton("🎟️ إدخال كود هدية", callback_data='redeem_code_menu', style="success")
+    back_btn = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main', style="success")
     markup.add(free_btn, buy_btn)
     markup.add(redeem_btn)
     markup.add(back_btn)
@@ -520,14 +520,14 @@ def manage_users(call):
     markup = types.InlineKeyboardMarkup()
     
     if pending_requests:
-        pending_button = types.InlineKeyboardButton(f"📋 طلبات الانتظار ({total_pending})", callback_data='show_pending')
+        pending_button = types.InlineKeyboardButton(f"📋 طلبات الانتظار ({total_pending})", callback_data='show_pending', style="primary")
         markup.add(pending_button)
     
-    approved_button = types.InlineKeyboardButton(f"✅ المعتمدون ({total_approved})", callback_data='show_approved')
-    points_admin_btn = types.InlineKeyboardButton("💎 إدارة النقاط", callback_data='admin_points_panel')
-    broadcast_btn = types.InlineKeyboardButton("📢 إذاعة", callback_data='admin_broadcast_panel')
-    gift_btn = types.InlineKeyboardButton("🎟️ إنشاء كود هدية", callback_data='admin_create_gift')
-    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main')
+    approved_button = types.InlineKeyboardButton(f"✅ المعتمدون ({total_approved})", callback_data='show_approved', style="primary")
+    points_admin_btn = types.InlineKeyboardButton("💎 إدارة النقاط", callback_data='admin_points_panel', style="primary")
+    broadcast_btn = types.InlineKeyboardButton("📢 إذاعة", callback_data='admin_broadcast_panel', style="success")
+    gift_btn = types.InlineKeyboardButton("🎟️ إنشاء كود هدية", callback_data='admin_create_gift', style="primary")
+    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main', style="primary")
     
     markup.add(approved_button)
     markup.add(points_admin_btn)
@@ -626,7 +626,7 @@ def support_girl_callback(call):
     time.sleep(1)
     
     markup = types.InlineKeyboardMarkup()
-    end_chat_button = types.InlineKeyboardButton("إنهاء المحادثة", callback_data='end_chat')
+    end_chat_button = types.InlineKeyboardButton("إنهاء المحادثة", callback_data='end_chat', style="primary")
     markup.add(end_chat_button)
     
     bot.send_message(
@@ -648,8 +648,8 @@ def end_chat_callback(call):
     bot.answer_callback_query(call.id, "تم إنهاء المحادثة")
     
     markup = types.InlineKeyboardMarkup()
-    restart_chat = types.InlineKeyboardButton("🔄 بدء محادثة جديدة", callback_data='support_girl')
-    main_menu = types.InlineKeyboardButton("🏠 القائمة الرئيسية", callback_data='back_to_main')
+    restart_chat = types.InlineKeyboardButton("🔄 بدء محادثة جديدة", callback_data='support_girl', style="primary")
+    main_menu = types.InlineKeyboardButton("🏠 القائمة الرئيسية", callback_data='back_to_main', style="primary")
     markup.add(restart_chat, main_menu)
     
     bot.edit_message_text(
@@ -673,15 +673,15 @@ def bot_control_callback(call):
     markup = types.InlineKeyboardMarkup()
     
     if bot_running:
-        stop_button = types.InlineKeyboardButton("🛑 إيقاف البوت", callback_data='stop_bot_main')
+        stop_button = types.InlineKeyboardButton("🛑 إيقاف البوت", callback_data='stop_bot_main', style="primary")
         status_text = "<tg-emoji emoji-id='5211112665237175703'>✅</tg-emoji> البوت يعمل حالياً"
         markup.add(stop_button)
     else:
-        start_button = types.InlineKeyboardButton("⚡ تشغيل البوت", callback_data='start_bot_main')
+        start_button = types.InlineKeyboardButton("⚡ تشغيل البوت", callback_data='start_bot_main', style="primary")
         status_text = "⏸️ البوت متوقف حالياً"
         markup.add(start_button)
     
-    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main')
+    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main', style="primary")
     markup.add(back_button)
     
     bot.edit_message_text(
@@ -774,7 +774,7 @@ def upload_file_callback(call):
     bot.answer_callback_query(call.id, "📤 جاري إعداد رفع الملف...")
     
     markup = types.InlineKeyboardMarkup()
-    cancel_button = types.InlineKeyboardButton("❌ إلغاء", callback_data='back_to_main')
+    cancel_button = types.InlineKeyboardButton("❌ إلغاء", callback_data='back_to_main', style="primary")
     markup.add(cancel_button)
     
     bot.send_message(
@@ -792,8 +792,8 @@ def about_bot(call):
     bot.answer_callback_query(call.id)
     
     markup = types.InlineKeyboardMarkup()
-    features_button = types.InlineKeyboardButton("🌟 الميزات", callback_data='features_list')
-    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main')
+    features_button = types.InlineKeyboardButton("🌟 الميزات", callback_data='features_list', style="success")
+    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main', style="success")
     markup.add(features_button, back_button)
     
     bot.send_message(
@@ -820,7 +820,7 @@ def show_features(call):
     bot.answer_callback_query(call.id)
     
     markup = types.InlineKeyboardMarkup()
-    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='about_bot')
+    back_button = types.InlineKeyboardButton("🔙 رجوع", callback_data='about_bot', style="primary")
     markup.add(back_button)
     
     bot.edit_message_text(
@@ -899,12 +899,12 @@ def protection_control(call):
     status = "<tg-emoji emoji-id='5211112665237175703'>✅</tg-emoji> مفعل" if protection_enabled else "❌ معطل"
     
     markup = types.InlineKeyboardMarkup(row_width=2)
-    enable_btn = types.InlineKeyboardButton("تفعيل الحماية", callback_data='enable_protection')
-    disable_btn = types.InlineKeyboardButton("تعطيل الحماية", callback_data='disable_protection')
-    low_btn = types.InlineKeyboardButton("منخفض", callback_data='protection_low')
-    medium_btn = types.InlineKeyboardButton("متوسط", callback_data='protection_medium')
-    high_btn = types.InlineKeyboardButton("عالي", callback_data='protection_high')
-    back_btn = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main')
+    enable_btn = types.InlineKeyboardButton("تفعيل الحماية", callback_data='enable_protection', style="primary")
+    disable_btn = types.InlineKeyboardButton("تعطيل الحماية", callback_data='disable_protection', style="success")
+    low_btn = types.InlineKeyboardButton("منخفض", callback_data='protection_low', style="primary")
+    medium_btn = types.InlineKeyboardButton("متوسط", callback_data='protection_medium', style="success")
+    high_btn = types.InlineKeyboardButton("عالي", callback_data='protection_high', style="success")
+    back_btn = types.InlineKeyboardButton("🔙 رجوع", callback_data='back_to_main', style="primary")
     
     markup.add(enable_btn, disable_btn)
     markup.add(low_btn, medium_btn, high_btn)
@@ -1004,7 +1004,7 @@ def handle_file(message):
         add_file_to_user(user_id, bot_script_name)
 
         markup = types.InlineKeyboardMarkup()
-        stop_button = types.InlineKeyboardButton(f"🛑 إيقاف {bot_script_name}", callback_data=f'stop_{message.chat.id}_{bot_script_name}')
+        stop_button = types.InlineKeyboardButton(f"🛑 إيقاف {bot_script_name}", callback_data=f'stop_{message.chat.id}_{bot_script_name}', style="primary")
         markup.add(stop_button)
 
         bot.reply_to(
@@ -1124,8 +1124,8 @@ def show_pending_requests(call):
     
     for user_id, user_info in list(pending_requests.items())[:5]:
         markup = types.InlineKeyboardMarkup()
-        approve_btn = types.InlineKeyboardButton("قبول", callback_data=f'approve_{user_id}')
-        reject_btn = types.InlineKeyboardButton("رفض", callback_data=f'reject_{user_id}')
+        approve_btn = types.InlineKeyboardButton("قبول", callback_data=f'approve_{user_id}', style="primary")
+        reject_btn = types.InlineKeyboardButton("رفض", callback_data=f'reject_{user_id}', style="primary")
         markup.add(approve_btn, reject_btn)
         
         bot.send_message(
