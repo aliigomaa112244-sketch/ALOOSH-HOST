@@ -2,2115 +2,505 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة استضافة مجانية</title>
-    <!-- Fonts and Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ALI AI - Mobile Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 24px;
-            color: #1e293b;
-            direction: rtl;
-            font-size: 14px;
-        }
-
-        :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --primary-dark: #3a0ca3;
-            --secondary: #f72585;
-            --accent: #7209b7;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #f94144;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.2);
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hidden { display: none !important; }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gray-200);
-            color: var(--gray-700);
-        }
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(67, 97, 238, 0.05);
-        }
-        .btn-danger {
-            background: linear-gradient(135deg, var(--danger), #f87171);
-            color: white;
-        }
-        .btn-danger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(249, 65, 68, 0.3);
-        }
-
-        .login-wrapper {
             width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            overflow: hidden;
-        }
-        .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px;
-            text-align: center;
-            color: white;
-        }
-        .login-header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .login-header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .login-tabs {
-            display: flex;
-            padding: 12px 12px 0;
-            gap: 8px;
-            background: white;
-        }
-        .login-tab {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            background: var(--gray-100);
-            color: var(--gray-600);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: var(--radius-md) var(--radius-md) 0 0;
-            transition: var(--transition);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .login-tab.active {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.02);
-        }
-        .login-content {
-            background: white;
-            padding: 24px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-label {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--gray-700);
-            font-weight: 500;
-            font-size: 13px;
-        }
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-md);
-            font-size: 14px;
-            transition: var(--transition);
-            background: var(--gray-50);
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
-        }
-        .form-error {
-            color: var(--danger);
-            font-size: 12px;
-            margin-top: 4px;
-            display: none;
-        }
-        .form-error.show { display: block; }
-        .form-info {
-            color: var(--gray-500);
-            font-size: 11px;
-            margin-top: 4px;
-        }
-
-        .app-wrapper {
-            width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            overflow: hidden;
-        }
-
-        .navbar {
-            background: white;
-            padding: 12px 24px;
-            border-bottom: 1px solid var(--gray-200);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-        .logo-text h1 {
-            font-size: 20px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .logo-text p {
-            font-size: 11px;
-            color: var(--gray-500);
-        }
-        .user-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .user-badge {
-            background: var(--gray-100);
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--gray-700);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .user-badge i { color: var(--primary); }
-
-        .dev-card {
-            background: white;
-            margin: 20px 24px;
-            padding: 16px 24px;
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
-        }
-        .dev-badge {
-            background: linear-gradient(135deg, var(--gray-800), var(--gray-700));
-            color: white;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 13px;
-        }
-        .dev-links {
-            display: flex;
-            gap: 10px;
-        }
-        .dev-link {
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 6px 16px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 13px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .dev-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .welcome-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 24px 20px;
-            padding: 30px;
-            border-radius: var(--radius-lg);
-            color: white;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-        .welcome-banner h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .welcome-banner p {
-            font-size: 15px;
-            opacity: 0.95;
-            max-width: 550px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-        }
-        .welcome-banner .btn {
-            background: white;
-            color: var(--primary);
-            padding: 12px 36px;
-            font-size: 15px;
-        }
-
-        .plans-section { padding: 0 24px 24px; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        .section-title h2 {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 6px;
-        }
-        .section-title p {
-            color: var(--gray-500);
-            font-size: 14px;
-        }
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        .plan-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--gray-200);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        .plan-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
-        }
-        .plan-card.popular::before {
-            content: 'الأكثر طلباً';
-            position: absolute;
-            top: 20px;
-            left: -30px;
-            background: linear-gradient(135deg, var(--secondary), var(--danger));
-            color: white;
-            padding: 6px 40px;
-            transform: rotate(-45deg);
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .plan-name {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 6px;
-        }
-        .plan-price {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        .plan-feature {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--gray-200);
-            color: var(--gray-600);
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .plan-feature i {
-            color: var(--success);
-            width: 18px;
-        }
-        .plan-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .plan-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
-        }
-
-        .files-section { padding: 0 24px 24px; }
-        .files-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-        .file-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
-            transition: var(--transition);
-        }
-        .file-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        .file-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gray-100);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-        .file-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 6px;
-            word-break: break-word;
-        }
-        .file-meta {
-            display: flex;
-            gap: 12px;
-            color: var(--gray-500);
-            font-size: 11px;
-            margin-bottom: 12px;
-        }
-        .file-actions {
-            display: flex;
-            gap: 6px;
-        }
-        .file-action {
-            flex: 1;
-            padding: 6px;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            font-size: 11px;
-        }
-        .file-action.view {
-            background: var(--gray-100);
-            color: var(--gray-700);
-        }
-        .file-action.view:hover:not(:disabled) {
-            background: var(--primary);
-            color: white;
-        }
-        .file-action.delete {
-            background: var(--gray-100);
-            color: var(--danger);
-        }
-        .file-action.delete:hover {
-            background: var(--danger);
-            color: white;
-        }
-        .file-action:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .upload-area {
-            margin: 0 24px 24px;
-            border: 3px dashed var(--gray-300);
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            text-align: center;
-            background: white;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        .upload-area:hover {
-            border-color: var(--primary);
-            background: var(--gray-50);
-        }
-        .upload-area.dragover {
-            border-color: var(--success);
-            background: rgba(76, 201, 240, 0.05);
-        }
-        .upload-icon {
-            font-size: 48px;
-            color: var(--gray-400);
-            margin-bottom: 12px;
-        }
-        .upload-area h3 {
-            font-size: 20px;
-            color: var(--gray-700);
-            margin-bottom: 6px;
-        }
-        .upload-area p {
-            color: var(--gray-500);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-        .file-input-label {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 10px 28px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
-        }
-        .file-input-label:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
-        }
-        .file-input { display: none; }
-        .file-name {
-            margin-top: 16px;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 13px;
-        }
-
-        .progress {
-            margin-top: 16px;
-            height: 6px;
-            background: var(--gray-200);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .progress-bar {
             height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--success));
-            width: 0%;
-            transition: width 0.3s ease;
+            overflow: hidden;
+            background-color: black;
+            font-family: Arial, sans-serif;
         }
 
-        .actions {
-            display: flex;
-            gap: 12px;
-            margin: 0 24px 24px;
-        }
-        .actions .btn {
-            flex: 1;
-            padding: 14px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 16px;
-            margin: 0 24px 24px;
-        }
-        .stat-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-        .stat-info h4 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--gray-800);
-            line-height: 1.2;
-        }
-        .stat-info p {
-            color: var(--gray-500);
-            font-size: 12px;
-        }
-
-        .result-card {
-            background: white;
-            margin: 0 24px 24px;
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-200);
-        }
-        .result-url {
-            background: var(--gray-50);
-            padding: 12px 20px;
-            border-radius: var(--radius-md);
-            font-family: monospace;
-            font-size: 14px;
-            color: var(--primary);
-            word-break: break-all;
-            border: 2px solid var(--gray-200);
-            margin: 16px 0;
-        }
-        .result-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .result-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            min-width: 100px;
-        }
-        .result-btn.copy {
-            background: var(--gray-800);
-            color: white;
-        }
-        .result-btn.open {
-            background: var(--primary);
-            color: white;
-        }
-        .result-btn.delete {
-            background: var(--danger);
-            color: white;
-        }
-        .result-btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: var(--shadow-md);
-        }
-
-        .admin-panel {
-            background: white;
-            margin: 0 24px 24px;
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-200);
-        }
-        .admin-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
-        }
-        .admin-btn {
-            padding: 12px;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: var(--gray-100);
-            color: var(--gray-700);
-            text-align: center;
-        }
-        .admin-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .admin-btn.danger:hover { background: var(--danger); }
-        .admin-btn.warning:hover { background: var(--warning); }
-        .admin-input-group {
-            margin-top: 20px;
-            padding: 20px;
-            background: var(--gray-50);
-            border-radius: var(--radius-md);
-        }
-
-        .footer {
-            background: white;
-            padding: 20px 24px;
-            border-top: 1px solid var(--gray-200);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-        }
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-        .footer-links a {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 13px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .footer-links a:hover { color: var(--primary); }
-        .copyright {
-            color: var(--gray-500);
-            font-size: 12px;
-        }
-
-        .toast {
+        canvas {
+            display: block;
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: white;
-            padding: 12px 20px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-xl);
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 5px solid #0000FF; 
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
-            z-index: 9999;
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            border-right: 4px solid var(--success);
-            min-width: 280px;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7); 
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+            z-index: 2;
         }
-        .toast.show { transform: translateX(0); }
-        .toast.error { border-right-color: var(--danger); }
-        .toast-icon { font-size: 20px; }
 
-        .modal-overlay {
+        .overlay h1 {
+            color: #0000FF;
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+        }
+
+        .chat-wrapper {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-        .modal-overlay.active { display: flex; }
-        .modal-content {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: var(--shadow-xl);
-            position: relative;
-        }
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: var(--gray-100);
-            border: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-        .modal-close:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .deleted-page {
-            min-height: 100vh;
+            z-index: 10;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-        }
-        .deleted-icon {
-            font-size: 64px;
-            color: var(--danger);
-            margin-bottom: 20px;
-        }
-        .deleted-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--gray-800);
-        }
-        .deleted-message {
-            font-size: 16px;
-            color: var(--gray-600);
-            max-width: 550px;
-            line-height: 1.7;
-            margin-bottom: 28px;
-        }
-        .deleted-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 12px 36px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        .deleted-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .navbar { flex-direction: column; text-align: center; }
-            .user-area { width: 100%; justify-content: center; flex-wrap: wrap; }
-            .dev-card { flex-direction: column; text-align: center; }
-            .footer { flex-direction: column; text-align: center; }
-            .footer-links { justify-content: center; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .result-actions { flex-direction: column; }
-            .actions { flex-direction: column; }
+        .chat-header {
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 2px solid #0000FF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00f0ff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            white-space: nowrap;
+        }
+
+        .menu-container {
+            position: relative;
+            z-index: 15;
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            color: #00f0ff;
+            font-size: 28px;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        
+        .menu-btn:hover {
+            background: rgba(0, 0, 255, 0.3);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid #0000FF;
+            border-radius: 10px;
+            padding: 10px 0;
+            min-width: 160px;
+            z-index: 20;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        .dropdown-menu button {
+            width: 100%;
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            color: white;
+            text-align: right;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        
+        .dropdown-menu button i {
+            width: 20px;
+            color: #00f0ff;
+        }
+        
+        .dropdown-menu button:hover {
+            background: rgba(0, 0, 255, 0.5);
+        }
+        
+        .dropdown-menu hr {
+            margin: 5px 0;
+            border-color: #0000FF;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            z-index: 15;
+        }
+
+        .contact-btn {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp { background: #25D366; box-shadow: 0 0 10px #25D366; }
+        .btn-telegram { background: #0088cc; box-shadow: 0 0 10px #0088cc; }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .msg {
+            max-width: 85%;
+            margin-bottom: 15px;
+            padding: 12px 18px;
+            border-radius: 20px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .user-msg {
+            align-self: flex-start;
+            background: rgba(0, 0, 255, 0.5);
+            color: white;
+            border: 1px solid #0000FF;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-msg {
+            align-self: flex-end;
+            background: rgba(20, 20, 20, 0.8);
+            color: #00f0ff;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-bottom-left-radius: 5px;
+        }
+
+        .input-bar {
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #0000FF;
+        }
+
+        .input-bar input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #0000FF;
+            background: #050505;
+            color: white;
+            outline: none;
+        }
+
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #0000FF;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px #0000FF;
+            cursor: pointer;
+        }
+
+        @media screen and (max-height: 500px) {
+            .overlay { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="toast" id="toast">
-        <div class="toast-icon" id="toastIcon"><i class="fas fa-check-circle"></i></div>
-        <div class="toast-text" id="toastText">تمت العملية بنجاح</div>
+
+    <canvas id="matrix"></canvas>
+
+    <div class="overlay">
+        <h1>ALI AI</h1>
     </div>
 
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-content">
-            <button class="modal-close" id="adminClose"><i class="fas fa-times"></i></button>
-            <h2 style="margin-bottom: 20px; color: var(--gray-800); font-size: 22px;">تسجيل الدخول كأدمن</h2>
-            <div class="form-group">
-                <label class="form-label">كلمة مرور الأدمن</label>
-                <input type="password" id="adminPassword" class="form-input" placeholder="أدخل كلمة المرور">
-                <div class="form-error" id="adminPasswordError">كلمة المرور غير صحيحة</div>
-            </div>
-            <button class="btn btn-primary" id="adminLoginBtn">
-                <i class="fas fa-shield-alt"></i> تسجيل الدخول
-            </button>
-        </div>
-    </div>
-
-    <div class="login-wrapper" id="loginContainer">
-        <div class="login-header">
-            <h1>منصة المتطورة</h1>
-            <p>استضافة احترافية لملفات HTML</p>
-        </div>
-        <div class="login-tabs">
-            <button class="login-tab active" data-tab="login"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</button>
-            <button class="login-tab" data-tab="register"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
-        </div>
-        <div class="login-content">
-            <div id="loginForm">
-                <div class="form-group">
-                    <label class="form-label">اسم المستخدم</label>
-                    <input type="text" id="loginUsername" class="form-input" placeholder="أدخل اسم المستخدم">
-                    <div class="form-error" id="loginUsernameError">اسم المستخدم غير صحيح</div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">كلمة المرور</label>
-                    <input type="password" id="loginPassword" class="form-input" placeholder="أدخل كلمة المرور">
-                    <div class="form-error" id="loginPasswordError">كلمة المرور غير صحيحة</div>
-                </div>
-                <button class="btn btn-primary" id="loginSubmit"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</button>
-                <button class="btn btn-outline" id="adminAccessBtn" style="margin-top: 16px; width: 100%;">
-                    <i class="fas fa-shield-alt"></i> تسجيل الدخول كأدمن
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <div class="menu-container">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </div>
-
-            <div id="registerForm" class="hidden">
-                <div class="form-group">
-                    <label class="form-label">اسم المستخدم</label>
-                    <input type="text" id="registerUsername" class="form-input" placeholder="أحرف إنجليزية وأرقام فقط">
-                    <div class="form-error" id="registerUsernameError">اسم المستخدم لا يمكن أن يكون باللغة العربية</div>
-                    <div class="form-info">يمكن استخدام أي حروف إنجليزية أو رموز أو أرقام</div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">كلمة المرور</label>
-                    <input type="password" id="registerPassword" class="form-input" placeholder="أدخل كلمة المرور">
-                    <div class="form-error" id="registerPasswordError">كلمة المرور لا يمكن أن تكون باللغة العربية</div>
-                    <div class="form-info">يمكن استخدام أي كلمة مرور (بدون عربي)</div>
-                </div>
-                <button class="btn btn-primary" id="registerSubmit"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="app-wrapper hidden" id="mainContainer">
-        <nav class="navbar">
-            <div class="logo-area">
-                <div class="logo-icon"><i class="fas fa-rocket"></i></div>
-                <div class="logo-text">
-                    <h1>ALOOSH</h1>
-                    <p>منصة استضافة ذكية</p>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <button id="newChatBtn">
+                        <i class="fas fa-plus-circle"></i>
+                        بدء محادثة جديدة
+                    </button>
+                    <hr>
+                    <button id="clearAllChatsBtn">
+                        <i class="fas fa-trash-alt"></i>
+                        مسح جميع المحادثات
+                    </button>
                 </div>
             </div>
-            <div class="user-area">
-                <div class="user-badge" id="userNameDisplay"><i class="fas fa-user"></i> <span>زائر</span></div>
-                <button class="btn btn-outline" id="adminPanelBtn"><i class="fas fa-shield-alt"></i> لوحة الأدمن</button>
-                <button class="btn btn-outline" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</button>
+            
+            <div class="logo-center">
+                <i class="fas fa-microchip" style="color: #0000FF;"></i>
+                <span>Ali AI</span>
             </div>
-        </nav>
-
-        <div class="dev-card">
-            <span class="dev-badge"><i class="fas fa-code"></i> المطور</span>
-            <div class="dev-links">
-                <a href="https://t.me/المطور" target="_blank" class="dev-link"><i class="fab fa-telegram"></i> @AL0OSH505</a>
-                <a href="https://t.me/قناه المطور" target="_blank" class="dev-link"><i class="fab fa-telegram-plane"></i> @files_otp</a>
-            </div>
-        </div>
-
-        <div class="admin-panel hidden" id="adminPanel">
-            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-shield-alt" style="color: var(--primary);"></i> لوحة تحكم الأدمن</h3>
-            <div id="adminMessage" class="form-error" style="margin-bottom: 16px; display: none;"></div>
-            <div class="admin-actions">
-                <button class="admin-btn" id="addPlan1Btn"><i class="fas fa-gem"></i> إضافة خطة 1 (10 جيجا - 30 يوم)</button>
-                <button class="admin-btn" id="addPlan2Btn"><i class="fas fa-gem"></i> إضافة خطة 2 (15 جيجا - 50 يوم)</button>
-                <button class="admin-btn" id="addPlan3Btn"><i class="fas fa-gem"></i> إضافة خطة 3 (10 جيجا - 50 يوم)</button>
-                <button class="admin-btn" id="addPlanUnlimitedBtn"><i class="fas fa-infinity"></i> إضافة خطة غير محدودة</button>
-                <button class="admin-btn danger" id="removePlanBtn"><i class="fas fa-trash-alt"></i> إزالة خطة مستخدم</button>
-                <button class="admin-btn danger" id="disableAllSitesBtn"><i class="fas fa-power-off"></i> إيقاف جميع المواقع</button>
-                <button class="admin-btn warning" id="disableMainSiteBtn"><i class="fas fa-globe"></i> إيقاف الموقع الأساسي</button>
-                <button class="admin-btn" id="changeAdminPasswordBtn"><i class="fas fa-key"></i> تغيير كلمة مرور الأدمن</button>
-                <button class="admin-btn danger" id="deleteSpecificSiteBtn"><i class="fas fa-trash"></i> حذف موقع معين</button>
-            </div>
-
-            <div class="admin-input-group hidden" id="addPlanSection">
-                <label class="form-label" id="planSectionLabel">أدخل اسم المستخدم</label>
-                <input type="text" id="planUsernameInput" class="form-input" placeholder="اسم المستخدم">
-                <div id="userNotFoundError" class="form-error" style="margin-top: 10px;"></div>
-                <button class="btn btn-primary" id="confirmAddPlanBtn" style="margin-top: 16px;">تأكيد إضافة الخطة</button>
-            </div>
-
-            <div class="admin-input-group hidden" id="removePlanSection">
-                <label class="form-label">أدخل اسم المستخدم</label>
-                <input type="text" id="removePlanUsername" class="form-input" placeholder="اسم المستخدم">
-                <button class="btn btn-danger" id="confirmRemovePlanBtn" style="margin-top: 16px;">إزالة جميع الخطط</button>
-            </div>
-
-            <div class="admin-input-group hidden" id="adminPasswordChangeSection">
-                <label class="form-label">كلمة المرور الجديدة</label>
-                <input type="password" id="newAdminPassword" class="form-input" placeholder="كلمة المرور الجديدة">
-                <button class="btn btn-primary" id="saveAdminPasswordBtn" style="margin-top: 16px;">حفظ</button>
-            </div>
-
-            <div class="admin-input-group hidden" id="deleteSiteSection">
-                <label class="form-label">رابط الموقع</label>
-                <input type="text" id="siteUrlToDelete" class="form-input" placeholder="https://...?site=...">
-                <button class="btn btn-danger" id="confirmDeleteSiteBtn" style="margin-top: 16px;">حذف الموقع</button>
+            
+            <div class="contact-buttons">
+                <a href="https://wa.me/+201221743490" target="_blank" class="contact-btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/al0osh505" target="_blank" class="contact-btn btn-telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
             </div>
         </div>
 
-        <div class="welcome-banner hidden" id="welcomeSection">
-            <div class="welcome-icon"><i class="fas fa-crown"></i></div>
-            <h2 id="welcomeTitle">🎉 تم شراء الخطة بنجاح!</h2>
-            <p id="welcomeMessage"></p>
-            <button class="btn" id="controlPlanBtn"><i class="fas fa-gamepad"></i> التحكم في الخطة</button>
+        <div id="chatBox" class="chat-container">
+            <!-- سيتم تحميل المحادثات المحفوظة هنا -->
         </div>
 
-        <div class="plans-section" id="plansSection">
-            <div class="section-title">
-                <h2>اختر خطتك المثالية</h2>
-                <p>خطط استضافة مصممة خصيصاً لتلبية احتياجاتك</p>
-            </div>
-            <div class="plans-grid" id="plansGrid"></div>
-        </div>
-
-        <div class="files-section hidden" id="filesSection">
-            <div class="section-title">
-                <h2><i class="fas fa-folder-open" style="color: var(--primary);"></i> ملفاتي</h2>
-            </div>
-            <div class="files-grid" id="filesList"></div>
-        </div>
-
-        <div class="upload-area hidden" id="uploadArea">
-            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-            <h3>رفع ملف HTML</h3>
-            <p>اسحب وأفلت الملف هنا أو انقر للاختيار - حسب مساحة خطتك</p>
-            <label class="file-input-label">
-                <i class="fas fa-folder-open"></i> اختر ملف
-                <input type="file" id="fileInput" class="file-input" accept=".html,.htm">
-            </label>
-            <div id="fileName" class="file-name"></div>
-            <div class="progress hidden" id="progress">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-
-        <div class="actions hidden" id="actionButtons">
-            <button class="btn btn-primary" id="uploadBtn"><i class="fas fa-cloud-upload-alt"></i> رفع الموقع</button>
-            <button class="btn btn-danger" id="deleteFilesBtn"><i class="fas fa-trash-alt"></i> حذف جميع ملفاتي</button>
-        </div>
-
-        <div class="stats-grid hidden" id="stats">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                <div class="stat-info">
-                    <h4 id="totalSites">0</h4>
-                    <p>مواقع مرفوعة</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-eye"></i></div>
-                <div class="stat-info">
-                    <h4 id="totalViews">0</h4>
-                    <p>مشاهدات</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                <div class="stat-info">
-                    <h4 id="activeSites">0</h4>
-                    <p>مواقع نشطة</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-hdd"></i></div>
-                <div class="stat-info">
-                    <h4 id="remainingSpace">0</h4>
-                    <p>مساحة متبقية</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="result-card hidden" id="resultSection">
-            <h3 style="margin-bottom: 16px; font-size: 18px;"><i class="fas fa-link" style="color: var(--primary);"></i> رابط موقعك</h3>
-            <div class="result-url" id="urlDisplay"></div>
-            <div class="result-actions">
-                <button class="result-btn copy" id="copyBtn"><i class="fas fa-copy"></i> نسخ الرابط</button>
-                <button class="result-btn open" id="openBtn"><i class="fas fa-external-link-alt"></i> فتح الموقع</button>
-                <button class="result-btn delete" id="deleteBtn"><i class="fas fa-trash-alt"></i> حذف الموقع</button>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="footer-links">
-                <a href="https://t.me/AL0OSH505" target="_blank"><i class="fab fa-telegram"></i> المطور</a>
-                <a href="https://t.me/files_otp" target="_blank"><i class="fab fa-telegram-plane"></i> القناة</a>
-            </div>
-            <div class="copyright">
-                © 2026 علي - جميع الحقوق محفوظة | منصة ICO المتطورة
-            </div>
-        </footer>
+        <form id="chatForm" class="input-bar">
+            <input id="userInput" type="text" placeholder="أرسل رسالة..." autocomplete="off">
+            <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </form>
     </div>
 
     <script>
-        (function() {
-            const DB_USERS = 'ico_users_v9';
-            const DB_SITES = 'ico_sites_v9';
-            const DB_DELETED_SITES = 'ico_deleted_sites_v9';
-            const DB_ADMIN = 'ico_admin_config_v9';
-            const DB_IP_USERS = 'ico_ip_users_v9';
-            const DB_SESSION = 'ico_session_v9';
+        /* --- كود الماتريكس --- */
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const chars = "$#@&٪+-£÷×=^<>";
+        const charArray = chars.split('');
+        const fontSize = 16;
+        const columns = canvas.width / fontSize; 
+        const drops = [];
+        for (let x = 0; x < columns; x++) { drops[x] = 1; }
 
-            let usersDatabase = JSON.parse(localStorage.getItem(DB_USERS)) || {};
-            let sitesDatabase = JSON.parse(localStorage.getItem(DB_SITES)) || {};
-            let deletedSitesDatabase = JSON.parse(localStorage.getItem(DB_DELETED_SITES)) || {};
-            let adminConfig = JSON.parse(localStorage.getItem(DB_ADMIN)) || {
-                password: 'hossamhossam#11212',
-                mainSiteDisabled: false
-            };
-            let ipUserMapping = JSON.parse(localStorage.getItem(DB_IP_USERS)) || {};
-            let currentSession = JSON.parse(localStorage.getItem(DB_SESSION)) || { username: null, ip: null };
-
-            let currentUser = currentSession.username || null;
-            let isAdmin = false;
-            let currentSiteId = null;
-            let selectedPlanForAdmin = null;
-            let showWelcomeAfterPlan = false;
-
-            const plans = {
-                free: { 
-                    name: 'مجانية', price: 'مجاناً', diskSpace: 5 * 1024 * 1024 * 1024, duration: 7, files: 1, priceStars: 0,
-                    displaySpace: '5 جيجابايت', displayDuration: '7 أيام'
-                },
-                paid1: { 
-                    name: 'مدفوعة 1', price: '13 ⭐', diskSpace: 10 * 1024 * 1024 * 1024, duration: 30, files: 1, priceStars: 13,
-                    displaySpace: '10 جيجابايت', displayDuration: '30 يوم'
-                },
-                paid2: { 
-                    name: 'مدفوعة 2', price: '15 ⭐', diskSpace: 15 * 1024 * 1024 * 1024, duration: 50, files: 1, priceStars: 15,
-                    displaySpace: '15 جيجابايت', displayDuration: '50 يوم'
-                },
-                unlimited: { 
-                    name: 'غير محدودة', price: '100 ⭐', diskSpace: Infinity, duration: Infinity, files: 10, priceStars: 100,
-                    displaySpace: 'غير محدود', displayDuration: 'مدى الحياة'
-                }
-            };
-
-            const E = {
-                toast: document.getElementById('toast'),
-                toastIcon: document.getElementById('toastIcon'),
-                toastText: document.getElementById('toastText'),
-                loginContainer: document.getElementById('loginContainer'),
-                mainContainer: document.getElementById('mainContainer'),
-                adminModal: document.getElementById('adminModal'),
-                adminClose: document.getElementById('adminClose'),
-                adminPassword: document.getElementById('adminPassword'),
-                adminPasswordError: document.getElementById('adminPasswordError'),
-                adminLoginBtn: document.getElementById('adminLoginBtn'),
-                adminAccessBtn: document.getElementById('adminAccessBtn'),
-                tabBtns: document.querySelectorAll('.login-tab'),
-                loginForm: document.getElementById('loginForm'),
-                registerForm: document.getElementById('registerForm'),
-                loginUsername: document.getElementById('loginUsername'),
-                loginPassword: document.getElementById('loginPassword'),
-                loginUsernameError: document.getElementById('loginUsernameError'),
-                loginPasswordError: document.getElementById('loginPasswordError'),
-                loginSubmit: document.getElementById('loginSubmit'),
-                registerUsername: document.getElementById('registerUsername'),
-                registerPassword: document.getElementById('registerPassword'),
-                registerUsernameError: document.getElementById('registerUsernameError'),
-                registerPasswordError: document.getElementById('registerPasswordError'),
-                registerSubmit: document.getElementById('registerSubmit'),
-                logoutBtn: document.getElementById('logoutBtn'),
-                userNameDisplay: document.getElementById('userNameDisplay').querySelector('span'),
-                adminPanelBtn: document.getElementById('adminPanelBtn'),
-                adminPanel: document.getElementById('adminPanel'),
-                adminMessage: document.getElementById('adminMessage'),
-                addPlan1Btn: document.getElementById('addPlan1Btn'),
-                addPlan2Btn: document.getElementById('addPlan2Btn'),
-                addPlan3Btn: document.getElementById('addPlan3Btn'),
-                addPlanUnlimitedBtn: document.getElementById('addPlanUnlimitedBtn'),
-                removePlanBtn: document.getElementById('removePlanBtn'),
-                disableAllSitesBtn: document.getElementById('disableAllSitesBtn'),
-                disableMainSiteBtn: document.getElementById('disableMainSiteBtn'),
-                changeAdminPasswordBtn: document.getElementById('changeAdminPasswordBtn'),
-                deleteSpecificSiteBtn: document.getElementById('deleteSpecificSiteBtn'),
-                addPlanSection: document.getElementById('addPlanSection'),
-                planSectionLabel: document.getElementById('planSectionLabel'),
-                planUsernameInput: document.getElementById('planUsernameInput'),
-                confirmAddPlanBtn: document.getElementById('confirmAddPlanBtn'),
-                removePlanSection: document.getElementById('removePlanSection'),
-                removePlanUsername: document.getElementById('removePlanUsername'),
-                confirmRemovePlanBtn: document.getElementById('confirmRemovePlanBtn'),
-                adminPasswordChangeSection: document.getElementById('adminPasswordChangeSection'),
-                newAdminPassword: document.getElementById('newAdminPassword'),
-                saveAdminPasswordBtn: document.getElementById('saveAdminPasswordBtn'),
-                deleteSiteSection: document.getElementById('deleteSiteSection'),
-                siteUrlToDelete: document.getElementById('siteUrlToDelete'),
-                confirmDeleteSiteBtn: document.getElementById('confirmDeleteSiteBtn'),
-                welcomeSection: document.getElementById('welcomeSection'),
-                welcomeTitle: document.getElementById('welcomeTitle'),
-                welcomeMessage: document.getElementById('welcomeMessage'),
-                controlPlanBtn: document.getElementById('controlPlanBtn'),
-                plansSection: document.getElementById('plansSection'),
-                plansGrid: document.getElementById('plansGrid'),
-                filesSection: document.getElementById('filesSection'),
-                filesList: document.getElementById('filesList'),
-                uploadArea: document.getElementById('uploadArea'),
-                fileInput: document.getElementById('fileInput'),
-                fileName: document.getElementById('fileName'),
-                progress: document.getElementById('progress'),
-                progressBar: document.getElementById('progressBar'),
-                actionButtons: document.getElementById('actionButtons'),
-                uploadBtn: document.getElementById('uploadBtn'),
-                deleteFilesBtn: document.getElementById('deleteFilesBtn'),
-                stats: document.getElementById('stats'),
-                totalSites: document.getElementById('totalSites'),
-                totalViews: document.getElementById('totalViews'),
-                activeSites: document.getElementById('activeSites'),
-                remainingSpace: document.getElementById('remainingSpace'),
-                resultSection: document.getElementById('resultSection'),
-                urlDisplay: document.getElementById('urlDisplay'),
-                copyBtn: document.getElementById('copyBtn'),
-                openBtn: document.getElementById('openBtn'),
-                deleteBtn: document.getElementById('deleteBtn'),
-                userNotFoundError: document.getElementById('userNotFoundError')
-            };
-
-            function showToast(message, type = 'success') {
-                E.toastText.textContent = message;
-                E.toastIcon.innerHTML = type === 'success' ? '<i class="fas fa-check-circle"></i>' : 
-                                        type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : 
-                                        '<i class="fas fa-info-circle"></i>';
-                E.toast.className = 'toast show';
-                if (type === 'error') E.toast.classList.add('error');
-                else E.toast.classList.remove('error');
-                setTimeout(() => E.toast.classList.remove('show'), 4000);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0"; 
+            ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
+                drops[i]++;
             }
+        }
+        setInterval(draw, 33);
 
-            function showAdminMessage(message, isError = false) {
-                E.adminMessage.textContent = message;
-                E.adminMessage.style.display = 'block';
-                E.adminMessage.style.color = isError ? 'var(--danger)' : 'var(--success)';
-                setTimeout(() => E.adminMessage.style.display = 'none', 5000);
+        /* --- إعدادات API الذكاء الاصطناعي --- */
+        const GROQ_API_KEY = "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";
+        const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+        function shouldRespondWithCreatorInfo(text) {
+            const lowerText = text.toLowerCase();
+            const makerPatterns = ["من صنعك", "من طورك", "من عمل ذلك البوت", "من انشئك", "من صممك", "creator", "who made you", "who developed you", "who created you"];
+            const phonePatterns = ["رقم الذي صنعك", "رقم هاتف الذي صنعك", "رقم المطور", "whatsapp number", "phone number of creator", "رقم مطورك"];
+            
+            if (phonePatterns.some(pattern => lowerText.includes(pattern))) {
+                return { type: "phone", response: "01221743490" };
             }
-
-            function getClientIP() {
-                let ip = localStorage.getItem('user_ip');
-                if (!ip) {
-                    ip = '192.168.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
-                    localStorage.setItem('user_ip', ip);
-                }
-                return ip;
+            if (makerPatterns.some(pattern => lowerText.includes(pattern))) {
+                return { type: "creator", response: "ALI GOMAA (Aloosh) الذي صنعني و طورني" };
             }
-
-            function validateUsername(username) {
-                return !/[\u0600-\u06FF]/.test(username);
-            }
-
-            function validatePassword(password) {
-                return !/[\u0600-\u06FF]/.test(password);
-            }
-
-            function saveSession(username) {
-                currentSession = { username, ip: getClientIP() };
-                localStorage.setItem(DB_SESSION, JSON.stringify(currentSession));
-            }
-
-            function clearSession() {
-                localStorage.removeItem(DB_SESSION);
-            }
-
-            function formatBytes(bytes) {
-                if (bytes === Infinity) return 'غير محدود';
-                if (!bytes) return '0 بايت';
-                const sizes = ['بايت', 'كيلوبايت', 'ميجابايت', 'جيجابايت'];
-                const i = Math.floor(Math.log(bytes) / Math.log(1024));
-                return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
-            }
-
-            function isSiteActive(siteId) {
-                const site = sitesDatabase[siteId];
-                if (!site) return false;
-                const user = usersDatabase[site.owner];
-                if (!user || !user.plan) return false;
-                if (user.plan.key === 'unlimited') return true;
-                if (!user.plan.startDate) return false;
-                const now = new Date();
-                const start = new Date(user.plan.startDate);
-                const end = new Date(start.getTime() + user.plan.duration * 24 * 60 * 60 * 1000);
-                return now <= end;
-            }
-
-            function updateStats() {
-                if (!currentUser || isAdmin) return;
-                const user = usersDatabase[currentUser];
-                if (!user || !user.plan) return;
-
-                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
-                let views = 0, active = 0;
-                userSites.forEach(site => {
-                    views += site.views || 0;
-                    if (isSiteActive(site.id)) active++;
-                });
-
-                E.totalSites.textContent = userSites.length;
-                E.totalViews.textContent = views;
-                E.activeSites.textContent = active;
-
-                const used = user.plan.usedSpace || 0;
-                const remaining = user.plan.diskSpace === Infinity ? 'غير محدود' : formatBytes(user.plan.diskSpace - used);
-                E.remainingSpace.textContent = remaining;
-            }
-
-            function renderPlans() {
-                let html = '';
-                for (let [key, plan] of Object.entries(plans)) {
-                    html += `
-                        <div class="plan-card ${key === 'paid1' ? 'popular' : ''}">
-                            <div class="plan-name">${plan.name}</div>
-                            <div class="plan-price">${plan.price}</div>
-                            <div class="plan-feature"><i class="fas fa-hdd"></i> المساحة: ${plan.displaySpace}</div>
-                            <div class="plan-feature"><i class="fas fa-clock"></i> المدة: ${plan.displayDuration}</div>
-                            <div class="plan-feature"><i class="fas fa-file"></i> عدد الملفات: ${plan.files} ملف</div>
-                            <button class="plan-btn" data-plan="${key}" data-stars="${plan.priceStars}">
-                                ${plan.priceStars > 0 ? '<i class="fab fa-telegram"></i> اضغط هنا للتواصل مع المطور' : '<i class="fas fa-check"></i> اختيار الخطة المجانية'}
-                            </button>
-                        </div>
-                    `;
-                }
-                E.plansGrid.innerHTML = html;
-
-                document.querySelectorAll('.plan-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const planKey = btn.dataset.plan;
-                        const stars = parseInt(btn.dataset.stars);
-                        if (stars > 0) {
-                            window.open('https://t.me/ALOOSH505', '_blank');
-                            showToast('تم فتح المحادثة مع المطور، أرسل له اسم المستخدم الخاص بك: ' + currentUser, 'info');
-                        } else {
-                            activatePlanForUser(currentUser, 'free');
-                        }
-                    });
-                });
-            }
-
-            function activatePlanForUser(username, planKey) {
-                const plan = plans[planKey];
-                const user = usersDatabase[username];
-                if (!user) {
-                    console.error(`المستخدم ${username} غير موجود في قاعدة البيانات`);
-                    return false;
-                }
-
-                user.plan = {
-                    key: planKey, 
-                    name: plan.name, 
-                    startDate: null, 
-                    duration: plan.duration,
-                    diskSpace: plan.diskSpace, 
-                    usedSpace: 0, 
-                    filesCount: 0, 
-                    maxFiles: plan.files
-                };
-                usersDatabase[username] = user;
-                localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-
-                if (username === currentUser) {
-                    showWelcomeAfterPlan = true;
-                    showWelcomeScreen(plan);
-                } else {
-                    showAdminMessage(`✅ تمت إضافة الخطة ${plan.name} للمستخدم ${username}`);
-                }
-                return true;
-            }
-
-            function showWelcomeScreen(plan) {
-                E.welcomeSection.classList.remove('hidden');
-                E.plansSection.classList.add('hidden');
-                E.uploadArea.classList.add('hidden');
-                E.filesSection.classList.add('hidden');
-                E.actionButtons.classList.add('hidden');
-                E.stats.classList.add('hidden');
-                E.welcomeMessage.innerHTML = `
-                    <i class="fas fa-star" style="color: #FFD700;"></i> خطة: ${plan.name}<br>
-                    <i class="fas fa-hdd" style="color: var(--success);"></i> المساحة: ${plan.displaySpace}<br>
-                    <i class="fas fa-clock" style="color: var(--accent);"></i> المدة: ${plan.displayDuration}<br>
-                    <i class="fas fa-file" style="color: var(--primary);"></i> عدد الملفات: ${plan.files} ملف<br><br>
-                    <span style="font-size: 14px; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 40px;">⚠️ ملاحظة: مدة الخطة تبدأ من تاريخ أول رفع ملف</span>
-                `;
-            }
-
-            function loadUserFiles() {
-                const user = usersDatabase[currentUser];
-                if (!user || !user.plan) return;
-
-                const userSites = Object.values(sitesDatabase)
-                    .filter(site => site.owner === currentUser)
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                if (userSites.length > 0) {
-                    E.filesList.innerHTML = userSites.map(site => {
-                        const active = isSiteActive(site.id);
-                        return `
-                        <div class="file-card" data-id="${site.id}">
-                            <div class="file-icon"><i class="fas fa-file-code"></i></div>
-                            <div class="file-name">${escapeHtml(site.name)}</div>
-                            <div class="file-meta">
-                                <span><i class="far fa-calendar"></i> ${new Date(site.date).toLocaleDateString('ar-EG')}</span>
-                                <span><i class="far fa-eye"></i> ${site.views || 0}</span>
-                                <span><i class="fas fa-weight-hanging"></i> ${formatBytes(site.size)}</span>
-                            </div>
-                            ${!active ? '<div style="color: var(--danger); font-size: 12px; margin-bottom: 8px;"><i class="fas fa-exclamation-circle"></i> منتهي الصلاحية</div>' : ''}
-                            <div class="file-actions">
-                                <button class="file-action view" data-id="${site.id}" ${!active ? 'disabled' : ''}><i class="fas fa-eye"></i> عرض</button>
-                                <button class="file-action delete" data-id="${site.id}"><i class="fas fa-trash"></i> حذف</button>
-                            </div>
-                        </div>
-                    `}).join('');
-                } else {
-                    E.filesList.innerHTML = `
-                        <div style="grid-column: 1/-1; text-align: center; padding: 60px; background: var(--gray-50); border-radius: var(--radius-lg);">
-                            <i class="fas fa-folder-open" style="font-size: 48px; color: var(--gray-400); margin-bottom: 16px;"></i>
-                            <h3 style="color: var(--gray-600);">لا توجد ملفات</h3>
-                            <p style="color: var(--gray-500);">ابدأ برفع أول ملف HTML خاص بك</p>
-                        </div>
-                    `;
-                }
-            }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                });
-            }
-
-            function checkUserPlanAndShowContent() {
-                const user = usersDatabase[currentUser];
-                if (!user || !user.plan) {
-                    E.welcomeSection.classList.add('hidden');
-                    E.plansSection.classList.remove('hidden');
-                    E.uploadArea.classList.add('hidden');
-                    E.filesSection.classList.add('hidden');
-                    E.actionButtons.classList.add('hidden');
-                    E.stats.classList.add('hidden');
-                } else {
-                    if (showWelcomeAfterPlan) {
-                        showWelcomeScreen(user.plan);
-                        return;
-                    }
-                    if (!user.plan.startDate) {
-                        E.welcomeSection.classList.remove('hidden');
-                        E.welcomeTitle.innerHTML = '🎉 مرحباً بك في خطتك الجديدة!';
-                        E.welcomeMessage.innerHTML = `
-                            <i class="fas fa-star" style="color: #FFD700;"></i> خطة: ${user.plan.name}<br>
-                            <i class="fas fa-hdd" style="color: var(--success);"></i> المساحة: ${user.plan.diskSpace === Infinity ? 'غير محدودة' : formatBytes(user.plan.diskSpace)}<br>
-                            <i class="fas fa-clock" style="color: var(--accent);"></i> المدة: ${user.plan.duration === Infinity ? 'مدى الحياة' : user.plan.duration + ' يوم'}<br>
-                            <i class="fas fa-file" style="color: var(--primary);"></i> عدد الملفات: ${user.plan.maxFiles} ملف<br><br>
-                            <span style="font-size: 14px; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 40px;">⚠️ مدة الخطة تبدأ من تاريخ أول رفع ملف</span>
-                        `;
-                        E.controlPlanBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ الآن';
-                        E.plansSection.classList.add('hidden');
-                        E.uploadArea.classList.add('hidden');
-                        E.filesSection.classList.add('hidden');
-                        E.actionButtons.classList.add('hidden');
-                        E.stats.classList.add('hidden');
-                        return;
-                    }
-                    if (user.plan.key !== 'unlimited') {
-                        const now = new Date();
-                        const start = new Date(user.plan.startDate);
-                        const end = new Date(start.getTime() + user.plan.duration * 24 * 60 * 60 * 1000);
-                        if (now > end) {
-                            showToast('⚠️ لقد انتهت مدة خطتك، قم باختيار خطة جديدة', 'error');
-                            user.plan = null;
-                            usersDatabase[currentUser] = user;
-                            localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-                            E.welcomeSection.classList.add('hidden');
-                            E.plansSection.classList.remove('hidden');
-                            E.uploadArea.classList.add('hidden');
-                            E.filesSection.classList.add('hidden');
-                            E.actionButtons.classList.add('hidden');
-                            E.stats.classList.add('hidden');
-                            return;
-                        }
-                    }
-                    E.welcomeSection.classList.add('hidden');
-                    E.plansSection.classList.add('hidden');
-                    E.uploadArea.classList.remove('hidden');
-                    E.filesSection.classList.remove('hidden');
-                    E.actionButtons.classList.remove('hidden');
-                    E.stats.classList.remove('hidden');
-                    loadUserFiles();
-                    updateStats();
-                }
-            }
-
-            E.controlPlanBtn.addEventListener('click', () => {
-                E.welcomeSection.classList.add('hidden');
-                const user = usersDatabase[currentUser];
-                if (user && user.plan) {
-                    showWelcomeAfterPlan = false;
-                    E.uploadArea.classList.remove('hidden');
-                    E.filesSection.classList.remove('hidden');
-                    E.actionButtons.classList.remove('hidden');
-                    E.stats.classList.remove('hidden');
-                    loadUserFiles();
-                    updateStats();
-                    showToast('🎮 مرحباً بك في لوحة التحكم! ابدأ برفع ملفك الأول', 'success');
-                }
-            });
-
-            E.uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                E.uploadArea.classList.add('dragover');
-            });
-            E.uploadArea.addEventListener('dragleave', () => E.uploadArea.classList.remove('dragover'));
-            E.uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                E.uploadArea.classList.remove('dragover');
-                const file = e.dataTransfer.files[0];
-                if (file) {
-                    if (!file.name.endsWith('.html') && !file.name.endsWith('.htm')) 
-                        return showToast('الملف يجب أن يكون بصيغة HTML', 'error');
-                    const dataTransfer = new DataTransfer();
-                    dataTransfer.items.add(file);
-                    E.fileInput.files = dataTransfer.files;
-                    const event = new Event('change', { bubbles: true });
-                    E.fileInput.dispatchEvent(event);
-                }
-            });
-
-            E.fileInput.addEventListener('change', function() {
-                if (this.files[0]) {
-                    const file = this.files[0];
-                    const size = file.size > 1024*1024 ? (file.size/(1024*1024)).toFixed(2)+' MB' : (file.size/1024).toFixed(2)+' KB';
-                    E.fileName.innerHTML = `<i class="fas fa-file-code"></i> ${escapeHtml(file.name)} (${size})`;
-                }
-            });
-
-            E.uploadBtn.addEventListener('click', async () => {
-                const user = usersDatabase[currentUser];
-                if (!user || !user.plan) return showToast('يجب أن يكون لديك خطة نشطة أولاً', 'error');
-                const file = E.fileInput.files[0];
-                if (!file) return showToast('اختر ملفاً أولاً', 'error');
-                if (!file.name.endsWith('.html') && !file.name.endsWith('.htm')) 
-                    return showToast('الملف يجب أن يكون بصيغة HTML', 'error');
-
-                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
-                if (user.plan.maxFiles !== Infinity && userSites.length >= user.plan.maxFiles)
-                    return showToast(`⚠️ لقد وصلت للحد الأقصى (${user.plan.maxFiles} ملفات)`, 'error');
-                if (file.size > (user.plan.diskSpace - (user.plan.usedSpace || 0)))
-                    return showToast('⚠️ عذراً، لقد امتلأت مساحة هذا القرص', 'error');
-
-                if (!user.plan.startDate) {
-                    user.plan.startDate = new Date().toISOString();
-                    usersDatabase[currentUser] = user;
-                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-                }
-
-                E.progress.classList.remove('hidden');
-                E.progressBar.style.width = '30%';
-
-                try {
-                    const content = await new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = e => resolve(e.target.result);
-                        reader.onerror = reject;
-                        reader.readAsText(file);
-                    });
-                    E.progressBar.style.width = '70%';
-
-                    const id = 'site_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                    sitesDatabase[id] = {
-                        id, name: file.name, content, owner: currentUser,
-                        date: new Date().toISOString(), views: 0, size: file.size
-                    };
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-
-                    user.plan.usedSpace = (user.plan.usedSpace || 0) + file.size;
-                    usersDatabase[currentUser] = user;
-                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-
-                    E.progressBar.style.width = '100%';
-                    setTimeout(() => {
-                        const url = `${window.location.origin}${window.location.pathname}?site=${id}`;
-                        E.urlDisplay.textContent = url;
-                        E.resultSection.classList.remove('hidden');
-                        E.progress.classList.add('hidden');
-                        E.progressBar.style.width = '0%';
-                        E.fileInput.value = '';
-                        E.fileName.innerHTML = '';
-                        loadUserFiles();
-                        updateStats();
-                        showToast('✅ تم رفع الموقع بنجاح', 'success');
-                        currentSiteId = id;
-                        E.resultSection.scrollIntoView({ behavior: 'smooth' });
-                    }, 600);
-                } catch (error) {
-                    showToast('خطأ في قراءة الملف', 'error');
-                    E.progress.classList.add('hidden');
-                }
-            });
-
-            E.copyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(E.urlDisplay.textContent)
-                    .then(() => showToast('تم نسخ الرابط إلى الحافظة', 'success'))
-                    .catch(() => {
-                        const el = document.createElement('textarea');
-                        el.value = E.urlDisplay.textContent;
-                        document.body.appendChild(el);
-                        el.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(el);
-                        showToast('تم نسخ الرابط إلى الحافظة', 'success');
-                    });
-            });
-
-            E.openBtn.addEventListener('click', () => {
-                if (currentSiteId && sitesDatabase[currentSiteId]) {
-                    const site = sitesDatabase[currentSiteId];
-                    if (!isSiteActive(currentSiteId)) return showToast('⚠️ هذا الموقع منتهي الصلاحية', 'error');
-                    site.views++;
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    const win = window.open('', '_blank');
-                    win.document.write(site.content);
-                    win.document.close();
-                    loadUserFiles();
-                    updateStats();
-                }
-            });
-
-            E.deleteBtn.addEventListener('click', () => {
-                if (currentSiteId && confirm('هل تريد حذف هذا الموقع؟')) {
-                    const site = sitesDatabase[currentSiteId];
-                    deletedSitesDatabase[currentSiteId] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
-                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
-                    delete sitesDatabase[currentSiteId];
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    E.resultSection.classList.add('hidden');
-                    currentSiteId = null;
-                    loadUserFiles();
-                    updateStats();
-                    showToast('تم حذف الموقع بنجاح', 'info');
-                }
-            });
-
-            E.filesList.addEventListener('click', (e) => {
-                const btn = e.target.closest('button');
-                if (!btn) return;
-                const id = btn.dataset.id;
-                if (!id) return;
-                const site = sitesDatabase[id];
-                if (!site) return;
-
-                if (btn.classList.contains('view')) {
-                    if (!isSiteActive(id)) return showToast('⚠️ هذا الموقع منتهي الصلاحية', 'error');
-                    const win = window.open('', '_blank');
-                    win.document.write(site.content);
-                    win.document.close();
-                    site.views++;
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    loadUserFiles();
-                    updateStats();
-                } else if (btn.classList.contains('delete')) {
-                    if (confirm('هل تريد حذف هذا الموقع؟')) {
-                        deletedSitesDatabase[id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
-                        localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
-                        delete sitesDatabase[id];
-                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                        if (currentSiteId === id) {
-                            E.resultSection.classList.add('hidden');
-                            currentSiteId = null;
-                        }
-                        loadUserFiles();
-                        updateStats();
-                        showToast('تم حذف الموقع بنجاح', 'info');
-                    }
-                }
-            });
-
-            E.deleteFilesBtn.addEventListener('click', () => {
-                const userSites = Object.values(sitesDatabase).filter(site => site.owner === currentUser);
-                if (userSites.length === 0) return showToast('لا توجد ملفات لحذفها', 'error');
-                if (confirm(`هل تريد حذف جميع ملفاتك (${userSites.length} ملف)؟`)) {
-                    userSites.forEach(site => {
-                        deletedSitesDatabase[site.id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: currentUser };
-                        delete sitesDatabase[site.id];
-                    });
-                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    if (currentSiteId) {
-                        E.resultSection.classList.add('hidden');
-                        currentSiteId = null;
-                    }
-                    loadUserFiles();
-                    updateStats();
-                    showToast(`تم حذف ${userSites.length} ملف بنجاح`, 'info');
-                }
-            });
-
-            E.loginSubmit.addEventListener('click', () => {
-                const username = E.loginUsername.value.trim();
-                const password = E.loginPassword.value;
-                let hasError = false;
-
-                if (!username) {
-                    E.loginUsernameError.classList.add('show');
-                    hasError = true;
-                } else E.loginUsernameError.classList.remove('show');
-
-                if (!password) {
-                    E.loginPasswordError.classList.add('show');
-                    hasError = true;
-                } else E.loginPasswordError.classList.remove('show');
-
-                if (hasError) return;
-
-                if (!usersDatabase[username]) {
-                    showToast('اسم المستخدم غير موجود', 'error');
-                    return;
-                }
-                if (usersDatabase[username].password !== password) {
-                    showToast('كلمة المرور غير صحيحة', 'error');
-                    return;
-                }
-
-                currentUser = username;
-                isAdmin = false;
-                saveSession(username);
-                const ip = getClientIP();
-                ipUserMapping[ip] = username;
-                localStorage.setItem(DB_IP_USERS, JSON.stringify(ipUserMapping));
-                E.loginContainer.classList.add('hidden');
-                E.mainContainer.classList.remove('hidden');
-                E.userNameDisplay.textContent = username;
-                E.adminPanel.classList.add('hidden');
-                renderPlans();
-                checkUserPlanAndShowContent();
-                showToast(`مرحباً ${username}!`, 'success');
-            });
-
-            E.registerSubmit.addEventListener('click', () => {
-                const username = E.registerUsername.value.trim();
-                const password = E.registerPassword.value;
-                let hasError = false;
-
-                if (!username) {
-                    E.registerUsernameError.classList.add('show');
-                    hasError = true;
-                } else if (!validateUsername(username)) {
-                    E.registerUsernameError.classList.add('show');
-                    hasError = true;
-                } else E.registerUsernameError.classList.remove('show');
-
-                if (!password) {
-                    E.registerPasswordError.classList.add('show');
-                    hasError = true;
-                } else if (!validatePassword(password)) {
-                    E.registerPasswordError.classList.add('show');
-                    hasError = true;
-                } else E.registerPasswordError.classList.remove('show');
-
-                if (hasError) return;
-
-                if (usersDatabase[username]) {
-                    showToast('اسم المستخدم موجود بالفعل', 'error');
-                    return;
-                }
-
-                usersDatabase[username] = { username, password, created: new Date().toISOString(), plan: null };
-                localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-
-                currentUser = username;
-                isAdmin = false;
-                saveSession(username);
-                const ip = getClientIP();
-                ipUserMapping[ip] = username;
-                localStorage.setItem(DB_IP_USERS, JSON.stringify(ipUserMapping));
-                E.loginContainer.classList.add('hidden');
-                E.mainContainer.classList.remove('hidden');
-                E.userNameDisplay.textContent = username;
-                E.adminPanel.classList.add('hidden');
-                renderPlans();
-                checkUserPlanAndShowContent();
-                showToast('🎉 مبروك! تم إنشاء حساب ' + username, 'success');
-            });
-
-            E.logoutBtn.addEventListener('click', () => {
-                if (confirm('هل تريد تسجيل الخروج؟')) {
-                    clearSession();
-                    currentUser = null;
-                    isAdmin = false;
-                    E.mainContainer.classList.add('hidden');
-                    E.loginContainer.classList.remove('hidden');
-                    showToast('تم تسجيل الخروج بنجاح', 'info');
-                }
-            });
-
-            E.adminAccessBtn.addEventListener('click', () => E.adminModal.classList.add('active'));
-            E.adminClose.addEventListener('click', () => {
-                E.adminModal.classList.remove('active');
-                E.adminPassword.value = '';
-                E.adminPasswordError.classList.remove('show');
-            });
-            E.adminLoginBtn.addEventListener('click', () => {
-                const password = E.adminPassword.value;
-                if (password === adminConfig.password) {
-                    currentUser = 'admin';
-                    isAdmin = true;
-                    saveSession('admin');
-                    E.adminModal.classList.remove('active');
-                    E.loginContainer.classList.add('hidden');
-                    E.mainContainer.classList.remove('hidden');
-                    E.userNameDisplay.textContent = 'أدمن';
-                    E.adminPanel.classList.remove('hidden');
-                    showToast('مرحباً بك أيها الأدمن', 'success');
-                } else {
-                    E.adminPasswordError.classList.add('show');
-                }
-            });
-
-            E.adminPanelBtn.addEventListener('click', () => {
-                if (isAdmin) E.adminPanel.classList.toggle('hidden');
-                else showToast('ليس لديك صلاحيات الأدمن', 'error');
-            });
-
-            const showAdminSection = (section, label = '') => {
-                E.addPlanSection.classList.add('hidden');
-                E.removePlanSection.classList.add('hidden');
-                E.adminPasswordChangeSection.classList.add('hidden');
-                E.deleteSiteSection.classList.add('hidden');
-                if (E.userNotFoundError) E.userNotFoundError.style.display = 'none';
-                if (E.planUsernameInput) E.planUsernameInput.value = '';
-                if (section) {
-                    section.classList.remove('hidden');
-                    if (label && E.planSectionLabel) E.planSectionLabel.textContent = label;
-                }
-            };
-
-            E.addPlan1Btn.addEventListener('click', () => {
-                selectedPlanForAdmin = 'paid1';
-                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 1 (10 جيجا - 30 يوم)');
-            });
-            E.addPlan2Btn.addEventListener('click', () => {
-                selectedPlanForAdmin = 'paid2';
-                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 2 (15 جيجا - 50 يوم)');
-            });
-            E.addPlan3Btn.addEventListener('click', () => {
-                selectedPlanForAdmin = 'paid1';
-                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة 3 (10 جيجا - 50 يوم)');
-            });
-            E.addPlanUnlimitedBtn.addEventListener('click', () => {
-                selectedPlanForAdmin = 'unlimited';
-                showAdminSection(E.addPlanSection, 'أدخل اسم المستخدم لإضافة خطة غير محدودة (10 ملفات)');
-            });
-
-            E.confirmAddPlanBtn.addEventListener('click', () => {
-                const username = E.planUsernameInput.value.trim();
-                if (E.userNotFoundError) E.userNotFoundError.style.display = 'none';
-                
-                if (!username) {
-                    if (E.userNotFoundError) {
-                        E.userNotFoundError.textContent = 'يرجى إدخال اسم المستخدم';
-                        E.userNotFoundError.style.display = 'block';
-                    }
-                    return;
-                }
-                
-                let userExists = false;
-                let exactUsername = null;
-                
-                for (let existingUser in usersDatabase) {
-                    if (existingUser === username) {
-                        userExists = true;
-                        exactUsername = existingUser;
-                        break;
-                    }
-                }
-                
-                if (!userExists) {
-                    if (E.userNotFoundError) {
-                        E.userNotFoundError.textContent = `❌ المستخدم "${username}" غير موجود في قاعدة البيانات`;
-                        E.userNotFoundError.style.display = 'block';
-                    }
-                    showAdminMessage(`المستخدم ${username} غير موجود`, true);
-                    return;
-                }
-                
-                if (selectedPlanForAdmin) {
-                    const success = activatePlanForUser(exactUsername, selectedPlanForAdmin);
-                    if (success) {
-                        showAdminSection(null);
-                        E.planUsernameInput.value = '';
-                        showToast(`✅ تم إضافة الخطة ${plans[selectedPlanForAdmin].name} للمستخدم ${exactUsername} بنجاح`, 'success');
-                    }
-                }
-            });
-
-            E.removePlanBtn.addEventListener('click', () => showAdminSection(E.removePlanSection));
-            E.confirmRemovePlanBtn.addEventListener('click', () => {
-                const username = E.removePlanUsername.value.trim();
-                if (!username) return showAdminMessage('يرجى إدخال اسم المستخدم', true);
-                
-                let userExists = false;
-                for (let existingUser in usersDatabase) {
-                    if (existingUser === username) {
-                        userExists = true;
-                        break;
-                    }
-                }
-                
-                if (!userExists) return showAdminMessage('المستخدم غير موجود', true);
-                
-                if (confirm(`هل أنت متأكد من إزالة جميع خطط المستخدم ${username}؟`)) {
-                    usersDatabase[username].plan = null;
-                    localStorage.setItem(DB_USERS, JSON.stringify(usersDatabase));
-                    Object.keys(sitesDatabase).forEach(id => {
-                        if (sitesDatabase[id].owner === username) delete sitesDatabase[id];
-                    });
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    showAdminMessage(`✅ تم إزالة جميع خطط المستخدم ${username}`);
-                    showAdminSection(null);
-                    E.removePlanUsername.value = '';
-                    if (currentUser === username) checkUserPlanAndShowContent();
-                }
-            });
-
-            E.disableAllSitesBtn.addEventListener('click', () => {
-                if (!isAdmin) return;
-                if (confirm('هل تريد حذف جميع المواقع المرفوعة؟')) {
-                    Object.values(sitesDatabase).forEach(site => {
-                        deletedSitesDatabase[site.id] = { ...site, deletedAt: new Date().toISOString(), deletedBy: 'admin' };
-                    });
-                    sitesDatabase = {};
-                    localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
-                    localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                    if (currentUser !== 'admin') { loadUserFiles(); updateStats(); }
-                    showAdminMessage('تم حذف جميع المواقع بنجاح');
-                }
-            });
-
-            E.disableMainSiteBtn.addEventListener('click', () => {
-                if (!isAdmin) return;
-                adminConfig.mainSiteDisabled = !adminConfig.mainSiteDisabled;
-                localStorage.setItem(DB_ADMIN, JSON.stringify(adminConfig));
-                showAdminMessage(adminConfig.mainSiteDisabled ? 'تم إيقاف الموقع الأساسي' : 'تم تفعيل الموقع الأساسي');
-            });
-
-            E.changeAdminPasswordBtn.addEventListener('click', () => showAdminSection(E.adminPasswordChangeSection));
-            E.saveAdminPasswordBtn.addEventListener('click', () => {
-                const newPass = E.newAdminPassword.value.trim();
-                if (!newPass) return showAdminMessage('يرجى إدخال كلمة المرور الجديدة', true);
-                adminConfig.password = newPass;
-                localStorage.setItem(DB_ADMIN, JSON.stringify(adminConfig));
-                showAdminSection(null);
-                E.newAdminPassword.value = '';
-                showAdminMessage('تم تغيير كلمة مرور الأدمن بنجاح');
-            });
-
-            E.deleteSpecificSiteBtn.addEventListener('click', () => showAdminSection(E.deleteSiteSection));
-            E.confirmDeleteSiteBtn.addEventListener('click', () => {
-                const url = E.siteUrlToDelete.value.trim();
-                if (!url) return showAdminMessage('يرجى إدخال رابط الموقع', true);
-                try {
-                    const siteId = new URL(url).searchParams.get('site');
-                    if (!siteId || !sitesDatabase[siteId]) return showAdminMessage('الموقع غير موجود', true);
-                    if (confirm('هل تريد حذف هذا الموقع؟')) {
-                        const site = sitesDatabase[siteId];
-                        deletedSitesDatabase[siteId] = { ...site, deletedAt: new Date().toISOString(), deletedBy: 'admin' };
-                        delete sitesDatabase[siteId];
-                        localStorage.setItem(DB_DELETED_SITES, JSON.stringify(deletedSitesDatabase));
-                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                        if (currentUser !== 'admin') { loadUserFiles(); updateStats(); }
-                        showAdminSection(null);
-                        E.siteUrlToDelete.value = '';
-                        showAdminMessage('تم حذف الموقع بنجاح');
-                    }
-                } catch { showAdminMessage('رابط الموقع غير صحيح', true); }
-            });
-
-            E.tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    E.tabBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    if (btn.dataset.tab === 'login') {
-                        E.loginForm.classList.remove('hidden');
-                        E.registerForm.classList.add('hidden');
-                    } else {
-                        E.loginForm.classList.add('hidden');
-                        E.registerForm.classList.remove('hidden');
-                    }
-                });
-            });
-
-            window.addEventListener('DOMContentLoaded', () => {
-                const params = new URLSearchParams(window.location.search);
-                const siteId = params.get('site');
-
-                if (siteId) {
-                    if (adminConfig.mainSiteDisabled) {
-                        document.body.innerHTML = `
-                            <div class="deleted-page">
-                                <div class="deleted-icon"><i class="fas fa-pause-circle"></i></div>
-                                <h1 class="deleted-title">تم إيقاف الموقع مؤقتاً</h1>
-                                <p class="deleted-message">عذراً، الموقع متوقف مؤقتاً من قبل الأدمن.</p>
-                                <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
-                            </div>
-                        `;
-                        return;
-                    }
-
-                    if (sitesDatabase[siteId]) {
-                        const site = sitesDatabase[siteId];
-                        const owner = usersDatabase[site.owner];
-                        if (owner && owner.plan) {
-                            if (!owner.plan.startDate) {
-                                document.body.innerHTML = `
-                                    <div class="deleted-page">
-                                        <div class="deleted-icon"><i class="fas fa-hourglass-start"></i></div>
-                                        <h1 class="deleted-title">⏳ الخطة لم تبدأ بعد</h1>
-                                        <p class="deleted-message">الخطة لم تبدأ بعد، يرجى الانتظار حتى يقوم صاحب الموقع برفع أول ملف.</p>
-                                        <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
-                                    </div>
-                                `;
-                                return;
+            return null;
+        }
+
+        async function callGroqAPI(userMessage) {
+            try {
+                const response = await fetch(GROQ_URL, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${GROQ_API_KEY}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.1-8b-instant",
+                        messages: [
+                            {
+                                role: "system",
+                                content: "أنت مساعد ذكي اسمك ALI AI. ردودك مختصرة ومفيدة باللغة العربية. إذا سألك المستخدم عن من صنعك أو من طورك، قل: ALI GOMAA (Aloosh) الذي صنعني و طورني. إذا سألك عن رقم هاتف من صنعك، قل: 01221743490."
+                            },
+                            {
+                                role: "user",
+                                content: userMessage
                             }
-                            if (owner.plan.key !== 'unlimited') {
-                                const now = new Date();
-                                const start = new Date(owner.plan.startDate);
-                                const end = new Date(start.getTime() + owner.plan.duration * 24 * 60 * 60 * 1000);
-                                if (now > end) {
-                                    document.body.innerHTML = `
-                                        <div class="deleted-page">
-                                            <div class="deleted-icon"><i class="fas fa-hourglass-end"></i></div>
-                                            <h1 class="deleted-title">⏳ لقد انتهت مدة استضافة هذا الموقع</h1>
-                                            <p class="deleted-message">انتهت مدة الخطة لهذا الموقع، يرجى تجديد الخطة من المنصة الرئيسية.</p>
-                                            <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة إلى المنصة</a>
-                                        </div>
-                                    `;
-                                    return;
-                                }
-                            }
-                        }
-                        site.views++;
-                        localStorage.setItem(DB_SITES, JSON.stringify(sitesDatabase));
-                        document.open();
-                        document.write(site.content);
-                        document.close();
-                        return;
-                    }
-
-                    if (deletedSitesDatabase[siteId]) {
-                        document.body.innerHTML = `
-                            <div class="deleted-page">
-                                <div class="deleted-icon"><i class="fas fa-trash-alt"></i></div>
-                                <h1 class="deleted-title">تم حذف هذا الملف</h1>
-                                <p class="deleted-message">الملف الذي تحاول الوصول إليه قد تم حذفه.</p>
-                                <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
-                            </div>
-                        `;
-                        return;
-                    }
-
-                    document.body.innerHTML = `
-                        <div class="deleted-page">
-                            <div class="deleted-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                            <h1 class="deleted-title">الملف غير موجود</h1>
-                            <p class="deleted-message">الملف الذي تحاول الوصول إليه غير موجود.</p>
-                            <a href="${window.location.pathname}" class="deleted-btn"><i class="fas fa-arrow-right"></i> العودة</a>
-                        </div>
-                    `;
-                    return;
-                }
-
-                if (currentSession.username) {
-                    currentUser = currentSession.username;
-                    if (currentUser === 'admin') {
-                        isAdmin = true;
-                        E.loginContainer.classList.add('hidden');
-                        E.mainContainer.classList.remove('hidden');
-                        E.userNameDisplay.textContent = 'أدمن';
-                        E.adminPanel.classList.remove('hidden');
-                    } else {
-                        isAdmin = false;
-                        E.loginContainer.classList.add('hidden');
-                        E.mainContainer.classList.remove('hidden');
-                        E.userNameDisplay.textContent = currentUser;
-                        E.adminPanel.classList.add('hidden');
-                        renderPlans();
-                        checkUserPlanAndShowContent();
-                    }
-                    showToast(`مرحباً بعودتك ${currentUser}!`, 'success');
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1024
+                    })
+                });
+                
+                if (response.status === 200) {
+                    const data = await response.json();
+                    return data.choices[0].message.content;
                 } else {
-                    E.loginContainer.classList.remove('hidden');
-                    E.mainContainer.classList.add('hidden');
+                    return "عذراً، حدث خطأ تقني في الاتصال بالذكاء الاصطناعي.";
                 }
-            });
+            } catch (error) {
+                return "حدث خطأ في الشبكة. تأكد من اتصالك بالإنترنت.";
+            }
+        }
 
-            setInterval(() => {
-                if (currentUser && !isAdmin) {
-                    checkUserPlanAndShowContent();
-                    updateStats();
-                }
-            }, 60000);
-        })();
+        /* --- إدارة المحادثات و localStorage --- */
+        const STORAGE_KEY = "aliAI_chatHistory";
+        const chatBox = document.getElementById('chatBox');
+        const input = document.getElementById('userInput');
+        const form = document.getElementById('chatForm');
+
+        function saveCurrentChat() {
+            const messages = [];
+            const msgDivs = chatBox.querySelectorAll('.msg');
+            msgDivs.forEach(div => {
+                let type = div.classList.contains('user-msg') ? 'user' : 'bot';
+                messages.push({ type: type, text: div.innerText });
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+        }
+
+        function loadChat() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return false;
+            
+            const messages = JSON.parse(saved);
+            if (messages.length === 0) return false;
+            
+            chatBox.innerHTML = '';
+            messages.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = `msg ${msg.type === 'user' ? 'user-msg' : 'bot-msg'}`;
+                div.innerText = msg.text;
+                chatBox.appendChild(div);
+            });
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return true;
+        }
+
+        function startNewChat() {
+            chatBox.innerHTML = '';
+            const welcomeDiv = document.createElement('div');
+            welcomeDiv.className = 'msg bot-msg';
+            welcomeDiv.innerText = 'مرحباً بك، أنا ALI AI. كيف أخدمك اليوم؟';
+            chatBox.appendChild(welcomeDiv);
+            saveCurrentChat();
+        }
+
+        function clearAllChats() {
+            localStorage.removeItem(STORAGE_KEY);
+            startNewChat();
+        }
+
+        function appendMsg(text, type) {
+            const div = document.createElement('div');
+            div.className = `msg ${type}`;
+            div.innerText = text;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveCurrentChat();
+        }
+
+        /* --- كود القائمة --- */
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const newChatBtn = document.getElementById('newChatBtn');
+        const clearAllChatsBtn = document.getElementById('clearAllChatsBtn');
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('show');
+        });
+
+        newChatBtn.addEventListener('click', () => {
+            startNewChat();
+            dropdownMenu.classList.remove('show');
+        });
+
+        clearAllChatsBtn.addEventListener('click', () => {
+            clearAllChats();
+            dropdownMenu.classList.remove('show');
+        });
+
+        /* --- معالجة الرسائل --- */
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = input.value.trim();
+            if(!text) return;
+
+            appendMsg(text, 'user-msg');
+            input.value = '';
+
+            const specialResponse = shouldRespondWithCreatorInfo(text);
+            if (specialResponse) {
+                setTimeout(() => {
+                    appendMsg(specialResponse.response, 'bot-msg');
+                }, 500);
+                return;
+            }
+
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'msg bot-msg';
+            typingMsg.innerText = 'جاري التفكير... 🤔';
+            chatBox.appendChild(typingMsg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveCurrentChat();
+
+            const aiReply = await callGroqAPI(text);
+            
+            chatBox.removeChild(typingMsg);
+            appendMsg(aiReply, 'bot-msg');
+        });
+
+        /* --- بدء التشغيل: تحميل المحادثة السابقة أو بدء جديدة --- */
+        const loaded = loadChat();
+        if (!loaded) {
+            startNewChat();
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
