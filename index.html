@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -70,94 +70,23 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: relative;
         }
 
-        .logo-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #00f0ff;
-            font-weight: bold;
-            font-size: 1.3rem;
-            white-space: nowrap;
-        }
-
-        .menu-container {
-            position: relative;
-            z-index: 15;
-        }
-        
-        .menu-btn {
-            background: none;
-            border: none;
-            color: #00f0ff;
-            font-size: 28px;
-            cursor: pointer;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-        
-        .menu-btn:hover {
-            background: rgba(0, 0, 255, 0.3);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            border: 1px solid #0000FF;
-            border-radius: 10px;
-            padding: 10px 0;
-            min-width: 160px;
-            z-index: 20;
-            display: none;
-            backdrop-filter: blur(10px);
-        }
-        
-        .dropdown-menu.show {
-            display: block;
-        }
-        
-        .dropdown-menu button {
-            width: 100%;
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            color: white;
-            text-align: right;
-            cursor: pointer;
-            font-size: 14px;
+        .logo-box {
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
         }
-        
-        .dropdown-menu button i {
-            width: 20px;
+
+        .logo-box span {
             color: #00f0ff;
-        }
-        
-        .dropdown-menu button:hover {
-            background: rgba(0, 0, 255, 0.5);
-        }
-        
-        .dropdown-menu hr {
-            margin: 5px 0;
-            border-color: #0000FF;
+            font-weight: bold;
+            font-size: 1.3rem;
         }
 
         .contact-buttons {
             display: flex;
             gap: 10px;
-            z-index: 15;
         }
 
         .contact-btn {
@@ -256,24 +185,7 @@
 
     <div class="chat-wrapper">
         <div class="chat-header">
-            <div class="menu-container">
-                <button class="menu-btn" id="menuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="dropdown-menu" id="dropdownMenu">
-                    <button id="newChatBtn">
-                        <i class="fas fa-plus-circle"></i>
-                        بدء محادثة جديدة
-                    </button>
-                    <hr>
-                    <button id="clearAllChatsBtn">
-                        <i class="fas fa-trash-alt"></i>
-                        مسح جميع المحادثات
-                    </button>
-                </div>
-            </div>
-            
-            <div class="logo-center">
+            <div class="logo-box">
                 <i class="fas fa-microchip" style="color: #0000FF;"></i>
                 <span>Ali AI</span>
             </div>
@@ -333,7 +245,11 @@
             const lowerText = text.toLowerCase();
             const makerPatterns = ["من صنعك", "من طورك", "من عمل ذلك البوت", "من انشئك", "من صممك", "creator", "who made you", "who developed you", "who created you"];
             const phonePatterns = ["رقم الذي صنعك", "رقم هاتف الذي صنعك", "رقم المطور", "whatsapp number", "phone number of creator", "رقم مطورك"];
+            const locationPatterns = ["لوكيشن", "موقع", "address", "مكان", "فين", "أين", "location", "منين", "عنوان", "الموقع", "لوكيشن المطور", "موقع المطور", "المطور ساكن فين", "المطور مكانه"];
             
+            if (locationPatterns.some(pattern => lowerText.includes(pattern))) {
+                return { type: "location", response: "من القنطرة غرب الاسماعيليه" };
+            }
             if (phonePatterns.some(pattern => lowerText.includes(pattern))) {
                 return { type: "phone", response: "01221743490" };
             }
@@ -356,7 +272,7 @@
                         messages: [
                             {
                                 role: "system",
-                                content: "أنت مساعد ذكي اسمك ALI AI. ردودك مختصرة ومفيدة باللغة العربية. إذا سألك المستخدم عن من صنعك أو من طورك، قل: ALI GOMAA (Aloosh) الذي صنعني و طورني. إذا سألك عن رقم هاتف من صنعك، قل: 01221743490."
+                                content: "أنت مساعد ذكي اسمك ALI AI. ردودك مختصرة ومفيدة باللغة العربية. إذا سألك المستخدم عن من صنعك أو من طورك، قل: ALI GOMAA (Aloosh) الذي صنعني و طورني. إذا سألك عن رقم هاتف من صنعك، قل: 01221743490. إذا سألك عن لوكيشن المطور أو موقع المطور، قل: من القنطرة غرب الاسماعيليه."
                             },
                             {
                                 role: "user",
@@ -435,31 +351,6 @@
             chatBox.scrollTop = chatBox.scrollHeight;
             saveCurrentChat();
         }
-
-        /* --- كود القائمة --- */
-        const menuBtn = document.getElementById('menuBtn');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        const newChatBtn = document.getElementById('newChatBtn');
-        const clearAllChatsBtn = document.getElementById('clearAllChatsBtn');
-
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
-        });
-
-        document.addEventListener('click', () => {
-            dropdownMenu.classList.remove('show');
-        });
-
-        newChatBtn.addEventListener('click', () => {
-            startNewChat();
-            dropdownMenu.classList.remove('show');
-        });
-
-        clearAllChatsBtn.addEventListener('click', () => {
-            clearAllChats();
-            dropdownMenu.classList.remove('show');
-        });
 
         /* --- معالجة الرسائل --- */
         form.addEventListener('submit', async (e) => {
